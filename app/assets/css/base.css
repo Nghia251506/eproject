@@ -2,13 +2,20 @@
     --text-color: #333;
     --white-color: #fff;
     --black-color: #000;
-    --primary-color: #C9AC5F;
+    --primary-color: #F2D265;
     --border-color: #dbdbdb;
     --header-height: 140px;
     --navbar-height: 34px;
     --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
     --color-header: linear-gradient(0, #F2D265, #040000);
     /* --color-header: ae dùng background-image rồi thêm biến này vào nhé */
+}
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
 }
 
 * {
