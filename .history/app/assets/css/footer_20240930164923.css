@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif , kokor;
+    margin: 0;
+}
+
+footer {
+    background-color: #F2D265;
+    color: #000000;
+    padding: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info, .payment-info, .map {
+    flex: 1;
+    margin: 0 10px;
+}
+
+h3 {
+    margin-top: 0;
+}
