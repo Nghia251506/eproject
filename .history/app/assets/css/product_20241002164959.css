@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    background: #fff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    width: 75%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #F2D265;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.product:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #F2D265;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0 0 8px 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border: 1px solid #F2D265;
+    outline: none;
+}
