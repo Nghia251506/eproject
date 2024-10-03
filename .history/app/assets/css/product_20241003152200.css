@@ -1,4 +1,6 @@
-
+/* ============================= */
+/* Cài đặt font và nền trang    */
+/* ============================= */
 body {
     font-family: 'Arial', sans-serif; /* Font chữ cơ bản */
     margin: 0; /* Xóa margin mặc định */
@@ -6,23 +8,23 @@ body {
     background-color: #eef2f3; /* Màu nền sáng nhẹ cho trang */
 }
 
-
+/* ============================= */
 /* Bố cục tổng thể của trang    */
 /* ============================= */
 .container {
     display: flex; /* Sử dụng Flexbox để dễ dàng bố trí sidebar và main-content */
-    max-width: 1350px; /* Độ rộng tối đa của container */
+    max-width: 1200px; /* Độ rộng tối đa của container */
     margin: 20px auto; /* Giữa trang */
     background-color: #fff; /* Màu nền trắng cho container */
     border-radius: 10px; /* Bo góc cho container */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho container */
 }
 
-
+/* ============================= */
 /* Sidebar chứa thanh tìm kiếm  */
 /* ============================= */
 .sidebar {
-    width: 300px; /* Độ rộng của sidebar */
+    width: 250px; /* Độ rộng của sidebar */
     padding: 20px; /* Padding xung quanh */
     background-color: #f9f9f9; /* Màu nền của sidebar */
     border-right: 2px solid #ddd; /* Đường viền bên phải */
@@ -38,7 +40,7 @@ body {
 
 /* Thanh nhập tìm kiếm */
 .sidebar input {
-    width:250px; /* Chiều rộng 100% của sidebar */
+    width 350; /* Chiều rộng 100% của sidebar */
     padding: 15px 20px; /* Tăng padding để làm cho ô input lớn hơn, gọn gàng hơn */
     margin-top: 10px; /* Khoảng cách trên */
     border: 2px solid #007BFF; /* Đường viền màu xanh */
@@ -55,7 +57,7 @@ body {
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Đổ bóng khi focus */
 }
 
-
+/* ============================= */
 /* Nội dung chính               */
 /* ============================= */
 .main-content {
@@ -111,7 +113,7 @@ body {
     color: #666; /* Màu chữ xám */
 }
 
-
+/* ============================= */
 /* Hiệu ứng khi di chuột qua sản phẩm */
 /* ============================= */
 .product:hover {

@@ -22,7 +22,7 @@ body {
 /* Sidebar chứa thanh tìm kiếm  */
 /* ============================= */
 .sidebar {
-    width: 300px; /* Độ rộng của sidebar */
+    width: 350px; /* Độ rộng của sidebar */
     padding: 20px; /* Padding xung quanh */
     background-color: #f9f9f9; /* Màu nền của sidebar */
     border-right: 2px solid #ddd; /* Đường viền bên phải */
@@ -38,7 +38,7 @@ body {
 
 /* Thanh nhập tìm kiếm */
 .sidebar input {
-    width:250px; /* Chiều rộng 100% của sidebar */
+    width:300px; /* Chiều rộng 100% của sidebar */
     padding: 15px 20px; /* Tăng padding để làm cho ô input lớn hơn, gọn gàng hơn */
     margin-top: 10px; /* Khoảng cách trên */
     border: 2px solid #007BFF; /* Đường viền màu xanh */

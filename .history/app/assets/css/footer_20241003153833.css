@@ -79,6 +79,9 @@ footer {
 }
 
 
+
+
+
 /* Payment Info Styles */
 .payment-info {
     flex: 1; /* Flex property for responsive layout */
@@ -102,6 +105,12 @@ footer {
     margin-top: 0; /* Remove top margin */
     padding-bottom: 5px; /* Spacing below the heading */
 }
+
+
+
+
+
+
 
 /* Map Styles */
 .map {
@@ -128,3 +137,17 @@ footer {
 .map:hover {
     transform: scale(1.05); 
 }
+
+/* Common Styles */
+/* h3 {
+    margin-top: 0;
+}
+
+a {
+    color: #000; /* Default link color */
+    /* text-decoration: none; /* No underline */
+/* } */
+
+/* a:hover { */
+    /* text-decoration: underline; /* Underline on hover */
+/* }   */

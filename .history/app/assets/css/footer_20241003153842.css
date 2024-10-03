@@ -79,6 +79,9 @@ footer {
 }
 
 
+
+
+
 /* Payment Info Styles */
 .payment-info {
     flex: 1; /* Flex property for responsive layout */
@@ -102,6 +105,12 @@ footer {
     margin-top: 0; /* Remove top margin */
     padding-bottom: 5px; /* Spacing below the heading */
 }
+
+
+
+
+
+
 
 /* Map Styles */
 .map {
