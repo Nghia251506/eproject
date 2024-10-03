@@ -8,7 +8,7 @@ body {
 
 /* Bố cục tổng thể của trang */
 .container {
-    display: flex; /* Sử dụng Flexbox để dễ dàng bố trí sidebar và main-content */
+    display: flex; /* Sử dụng Flexbox để dsễ dàng bố trí sidebar và main-content */
     max-width: 1200px; /* Độ rộng tối đa của container */
     margin: 20px auto; /* Giữa trang */
     background-color: #fff; /* Màu nền trắng cho container */
