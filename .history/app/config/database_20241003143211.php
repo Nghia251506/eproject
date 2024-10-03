@@ -2,9 +2,9 @@
 $host = "mysql:host=localhost:3306;dbname=eproject";
 $username = "root";
 <<<<<<< Updated upstream
-$pass = "Tnc2024@";
-=======
 $pass = "Anhem123";
+=======
+$pass = "";
 >>>>>>> Stashed changes
 try {
     $conn = new PDO($host, $username, $pass);
