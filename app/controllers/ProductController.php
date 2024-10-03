@@ -1,45 +1,57 @@
 <?php
 class ProductController extends BaseController
 {
-    private $__productModel;
+    private $__productModel, $__brandModel, $__typeModel;
     public function __construct($conn)
     {
         $this->__productModel = $this->initModel("ProductModel", $conn);
+        $this->__brandModel = $this->initModel("BrandModel", $conn);
+        $this->__typeModel = $this->initModel("TypeModel", $conn);
     }
     public function index(){
         $this->view("layouts/client", ["page"=>"product"]);
     } 
-    public function list($page = 1){
+    public function list($page = 1, $id_brand){
         $limit = 10; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
         $products = $this->__productModel->getAllProduct($limit, $offset);
         $totalShows = $this->__productModel->countAllProducts();
         $totalPages = ceil($totalShows / $limit); // Total number of pages
-
+        $brand = $this->__brandModel->getBrandById($id_brand);
         $this->view("layouts/admin", [
-            "page" => "products/list",
+            "page" => "products/listProduct",
             "products" => $products,
             "totalPages" => $totalPages,
-            "currentPage" => $page
+            "currentPage" => $page,
+            "brand"=> $brand
         ]);
     }
-    public function add($id = 0)
+    public function add($id = null)
     {
+        // Kiểm tra nếu là GET request
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            // Get product information if $id is present, meaning editing
-            if ($id > 0) {
+            // Nếu có $id, nghĩa là đang chỉnh sửa sản phẩm
+            if (isset($id)) {
+                // Lấy thông tin sản phẩm từ database để hiển thị
                 $product = $this->__productModel->getProductById($id);
-                $this->view("layouts/admin", ["page" => "products/form_product", "product" => $product]);
+                if ($product) {
+                    // Hiển thị form với dữ liệu sản phẩm
+                    $this->view("layouts/admin", ["page" => "products/form_product", "product" => $product]);
+                } else {
+                    echo "Sản phẩm không tồn tại.";
+                }
             } else {
-                // Add new product
-                $this->view("layouts/admin", ["page" => "products/form_product"]);
+                // Hiển thị form trống để thêm sản phẩm mới
+                $brands = $this->__brandModel->getAllBrand();
+                $types = $this->__typeModel->getAllType();
+                $this->view("layouts/admin", ["page" => "products/form_product", "brands"=>$brands, "types"=> $types]);
             }
         }
 
+        // Nếu là POST request, xử lý thêm mới hoặc cập nhật sản phẩm
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Get data from form
             $data = [
-                'id' => isset($_POST['id']) ? trim($_POST['id']) : null,
+                'id' => trim($_POST["id"]) ?? null,
                 'name' => trim($_POST["name"]),
                 'code' => isset($_POST["code"]) ? trim($_POST["code"]) : null,
                 'type_id' => trim($_POST["type_id"]),
@@ -50,48 +62,38 @@ class ProductController extends BaseController
                 'sale_price' => trim($_POST["sale_price"]),
                 'quantity' => trim($_POST["quantity"]),
                 'brand_id' => trim($_POST["brand_id"]),
-                'image_url' => null // Initialize the variable containing the image path
+                'image_url' => null
             ];
 
-            // Check if there is an image file uploaded
+            // Kiểm tra nếu có file ảnh được upload
             if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                 $uploadDir = 'uploads/';
-
-                // Create unique file names to avoid duplicates
                 $fileName = time() . '_' . basename($_FILES['image']['name']);
                 $uploadFile = $uploadDir . $fileName;
 
-                // Move files to the destination folder
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-                    // If the upload is successful, save the file path to the $image_url variable
                     $data['image_url'] = $uploadFile;
                 } else {
-                    echo "An error occurred while downloading the file.";
+                    echo "Có lỗi xảy ra khi tải file.";
+                    return;
                 }
             } else {
-                // Keep old photos if you don't upload new photos
-                if ($id > 0) {
+                // Nếu không có ảnh mới, giữ lại ảnh cũ nếu đang sửa sản phẩm
+                if ($id) {
                     $product = $this->__productModel->getProductById($id);
                     $data['image_url'] = $product->image_url;
                 }
             }
 
-            // Call saveProduct() method from ProductModel
+            // Gọi hàm saveProduct từ model
             $result = $this->__productModel->saveProduct($data);
 
+            // Kiểm tra kết quả của saveProduct
             if ($result) {
-                if ($id > 0) {
-                    $_SESSION['success_message'] = "The product has been updated successfully!";
-                } else {
-                    $_SESSION['success_message'] = "Product has been added successfully!";
-                }
+                $_SESSION['success_message'] = "Sản phẩm đã được lưu thành công!";
             } else {
-                $_SESSION['error_message'] = "An error occurred while saving the product.";
+                $_SESSION['error_message'] = "Có lỗi xảy ra trong quá trình lưu sản phẩm.";
             }
-
-            // Redirect to product list page
-            header("Location: http://localhost/eproject/product/list");
-            exit();
         }
     }
 
