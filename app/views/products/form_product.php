@@ -12,6 +12,8 @@
     <?php
     $data = $input["data"];
     $product = $data["product"] ?? "";
+    $brands = $data["brands"] ?? "";
+    $types = $data["types"] ?? "";
     ?>
     <?php
     // Nếu $product không rỗng, tức là đang chỉnh sửa
@@ -34,8 +36,8 @@
             <label for="brand_id">Brand:</label>
             <select id="brand_id" name="brand_id" required>
                 <?php foreach ($brands as $brand) : ?>
-                    <option value="<?= $brand->id ?>" <?= !empty($product) && $product->brand_id == $brand->id ? 'selected' : '' ?>>
-                        <?= $brand->name ?>
+                    <option value="<?= $brand->id ?>" <?= !empty($product) && $product->brand_id == $brand->id ? '' : 'selected' ?>>
+                        <?= $brand->brand_name ?>
                     </option>
                 <?php endforeach ?>
             </select>
@@ -44,7 +46,7 @@
             <select id="type_id" name="type_id" required>
                 <?php foreach ($types as $type) : ?>
                     <option value="<?= $type->id ?>" <?= !empty($product) && $product->type_id == $type->id ? 'selected' : '' ?>>
-                        <?= $type->name ?>
+                        <?= $type->type_name ?>
                     </option>
                 <?php endforeach ?>
             </select>

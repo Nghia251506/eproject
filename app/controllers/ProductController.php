@@ -1,11 +1,12 @@
 <?php
 class ProductController extends BaseController
 {
-    private $__productModel, $__brandModel;
+    private $__productModel, $__brandModel, $__typeModel;
     public function __construct($conn)
     {
         $this->__productModel = $this->initModel("ProductModel", $conn);
         $this->__brandModel = $this->initModel("BrandModel", $conn);
+        $this->__typeModel = $this->initModel("TypeModel", $conn);
     }
     public function index(){
         $this->view("layouts/client", ["page"=>"products/product"]);
@@ -41,7 +42,9 @@ class ProductController extends BaseController
                 }
             } else {
                 // Hiển thị form trống để thêm sản phẩm mới
-                $this->view("layouts/admin", ["page" => "products/form_product"]);
+                $brands = $this->__brandModel->getAllBrand();
+                $types = $this->__typeModel->getAllType();
+                $this->view("layouts/admin", ["page" => "products/form_product", "brands"=>$brands, "types"=> $types]);
             }
         }
 
