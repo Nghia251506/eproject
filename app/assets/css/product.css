@@ -1,0 +1,81 @@
+
+/* Đặt toàn bộ trang web căn giữa theo chiều dọc và ngang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container bao quanh form, giúp căn giữa form */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Định dạng form */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Đảm bảo form không quá rộng */
+    margin: 20px; /* Khoảng cách với các phần tử khác */
+}
+
+/* Tiêu đề form */
+h2.title-form {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+/* Định dạng cho mỗi label */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Các trường input */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Nút bấm */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Khi hover lên nút */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Căn chỉnh hình ảnh của sản phẩm */
+img {
+    display: block;
+    margin-bottom: 15px;
+    max-width: 100px;
+}
