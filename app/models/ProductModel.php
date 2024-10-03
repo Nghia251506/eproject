@@ -11,7 +11,21 @@ class ProductModel
     {
         try {
             if (isset($this->__conn)) {
-                $sql = "select * from products order by id desc LIMIT :limit OFFSET :offset";
+                $sql = "select p.name,
+                                p.code,
+                                p.watt,
+                                p.socket,
+                                p.color,
+                                p.purchase_price,
+                                p.sale_price,
+                                p.quantity,
+                                p.image_url,
+                                t.type_name,
+                                b.brand_name
+                from products as p
+                inner join type_lights as t on p.type_id = t.id
+                inner join brand_lights as b on p.brand_id = b.id
+                order by p.id desc LIMIT :limit OFFSET :offset";
                 $stmt = $this->__conn->prepare($sql);
                 $stmt->bindParam("limit", $limit, PDO::PARAM_INT);
                 $stmt->bindParam("offset", $offset, PDO::PARAM_INT);
@@ -25,21 +39,33 @@ class ProductModel
     }
 
     public function getProductById($id)
-    {
-        try {
-            if ($this->__conn) {
-                $sql = "select * from products where id = :id";
-                $stmt = $this->__conn->prepare($sql);
-                $stmt->execute();
-                return $stmt->fetch(PDO::FETCH_OBJ);
-            }
-            return null;
-        } catch (PDOException $ex) {
-            echo $ex->getMessage();
+{
+    try {
+        if ($this->__conn) {
+            // Join bảng products với bảng type_lights và brand_lights
+            $sql = "SELECT p.*, 
+                           t.type_name , 
+                           b.brand_name 
+                    FROM products p
+                    INNER JOIN type_lights t ON p.type_id = t.id
+                    INNER JOIN brand_lights b ON p.brand_id = b.id
+                    WHERE p.id = :id";
+            
+            $stmt = $this->__conn->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);  // Gán giá trị cho tham số :id
+            $stmt->execute();
+            
+            // Trả về dữ liệu sản phẩm cùng với tên loại và tên nhãn hiệu
+            return $stmt->fetch(PDO::FETCH_OBJ);
         }
+        return null;
+    } catch (PDOException $ex) {
+        echo $ex->getMessage();
     }
+}
+
     // The saveProduct function is commonly used for editing and adding new products
-    public function saveProduct($data)
+    public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
     {
         try {
             if (isset($his->__conn)) {
@@ -47,32 +73,51 @@ class ProductModel
                 $sql = "insert into products (`name`, `code`, `type_id`,`watt`, 
                 `socket`,`color`,`purchase_price`,`sale_price`,`quantity`,`brand_id`,`image_url`) 
                 values (:name, :code, :type_id, :watt, :socket, :color, :purchase_price, :sale_price,:quantity, :brand_id, :image_url)
-                ON DUPLICATE KEY UPDATE
-                name = VALUES(name),
-                code = VALUES(code),
-                type_id = VALUES(type_id),
-                watt = VALUES(watt),
-                socket = VALUES(socket),
-                color = VALUES(color),
-                purchase_price = VALUES(purchase_price),
-                sale_price = VALUES(sale_price),
-                quantity = VALUES(quantity),
-                brand_id = VALUES(brand_id)
-                image_url = VALUES(image_url)";
+                ";
                 // This line is used to Prepare statement
                 $stmt = $this->__conn->prepare($sql);
                 // This line is used to assign values ​​to parameters
-                $stmt->bindValue(':id', $data['id'] ?? null, PDO::PARAM_INT);
-                $stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
-                $stmt->bindValue(':code', $data['code'] ?? null, PDO::PARAM_STR);
-                $stmt->bindValue(':type_id', $data['type_id'], PDO::PARAM_INT);
-                $stmt->bindValue(':watt', $data['watt'], PDO::PARAM_INT);
-                $stmt->bindValue(':socket', $data['socket'], PDO::PARAM_STR);
-                $stmt->bindValue(':color', $data['color'], PDO::PARAM_STR);
-                $stmt->bindValue(':purchase_price', $data['purchase_price'], PDO::PARAM_STR);
-                $stmt->bindValue(':sale_price', $data['sale_price'], PDO::PARAM_STR);
-                $stmt->bindValue(':quantity', $data['quantity'], PDO::PARAM_INT);
-                $stmt->bindValue(':brand_id', $data['brand_id'], PDO::PARAM_INT);
+                $stmt->bindParam("name", $name, PDO::PARAM_STR);
+                $stmt->bindParam("code", $code, PDO::PARAM_STR);
+                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT); 
+                $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
+                $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
+                $stmt->bindParam("color", $color, PDO::PARAM_STR);
+                $stmt->bindParam("purchase_price", $purchase_price, PDO::PARAM_INT);
+                $stmt->bindParam("sale_price", $sale_price, PDO::PARAM_INT);
+                $stmt->bindParam("quantity", $quantity, PDO::PARAM_INT);
+                $stmt->bindParam("brand_id", $brand_id, PDO::PARAM_INT);
+                $stmt->bindParam("image_url", $image_url, PDO::PARAM_STR);
+                // Execute the query
+                return $stmt->execute();
+            }
+            return null;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+    public function editProduct($id,$name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
+    {
+        try {
+            if (isset($his->__conn)) {
+                // This query uses on DUPLICATE to both add new product values ​​and edit product values.
+                $sql = "update products set name= :name, code =:code, type_id=:type_id, watt=:watt, socket=:socket, color=:color, purchase_price=:purchase_price, sale_price =:sale_price,quantity=:quantity, brand_id=:brand_id, image_url=:image_url
+                where id=:id";
+                // This line is used to Prepare statement
+                $stmt = $this->__conn->prepare($sql);
+                // This line is used to assign values ​​to parameters
+                $stmt->bindParam("name", $name, PDO::PARAM_STR);
+                $stmt->bindParam("code", $code, PDO::PARAM_STR);
+                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT); 
+                $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
+                $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
+                $stmt->bindParam("color", $color, PDO::PARAM_STR);
+                $stmt->bindParam("purchase_price", $purchase_price, PDO::PARAM_INT);
+                $stmt->bindParam("sale_price", $sale_price, PDO::PARAM_INT);
+                $stmt->bindParam("quantity", $quantity, PDO::PARAM_INT);
+                $stmt->bindParam("brand_id", $brand_id, PDO::PARAM_INT);
+                $stmt->bindParam("image_url", $image_url, PDO::PARAM_STR);
+                $stmt->bindParam("id", $id, PDO::PARAM_INT);
                 // Execute the query
                 return $stmt->execute();
             }
