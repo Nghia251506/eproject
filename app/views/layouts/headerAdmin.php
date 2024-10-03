@@ -19,8 +19,8 @@
         </div>
     </div>
     <ul class="sidebar-list">
-        <li><a href="">Thêm sản phẩm</a></li>
-        <li><a href="">Danh sách sản phẩm</a></li>
+        <li><a href="http://localhost/eproject/product/add">Thêm sản phẩm</a></li>
+        <li><a href="http://localhost/eproject/product/list">Danh sách sản phẩm</a></li>
         <li><a href=""><i class="fa-solid fa-user"></i> Danh sách Khách hàng</a></li>
         <li><a href=""><i class="fa-solid fa-users"></i> Danh sách Nhân viên</a></li>
 
