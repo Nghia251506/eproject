@@ -1,0 +1,35 @@
+.home-page {
+  width: 75%;
+  margin: 0 auto;
+}
+.background-container {
+  width: 100%;
+  height: 850px;
+  margin-top: 50px;
+}
+.background-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.featured {
+  text-align: center; /* Căn giữa tiêu đề */
+  margin-bottom: 30px; /* Khoảng cách phía dưới tiêu đề */
+  margin-top: 30px;
+}
+
+.featured-container {
+  margin: 0 auto;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+}
+.featured-container img {
+  width: 19%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
