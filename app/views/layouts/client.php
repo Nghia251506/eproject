@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Donegal+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/base.css">
+    <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/home.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 
 <body>

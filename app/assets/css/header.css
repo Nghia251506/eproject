@@ -1,64 +1,122 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Tổng quan cấu trúc */
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #3eeb52; /* Màu nền */
+  background-color: black;
+  padding: 10px 0;
 }
 
-.header-left {
+.container {
+  max-width: 1400px;
+  margin: 0 auto; /* Căn giữa container */
   display: flex;
+  justify-content: space-between; /* Phân bố đều các thành phần */
   align-items: center;
+  padding: 0 20px; /* Thêm khoảng cách giữa container và viền */
 }
 
+/* Logo */
 .logo {
-  width: 50px; /* Kích thước logo */
-  height: auto;
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.company-name {
-  font-size: 24px;
-  color: rgb(65, 117, 5); /* Màu chữ của tên công ty */
+.logo-image img {
+  height: 85px;
 }
 
-.nav {
+.logo-name a {
+  color: #f2d265;
+  font-size: 20px;
+  text-decoration: none;
+}
+.search-form {
+  flex-grow: 2; /* Cho phép thanh tìm kiếm mở rộng */
+  display: flex;
+  justify-content: center;
+}
+
+.search-form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Header Right: Login, Shop */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.login {
   display: flex;
   gap: 20px;
 }
 
-.nav a {
+.login a {
+  color: #f2d265;
   text-decoration: none;
-  color: #000; /* Màu của link */
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.header-right {
+.login a:hover {
+  color: #ffffff;
+}
+
+/* Shop button */
+.shopping button {
+  background-color: #f2d265;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  font-size: 14px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  font-weight: bold;
 }
 
-.search-bar {
-  padding: 5px;
-  font-size: 16px;
-  width: 200px;
-  border: 1px solid #ccc;
+.shopping button i {
+  margin-left: 10px;
 }
 
-.login-link,
-.shop-link {
+.shopping button:hover {
+  background-color: white;
+}
+
+/* Navigation */
+.nav {
+  background-color: #f2d265;
+}
+
+.nav-container {
+  max-width: 0 auto;
+  margin: 0 auto; /* Căn giữa navigation */
+  text-align: center;
+  padding: 0 20px; /* Thêm khoảng cách hai bên */
+}
+
+.nav-item {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Điều chỉnh khoảng cách giữa các mục */
+}
+
+.nav-item a {
+  color: black;
   text-decoration: none;
-  color: #000;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-item a:hover {
+  color: #ffffff;
 }
