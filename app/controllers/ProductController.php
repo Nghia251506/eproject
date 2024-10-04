@@ -50,43 +50,44 @@ class ProductController extends BaseController
 
         // Nếu là POST request, xử lý thêm mới hoặc cập nhật sản phẩm
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $data = [
-                'id' => trim($_POST["id"]) ?? null,
-                'name' => trim($_POST["name"]),
-                'code' => isset($_POST["code"]) ? trim($_POST["code"]) : null,
-                'type_id' => trim($_POST["type_id"]),
-                'watt' => trim($_POST["watt"]),
-                'socket' => trim($_POST["socket"]),
-                'color' => trim($_POST["color"]),
-                'purchase_price' => trim($_POST["purchase_price"]),
-                'sale_price' => trim($_POST["sale_price"]),
-                'quantity' => trim($_POST["quantity"]),
-                'brand_id' => trim($_POST["brand_id"]),
-                'image_url' => null
-            ];
+            
+                $id=trim($_POST["id"]) ?? null;
+                $name=trim($_POST["name"]);
+                $code = isset($_POST["code"]) ? trim($_POST["code"]) : null;
+                $type_id= trim($_POST["type_id"]);
+                $watt= trim($_POST["watt"]);
+                $socket = trim($_POST["socket"]);
+                $color = trim($_POST["color"]);
+                $purchase_price = trim($_POST["purchase_price"]);
+                $sale_price=trim($_POST["sale_price"]);
+                $quantity = trim($_POST["quantity"]);
+                $brand_id = trim($_POST["brand_id"]);
+                $image_url = null;
+            ;
 
             // Kiểm tra nếu có file ảnh được upload
             if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                 $uploadDir = 'uploads/';
+
+                // Tạo tên file duy nhất để tránh trùng lặp
                 $fileName = time() . '_' . basename($_FILES['image']['name']);
                 $uploadFile = $uploadDir . $fileName;
 
+                // Di chuyển file tới thư mục đích
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-                    $data['image_url'] = $uploadFile;
+                    // Nếu tải lên thành công, lưu đường dẫn file vào biến $image_url
+                    $image_url = $uploadFile;
                 } else {
                     echo "Có lỗi xảy ra khi tải file.";
-                    return;
                 }
             } else {
-                // Nếu không có ảnh mới, giữ lại ảnh cũ nếu đang sửa sản phẩm
-                if ($id) {
-                    $product = $this->__productModel->getProductById($id);
-                    $data['image_url'] = $product->image_url;
-                }
+                $image_url = !empty($product) ? $product->image_url : null;
             }
 
+            // echo "vao ham add";
+            // die();
             // Gọi hàm saveProduct từ model
-            $result = $this->__productModel->saveProduct($data);
+            $result = $this->__productModel->saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url);
 
             // Kiểm tra kết quả của saveProduct
             if ($result) {
