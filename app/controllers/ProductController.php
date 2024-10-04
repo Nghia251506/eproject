@@ -11,6 +11,7 @@ class ProductController extends BaseController
     public function index(){
         $this->view("layouts/client", ["page"=>"products/product"]);
     } 
+    
     public function list($page = 1, $id_brand){
         $limit = 10; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset

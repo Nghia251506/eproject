@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>product</title>
-    <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/product.css"> <!-- Bạn có thể thêm CSS tại đây -->
+    <title>product</title> 
 </head>
 <body>
 <div class="container">
@@ -72,7 +71,6 @@
                         <p>1 quật 5 trăm</p>
                     </div>
                 </div>
-                <!-- Them sp o duoi -->
             </section>
         </main>
     </div>
