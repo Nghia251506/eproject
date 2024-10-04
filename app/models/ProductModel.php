@@ -68,11 +68,11 @@ class ProductModel
     public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
     {
         try {
-            if (isset($his->__conn)) {
+            if (isset($this->__conn)) {
                 // This query uses on DUPLICATE to both add new product values ​​and edit product values.
-                $sql = "insert into products (`name`, `code`, `type_id`,`watt`, 
+                $sql = "INSERT INTO products (`name`, `code`, `type_id`,`watt`, 
                 `socket`,`color`,`purchase_price`,`sale_price`,`quantity`,`brand_id`,`image_url`) 
-                values (:name, :code, :type_id, :watt, :socket, :color, :purchase_price, :sale_price,:quantity, :brand_id, :image_url)
+                VALUES (:name, :code, :type_id, :watt, :socket, :color, :purchase_price, :sale_price,:quantity, :brand_id, :image_url)
                 ";
                 // This line is used to Prepare statement
                 $stmt = $this->__conn->prepare($sql);
@@ -83,11 +83,13 @@ class ProductModel
                 $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
                 $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
                 $stmt->bindParam("color", $color, PDO::PARAM_STR);
-                $stmt->bindParam("purchase_price", $purchase_price, PDO::PARAM_INT);
-                $stmt->bindParam("sale_price", $sale_price, PDO::PARAM_INT);
+                $stmt->bindParam("purchase_price", $purchase_price);
+                $stmt->bindParam("sale_price", $sale_price);
                 $stmt->bindParam("quantity", $quantity, PDO::PARAM_INT);
                 $stmt->bindParam("brand_id", $brand_id, PDO::PARAM_INT);
                 $stmt->bindParam("image_url", $image_url, PDO::PARAM_STR);
+                // echo "đến đây rồi";
+                // die();
                 // Execute the query
                 return $stmt->execute();
             }
