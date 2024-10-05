@@ -39,9 +39,9 @@
     <div class="nav">
       <div class="nav-container">
         <div class="nav-item">
-          <a href="https://localhost/eproject/home">HOME</a>
+          <a href="">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href='https://localhost/eproject/product'>ACCESSORIES</a>
+          <a href=''>ACCESSORIES</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>
