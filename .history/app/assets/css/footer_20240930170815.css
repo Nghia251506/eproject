@@ -1,0 +1,66 @@
+body {
+    font-family: 'Kokoro', sans-serif;
+    margin: 0;
+}
+
+footer {
+    background-color: #F2D265;
+    color: #000;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+}
+
+.contact-info, .payment-info, .map {
+    flex: 1;
+    margin: 10px; /* Uniform margin */
+    padding: 10px; /* Add padding inside each column */
+}
+.map{
+    border: 1px solid #ddd; /* Light border for separation */
+    border-radius: 8px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.map:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.payment-info img {
+    width: 170px;
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+.payment-info img:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+.payment-info h3{
+    
+}
+
+
+h3 {
+    margin-top: 0;
+    padding-bottom: 5px; /* Spacing below the heading */
+}
+
+a {
+    color: #000; /* Link color */
+    text-decoration: none; /* No underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.map {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center the iframe */
+}
