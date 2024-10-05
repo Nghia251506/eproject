@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-contact">
         <h1>LIÊN HỆ CHÚNG TÔI</h1>
         <p>Hãy liên hệ với chúng tôi nếu bạn gặp bất cứ vấn đề nào liên quan đến công ty hoặc dịch vụ của chúng tôi. Chúng tôi sẽ cố gắng phản hồi trong thời gian sớm nhất.</p>
 

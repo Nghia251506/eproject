@@ -22,7 +22,7 @@ footer {
 
 
 /* Contact Info Styles */
-.footer-contact-info {
+.footcontact-info {
     padding: 15px; /* Add padding for spacing */
     border-radius: 8px; /* Rounded corners */
     /* transition: transform 0.3s; Smooth hover effect */
@@ -30,29 +30,28 @@ footer {
     margin: 10px; /* Uniform margin */
 }
 
-.footer-contact-info:hover {
+.contact-info:hover {
     /* transform: scale(1.02); Slightly enlarge on hover */
 }
 
-.footer-contact-info h3 {
-    margin-bottom: 20px; /* Space below heading */
+.contact-info h3 {
+    margin-bottom: 10px; /* Space below heading */
     color: #333; /* Darker color for contrast */
 }
 
-.footer-contact-info a {
+.contact-info a {
     margin: 0 10px;
-    color: black;
 }
-.footer-contact-info img {
+.contact-info img {
     width: 30px; /* Đặt kích thước cho biểu tượng */
     height: 30px; /* Đặt chiều cao cho biểu tượng */
     transition: transform 0.3s; /* Hiệu ứng hover */
 }
-.footer-contact-info img:hover {
+.contact-info img:hover {
     transform: scale(1.1); /* Tăng kích thước khi hover */
 }
 
-.footer-contact-info p {
+.contact-info p {
     margin: 20px 0; /* Space between paragraphs */
     line-height: 1.6; /* Improve line height for readability */
     transition: transform 0.3s; /* Smooth hover effect */

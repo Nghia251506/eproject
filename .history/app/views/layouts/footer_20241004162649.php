@@ -9,7 +9,7 @@
 <body>
 <footer>
         <div class="footer-container">
-            <div class="footer-contact-info">
+            <div class=" contact-info">
                 <h3>Contact</h3>
                 <p>Địa chỉ: 8A Ton That Thuyet, My Dinh, Nam Tu Liem, Ha Noi</p>
                 <p>Hotline: 0523 652 003</p>

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>footer</title>
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/footer.css">
+<!-- goi no deo an -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flat-icons/css/flat-icons.min.css"> -->
 </head>
 <body>
 <footer>
         <div class="footer-container">
-            <div class="footer-contact-info">
+            <div class="contact-info">
                 <h3>Contact</h3>
                 <p>Địa chỉ: 8A Ton That Thuyet, My Dinh, Nam Tu Liem, Ha Noi</p>
                 <p>Hotline: 0523 652 003</p>
@@ -34,7 +36,7 @@
         </div>
 
     </footer>
-    <div style="background-color: black;color:blue ;  padding: 10px; text-align: center;">
+    <div style="background-color: black;color:white ;  padding: 10px; text-align: center;">
         <p>© Project was made by Luminous Garden Team - T2404E .</p>
     </div>
 </body>
