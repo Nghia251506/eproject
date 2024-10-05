@@ -1,4 +1,4 @@
-.container {
+#product-container {
     display: flex; /* Sử dụng Flexbox để dễ dàng bố trí sidebar và main-content */
     max-width: 1350px; /* Độ rộng tối đa của container */
     margin: 20px auto; /* Giữa trang */
@@ -107,26 +107,26 @@
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng lớn hơn khi hover */
 }
-.form-container {
+/* .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
+} */
 
 /* Định dạng form */
-form {
+/* form {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px; /* Đảm bảo form không quá rộng */
-    margin: 20px; /* Khoảng cách với các phần tử khác */
-}
+    max-width: 500px; 
+    margin: 20px; 
+} */
 
 /* Tiêu đề form */
-h2.title-form {
+.main-content h2.title-form {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
@@ -134,7 +134,7 @@ h2.title-form {
 }
 
 /* Định dạng cho mỗi label */
-label {
+.main-content label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -155,8 +155,9 @@ select {
     box-sizing: border-box;
 }
 
-/* Nút bấm */
-/* button {
+
+.product button {
+
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -168,13 +169,14 @@ select {
 }
 
 
-button:hover {
+/* .product button:hover {
     background-color: #0056b3;
-}
+} */
 
-
-img {
+/* Căn chỉnh hình ảnh của sản phẩm */
+.product img {
     display: block;
     margin-bottom: 15px;
-    max-width: 100px;
-} */
+    max-width: 200px;
+}
+

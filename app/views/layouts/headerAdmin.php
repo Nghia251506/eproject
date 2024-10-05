@@ -1,8 +1,10 @@
 <div class="sidebar">
     <div class="header-sidebar">
-        <div class="dashboard"><a href="http://localhost/mvcphp/admin/index" class="link-dashboard">
+        <div class="dashboard">
+            <a href="http://localhost/mvcphp/admin/index" class="link-dashboard">
                 <h2 class="title">Admin Dashboard</h2>
-            </a></div>
+            </a>
+        </div>
         <div>
             <div class="user-info">
                 <div class="dropdown">

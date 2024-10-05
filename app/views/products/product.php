@@ -6,7 +6,7 @@
     <title>product</title> 
 </head>
 <body>
-<div class="container">
+<div id="product-container">
         <aside class="sidebar">
             <h2>Tìm Kiếm Sản Phẩm</h2>
             <input type="text" placeholder="Tìm kiếm...">
@@ -17,25 +17,25 @@
                 <h2>Sản Phẩm Nổi Bật</h2>
                 <div class="product-row">
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den1.png" alt="Sản phẩm 1" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 1" />
                         <h3>Sản Phẩm 1</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den2.png" alt="Sản phẩm 2" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 2" />
                         <h3>Sản Phẩm 2</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den3.png" alt="Sản phẩm 3" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 3" />
                         <h3>Sản Phẩm 3</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den4.png" alt="Sản phẩm 4" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 4" />
                         <h3>Sản Phẩm 4</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
@@ -47,25 +47,25 @@
                 <h2>Tất Cả Sản Phẩm</h2>
                 <div class="product-row">
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den5.png" alt="Sản phẩm A" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm A" />
                         <h3>Sản Phẩm A</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den6.png" alt="Sản phẩm B" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm B" />
                         <h3>Sản Phẩm B</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den7.png" alt="Sản phẩm C" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm C" />
                         <h3>Sản Phẩm C</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>
                     </div>
                     <div class="product">
-                        <img src="http://localhost/eproject/app/assets/data/den8.png" alt="Sản phẩm D" />
+                        <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm D" />
                         <h3>Sản Phẩm D</h3>
                         <p>Đây là nơi để xàm lol</p>
                         <p>1 quật 5 trăm</p>

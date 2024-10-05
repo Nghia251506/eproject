@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="header">
-    <div class="container-header">
+    <div class="header-container">
       <div class="logo">
         <div class="logo-image">
           <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
