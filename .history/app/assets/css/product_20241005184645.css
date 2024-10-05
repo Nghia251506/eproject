@@ -1,0 +1,111 @@
+/* Container sản phẩm           */
+/* ============================= */
+.container-product {
+    display: flex;
+    max-width: 1350px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Sidebar                      */
+/* ============================= */
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-right: 2px solid #ddd;
+    border-radius: 10px 0 0 10px;
+}
+
+.sidebar__title {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.sidebar__search-input {
+    width: 100%; /* Đặt chiều rộng 100% */
+    padding: 15px 20px;
+    margin-top: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.sidebar__search-input:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Nội dung chính              */
+/* ============================= */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.products__section {
+    margin-bottom: 40px;
+}
+
+
+/* Dòng sản phẩm               */
+/* ============================= */
+.product-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+
+/* Sản phẩm                    */
+/* ============================= */
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: calc(25% - 20px); /* 4 sản phẩm mỗi hàng */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product__title {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.product__description {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Hiệu ứng hover trên sản phẩm */
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================= */
+/* Căn chỉnh hình ảnh sản phẩm  */
+/* ============================= */
+.container-product img {
+    display: block;
+    margin-bottom: 15px;
+    max-width: 100px;
+}

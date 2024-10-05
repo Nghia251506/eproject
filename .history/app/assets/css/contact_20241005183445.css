@@ -1,0 +1,85 @@
+/* styles.css */
+
+body {
+    /* background: url('http://localhost/eproject/app/assets/data/slider-1-min.jpg') no-repeat center center fixed; */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.container-contact {
+    max-width: 1200px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container-contact h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em; /* Kích thước tiêu đề lớn hơn */
+}
+
+.container-contact p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.container-contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-contact label {
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: bold; /* In đậm chữ label */
+}
+
+.container-contact input, textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho border */
+}
+
+input:focus, textarea:focus {
+    border-color: #007BFF; /* Đổi màu border khi focus */
+    outline: none;
+}
+
+button {
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp cho nút */
+}
+
+button:hover {
+    background-color: #0056b3; /* Đổi màu khi hover */
+}
+
+.contact-info {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.contact-info h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
