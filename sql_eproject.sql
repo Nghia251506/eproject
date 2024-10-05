@@ -79,12 +79,24 @@ create table sale_order_line(
 
 -- trigger
 DELIMITER //
-CREATE TRIGGER generate_product_code
-BEFORE INSERT ON products
-FOR EACH ROW
+CREATE PROCEDURE insert_product(IN prod_name VARCHAR(255), IN prod_price DECIMAL(10,2))
 BEGIN
-  -- Sinh một chuỗi code tự động, ví dụ: PROD-00001
-  SET NEW.code = CONCAT('PROD-', LPAD(NEW.id, 5, '0'));
-END;
-//
+  -- Chèn sản phẩm mới
+  INSERT INTO products (name, price) VALUES (prod_name, prod_price);
+  
+  -- Lấy id vừa chèn
+  SET @last_id = LAST_INSERT_ID();
+  
+  -- Cập nhật code cho sản phẩm dựa trên id
+  UPDATE products 
+  SET code = CONCAT('PROD-', LPAD(@last_id, 5, '0'))
+  WHERE id = @last_id;
+END //
 DELIMITER ;
+
+DROP TRIGGER IF EXISTS generate_product_code;
+
+-- DML
+insert into type_lights (`id`, `type_name`) values (2, "acs");
+desc products;
+
