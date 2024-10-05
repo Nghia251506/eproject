@@ -156,7 +156,7 @@ select {
 }
 
 /* Nút bấm */
-button {
+/* button {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -167,14 +167,14 @@ button {
     cursor: pointer;
 }
 
-/* Khi hover lên nút */
+
 button:hover {
     background-color: #0056b3;
 }
 
-/* Căn chỉnh hình ảnh của sản phẩm */
+
 img {
     display: block;
     margin-bottom: 15px;
     max-width: 100px;
-}
+} */

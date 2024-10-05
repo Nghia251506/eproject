@@ -10,7 +10,11 @@ class ProductController extends BaseController
     }
     public function index(){
         $this->view("layouts/client", ["page"=>"products/product"]);
-    } 
+    }
+
+    public function detail(){
+        $this->view("layouts/client", ["page"=>"products/ProductDetails"]);
+    }
     
     public function list($page = 1, $id_brand){
         $limit = 10; // Number of products per page
