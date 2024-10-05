@@ -1,0 +1,120 @@
+
+body {
+    font-family: 'Arial', sans-serif; /* Font chữ cơ bản */
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+    background-color: #eef2f3; /* Màu nền sáng nhẹ cho trang */
+}
+
+
+/* Bố cục tổng thể của trang    */
+/* ============================= */
+.container {
+    display: flex; /* Sử dụng Flexbox để dễ dàng bố trí sidebar và main-content */
+    max-width: 1350px; /* Độ rộng tối đa của container */
+    margin: 20px auto; /* Giữa trang */
+    background-color: #fff; /* Màu nền trắng cho container */
+    border-radius: 10px; /* Bo góc cho container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho container */
+}
+
+
+/* Sidebar chứa thanh tìm kiếm  */
+/* ============================= */
+.sidebar {
+    width: 350px; /* Độ rộng của sidebar */
+    padding: 20px; /* Padding xung quanh */
+    background-color: #f9f9f9; /* Màu nền của sidebar */
+    border-right: 2px solid #ddd; /* Đường viền bên phải */
+    border-radius: 10px 0 0 10px; /* Bo góc cho sidebar */
+}
+
+/* Tiêu đề trong sidebar */
+.sidebar h2 {
+    margin-top: 0; /* Xóa margin trên cùng */
+    font-size: 1.5em; /* Kích thước chữ lớn hơn */
+    color: #333; /* Màu chữ tối */
+}
+
+/* Thanh nhập tìm kiếm */
+.sidebar input {
+    width:300px; /* Chiều rộng 100% của sidebar */
+    padding: 15px 20px; /* Tăng padding để làm cho ô input lớn hơn, gọn gàng hơn */
+    margin-top: 10px; /* Khoảng cách trên */
+    border: 2px solid #007BFF; /* Đường viền màu xanh */
+    border-radius: 5px; /* Bo góc cho ô input */
+    font-size: 1.2em; /* Kích thước chữ lớn hơn */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: border-color 0.3s, box-shadow 0s.3s; /* Hiệu ứng chuyển màu khi hover */
+}
+
+/* Hiệu ứng khi focus vào ô input */
+.sidebar input:focus {
+    border-color: #0056b3; /* Màu viền khi focus */
+    outline: none; /* Xóa outline mặc định */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Đổ bóng khi focus */
+}
+
+/* ============================= */
+/* Nội dung chính               */
+/* ============================= */
+.main-content {
+    flex-grow: 1; /* Chiếm phần còn lại của container */
+    padding: 20px; /* Padding xung quanh */
+}
+
+/* Tiêu đề cho các mục sản phẩm */
+.featured-products, .all-products {
+    margin-bottom: 40px; /* Khoảng cách giữa các mục */
+}
+
+/* ============================= */
+/* Bố cục hàng sản phẩm         */
+/* ============================= */
+.product-row {
+    display: flex; /* Sử dụng Flexbox để bố trí sản phẩm */
+    flex-wrap: wrap; /* Cho phép sản phẩm xuống dòng khi không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+/* ============================= */
+/* Định dạng cho từng sản phẩm   */
+/* ============================= */
+.product {
+    background-color: #fff; /* Màu nền trắng cho sản phẩm */
+    border: 1px solid #ddd; /* Đường viền cho sản phẩm */
+    border-radius: 10px; /* Bo góc cho sản phẩm */
+    padding: 15px; /* Padding bên trong */
+    text-align: center; /* Căn giữa nội dung */
+    transition: transform 0.2s, box-shadow 0.2s; /* Hiệu ứng chuyển động khi hover */
+    width: calc(25% - 20px); /* 4 sản phẩm mỗi hàng, trừ khoảng cách */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho sản phẩm */
+}
+
+/* Hình ảnh sản phẩm */
+.product img {
+    max-width: 100%; /* Chiều rộng tối đa là 100% */
+    height: auto; /* Tự động điều chỉnh chiều cao */
+    border-radius: 5px; /* Bo góc cho hình ảnh */
+}
+
+/* Tiêu đề sản phẩm */
+.product h3 {
+    margin: 10px 0 5px; /* Khoảng cách trên và dưới */
+    font-size: 1.2em; /* Kích thước chữ lớn hơn */
+    color: #333; /* Màu chữ tối */
+}
+
+/* Mô tả sản phẩm */
+.product p {
+    margin: 5px 0; /* Khoảng cách trên và dưới */
+    color: #666; /* Màu chữ xám */
+}
+
+
+/* Hiệu ứng khi di chuột qua sản phẩm */
+/* ============================= */
+.product:hover {
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng lớn hơn khi hover */
+}
