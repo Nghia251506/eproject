@@ -1,4 +1,6 @@
-
+<<<<<<<<< Temporary merge branch 1
+<h1>This is HomePage</h1>
+=========
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,3 +40,4 @@
 
 </body>
 </html>
+>>>>>>>>> Temporary merge branch 2
