@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/header.css">
+  <script src="https://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="container-header">
       <div class="logo">
         <div class="logo-image">
-          <img src="http://localhost/eproject/app/assets/data/LG.png" alt="Logo">
+          <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
         </div>
         <div class="logo-name">
           <a href="">Luminous <br> Garden</a>
