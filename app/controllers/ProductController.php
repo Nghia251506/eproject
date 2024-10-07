@@ -9,7 +9,8 @@ class ProductController extends BaseController
         $this->__typeModel = $this->initModel("TypeModel", $conn);
     }
     public function index(){
-         $this->view("layouts/client", ["page"=>"products/product"]);
+        $products = $this->__productModel->getAllProduct();
+         $this->view("layouts/client", ["page"=>"products/product", "products"=>$products]);
     }
 
     public function detail(){

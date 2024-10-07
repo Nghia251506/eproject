@@ -1,23 +1,36 @@
 let currentIndexes = {
     'slider1': 0,
-    'slider2': 0 // Thêm slide2
+    'slider2': 0
 };
 
-// Hàm chuyển slider theo hướng chỉ định
-function moveSlider(sliderId, direction) {
+function updateSlider(sliderId) {
     const slider = document.getElementById(sliderId);
     const images = slider.querySelectorAll('img');
-    let currentIndex = currentIndexes[sliderId];
+    const currentIndex = currentIndexes[sliderId];
 
-    images[currentIndex].classList.remove('active');
-    
+    // Xóa lớp active khỏi tất cả các hình ảnh
+    images.forEach((img) => {
+        img.classList.remove('active');
+        img.style.opacity = '0.5'; // Mờ hình ảnh
+    });
+
+    // Thiết lập hình ảnh hiện tại rõ nhất
+    images[currentIndex].classList.add('active');
+    images[currentIndex].style.opacity = '1'; // Hình ảnh ở giữa sẽ rõ
+}
+
+function moveSlider(sliderId, direction) {
+    const images = document.querySelectorAll(`#${sliderId} img`);
+    const totalImages = images.length;
+
+    // Cập nhật chỉ số hiện tại
     if (direction === 'next') {
-        currentIndexes[sliderId] = (currentIndex + 1) % images.length;
+        currentIndexes[sliderId] = (currentIndexes[sliderId] + 1) % totalImages;
     } else if (direction === 'prev') {
-        currentIndexes[sliderId] = (currentIndex - 1 + images.length) % images.length;
+        currentIndexes[sliderId] = (currentIndexes[sliderId] - 1 + totalImages) % totalImages;
     }
 
-    images[currentIndexes[sliderId]].classList.add('active');
+    updateSlider(sliderId);
 }
 
 // Hàm điều khiển chuyển sang phải
@@ -30,13 +43,6 @@ function moveLeft(sliderId) {
     moveSlider(sliderId, 'prev');
 }
 
-// Tự động chuyển slide sau mỗi 2 giây cho cả hai slider
-function autoSlide(sliderId) {
-    setInterval(function() {
-        moveRight(sliderId);
-    }, 4000); // 4000ms = 4 giây
-}
-
-// Gọi autoSlide cho slider1 và slider2
-autoSlide('slider1');
-autoSlide('slider2');
+// Khởi động slider ban đầu
+updateSlider('slider1');
+updateSlider('slider2');

@@ -24,48 +24,36 @@
 
 .slider-wrapper {
   position: relative;
-  width: 100%;
-  height: 300px;
+  width: 600px; /* Thay đổi kích thước theo ý muốn */
   overflow: hidden;
 }
 
 .featured-container {
   display: flex;
-  justify-content: center;
-  gap: 13px;
-  position: relative;
-  width: 100%;
-  height: 300px;
+  transition: transform 0.5s ease;
+  align-items: center; /* Canh giữa dọc */
 }
 
-.featured-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.5s ease-in-out;
+.slider-img {
+  width: 100px; /* Thay đổi kích thước theo ý muốn */
+  margin: 0 10px; /* Khoảng cách giữa các hình ảnh */
+  opacity: 0.5; /* Mờ các hình ảnh mặc định */
+  transition: opacity 0.5s ease;
 }
 
-.featured-container img.active {
-  opacity: 1;
-  z-index: 1;
+.slider-img.active {
+  opacity: 1; /* Hình ảnh ở giữa sẽ rõ nét */
 }
 
 .prev-btn, .next-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.7);
   border: none;
   cursor: pointer;
   padding: 10px;
-  font-size: 18px;
-  z-index: 2;
+  border-radius: 5px;
 }
 
 .prev-btn {
