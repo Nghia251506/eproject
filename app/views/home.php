@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +9,10 @@
 </head>
 
 <body>
+    <?php
+    $data = $input["data"];
+    $products = $data["products"] ?? "";
+    ?>
     <div class="home-page">
         <div class="home-container">
             <div class="background-container">
@@ -21,11 +24,9 @@
             <div class="slider-wrapper">
                 <button class="prev-btn" onclick="moveLeft('slider1')">❮</button>
                 <div class="featured-container" id="slider1">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-16.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-6.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-18.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-5.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-9.jpg">
+                    <?php foreach ($products as $product) : ?>
+                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="active">
+                    <?php endforeach; ?>
                 </div>
                 <button class="next-btn" onclick="moveRight('slider1')">❯</button>
             </div>

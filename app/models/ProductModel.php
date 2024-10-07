@@ -38,6 +38,20 @@ class ProductModel
         }
     }
 
+    public function getImg(){
+        try{
+            if($this->__conn){
+                $sql = "select image_url from products";
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_OBJ);
+            }
+            return null;
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+        }
+    }
+
     public function getProductById($id)
 {
     try {

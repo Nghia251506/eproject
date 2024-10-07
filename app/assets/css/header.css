@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #F2D265; /* Màu nền */
+  background-color: black;
+  padding: 10px 0; /* Màu nền */
 }
 
 .header-left {
@@ -28,13 +28,8 @@ body {
   padding: 0;
 }
 
-.header {
-  background-color: black;
-  padding: 10px 0;
-}
-
 .header-container {
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto; /* Căn giữa container */
   display: flex;
   justify-content: space-between; /* Phân bố đều các thành phần */

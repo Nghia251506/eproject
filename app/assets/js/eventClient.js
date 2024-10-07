@@ -34,7 +34,7 @@ function moveLeft(sliderId) {
 function autoSlide(sliderId) {
     setInterval(function() {
         moveRight(sliderId);
-    }, 4000); // 2000ms = 2 giây
+    }, 4000); // 4000ms = 4 giây
 }
 
 // Gọi autoSlide cho slider1 và slider2
