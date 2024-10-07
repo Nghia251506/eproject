@@ -24,25 +24,26 @@
 
 .slider-wrapper {
   position: relative;
-  width: 600px; /* Thay đổi kích thước theo ý muốn */
-  overflow: hidden;
+  width: 100%; /* Thay đổi kích thước theo ý muốn */
+  overflow: hidden; /* Ẩn hình ảnh ngoài vùng nhìn thấy */
 }
 
 .featured-container {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease; /* Thay đổi vị trí mượt mà */
   align-items: center; /* Canh giữa dọc */
 }
 
 .slider-img {
-  width: 100px; /* Thay đổi kích thước theo ý muốn */
+  width: 200px; /* Thay đổi kích thước theo ý muốn */
   margin: 0 10px; /* Khoảng cách giữa các hình ảnh */
   opacity: 0.5; /* Mờ các hình ảnh mặc định */
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng chuyển đổi */
 }
 
 .slider-img.active {
   opacity: 1; /* Hình ảnh ở giữa sẽ rõ nét */
+  transform: scale(1.1); /* Tăng kích thước cho hình ảnh hiện tại */
 }
 
 .prev-btn, .next-btn {
@@ -54,12 +55,14 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
+  z-index: 10; /* Đảm bảo nút luôn hiển thị trên hình ảnh */
 }
 
 .prev-btn {
-  left: 10px;
+  left: 10px; /* Vị trí nút trước */
 }
 
 .next-btn {
-  right: 10px;
+  right: 10px; /* Vị trí nút tiếp theo */
 }
+
