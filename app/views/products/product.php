@@ -8,6 +8,11 @@
 </head>
 
 <body>
+    <?php
+    $data = $input["data"];
+    $products = $data["products"] ?? "";
+    $product = $data["product"] ?? "";
+    ?>
     <div id="product-container">
         <aside class="sidebar">
             <h2>Tìm Kiếm Sản Phẩm</h2>
@@ -19,30 +24,15 @@
                 <div class="all-products">
                     <h2>Tất Cả Sản Phẩm</h2>
                     <div class="product-row">
-                        <div class="product">
-                            <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm A" />
-                            <h3>Sản Phẩm A</h3>
-                            <p>Đây là nơi để xàm lol</p>
-                            <p>1 quật 5 trăm</p>
-                        </div>
-                        <div class="product">
-                            <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm B" />
-                            <h3>Sản Phẩm B</h3>
-                            <p>Đây là nơi để xàm lol</p>
-                            <p>1 quật 5 trăm</p>
-                        </div>
-                        <div class="product">
-                            <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm C" />
-                            <h3>Sản Phẩm C</h3>
-                            <p>Đây là nơi để xàm lol</p>
-                            <p>1 quật 5 trăm</p>
-                        </div>
-                        <div class="product">
-                            <img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm D" />
-                            <h3>Sản Phẩm D</h3>
-                            <p>Đây là nơi để xàm lol</p>
-                            <p>1 quật 5 trăm</p>
-                        </div>
+                        <?php foreach ($products as $product) : ?>
+                            <div class="product">
+                                <img src="<?php echo htmlspecialchars($product->image_url); ?>" alt="Sản phẩm A" />
+                                <h3><?php echo htmlspecialchars($product->name); ?></h3>
+                                <p><?php echo htmlspecialchars($product->code); ?></p>
+                                <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</p>
+                                <a href='http://localhost/eproject/product/detail?id=<?php echo $product->id; ?>'>See All Details</a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

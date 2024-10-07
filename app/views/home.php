@@ -25,7 +25,7 @@
                 <button class="prev-btn" onclick="moveLeft('slider1')">❮</button>
                 <div class="featured-container" id="slider1">
                     <?php foreach ($products as $product) : ?>
-                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="active">
+                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="slider-img">
                     <?php endforeach; ?>
                 </div>
                 <button class="next-btn" onclick="moveRight('slider1')">❯</button>
@@ -36,11 +36,9 @@
             <div class="slider-wrapper">
                 <button class="prev-btn" onclick="moveLeft('slider2')">❮</button>
                 <div class="featured-container" id="slider2">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-2.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-4.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-20.jpg">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-13.jpg">
+                    <?php foreach ($products as $product) : ?>
+                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="slider-img">
+                    <?php endforeach; ?>
                 </div>
                 <button class="next-btn" onclick="moveRight('slider2')">❯</button>
             </div>
