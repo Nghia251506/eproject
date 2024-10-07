@@ -100,56 +100,35 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="slider-box">
-            <div class="swiper-slide">
-                <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Yellow Summer Travel Bag">
+    <?php
+        $data = $input["data"];
+        $product = $data["product"] ?? "";
+    ?>
+    <?php if ($product): ?>
+        <div class="container-fluid">
+            <div class="slider-box">
+                <img src="<?php echo htmlspecialchars($product->image_url); ?>" alt="<?php echo htmlspecialchars($product->name); ?>">
+            </div>
+            <div class="pro-detail">
+                <h2><?php echo htmlspecialchars($product->name); ?></h2>
+                <p><?php echo htmlspecialchars($product->code); ?></p>
+                <div class="price">
+                    <h5><?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</h5>
+                </div>
+                <div class="quantity-box">
+                    <button id="decrease">-</button>
+                    <input type="text" id="quantity" value="1">
+                    <button id="increase">+</button>
+                </div>
+                <div class="btshop">
+                    <button>ADD TO CART</button>
+                </div>
             </div>
         </div>
-        <div class="pro-detail">
-            <h2>Amadeus</h2>
-            <p>ABS LUGGAGE</p>
-            <div class="price">
-                <h5>$ 199.00</h5>
-                <span>30% off</span>
-            </div>
+    <?php else: ?>
+        <p>Sản phẩm không tồn tại.</p>
+    <?php endif; ?>
 
-            <!-- Nút tăng giảm số lượng -->
-            <div class="quantity-box">
-                <button id="decrease">-</button>
-                <input type="text" id="quantity" value="1">
-                <button id="increase">+</button>
-            </div>
-
-            <!-- Nút Thêm vào giỏ hàng -->
-            <div class="btshop">
-                <button>ADD TO CART</button>
-                <!-- Nút Xóa sản phẩm -->
-                <button class="delete-btn">DELETE PRODUCT</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const quantityInput = document.getElementById('quantity');
-        const increaseBtn = document.getElementById('increase');
-        const decreaseBtn = document.getElementById('decrease');
-
-        // Khi bấm nút +
-        increaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-
-        // Khi bấm nút -
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-    </script>
-
-
+    <script src="http://localhost/eproject/app/assets/js/ProductDetail.js"></script>
 </body>
 </html>

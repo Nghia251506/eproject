@@ -11,6 +11,7 @@
     <?php
     $data = $input["data"];
     $products = $data["products"] ?? "";
+    $product = $data["product"] ?? "";
     ?>
     <div id="product-container">
         <aside class="sidebar">
@@ -29,6 +30,7 @@
                                 <h3><?php echo htmlspecialchars($product->name); ?></h3>
                                 <p><?php echo htmlspecialchars($product->code); ?></p>
                                 <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</p>
+                                <a href='http://localhost/eproject/product/detail?id=<?php echo $product->id; ?>'>See All Details</a>
                             </div>
                         <?php endforeach; ?>
                     </div>

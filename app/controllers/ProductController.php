@@ -13,8 +13,9 @@ class ProductController extends BaseController
          $this->view("layouts/client", ["page"=>"products/product", "products"=>$products]);
     }
 
-    public function detail(){
-        $this->view("layouts/client", ["page"=>"products/ProductDetails"]);
+    public function detail($id){
+        $product = $this->__productModel->getProductById($id);
+        $this->view("layouts/client", ["page"=>"products/ProductDetails", "product"=>$product]);
     }
     public function list($page = 1, $id_brand){
         $limit = 10; // Number of products per page
