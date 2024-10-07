@@ -3,9 +3,10 @@ let currentIndexes = {
     'slider2': 0
 };
 
+// Tạo hàm cập nhật slider
 function updateSlider(sliderId) {
     const slider = document.getElementById(sliderId);
-    const images = slider.querySelectorAll('img');
+    const images = slider.querySelectorAll('.slider-img');
     const currentIndex = currentIndexes[sliderId];
 
     // Xóa lớp active khỏi tất cả các hình ảnh
@@ -17,10 +18,15 @@ function updateSlider(sliderId) {
     // Thiết lập hình ảnh hiện tại rõ nhất
     images[currentIndex].classList.add('active');
     images[currentIndex].style.opacity = '1'; // Hình ảnh ở giữa sẽ rõ
+
+    // Cập nhật vị trí của container
+    const offset = -currentIndex * (images[0].clientWidth + 20); // Tính toán vị trí dựa trên width + margin
+    slider.querySelector('.featured-container').style.transform = `translateX(${offset}px)`;
 }
 
+// Tạo hàm di chuyển slider
 function moveSlider(sliderId, direction) {
-    const images = document.querySelectorAll(`#${sliderId} img`);
+    const images = document.querySelectorAll(`#${sliderId} .slider-img`);
     const totalImages = images.length;
 
     // Cập nhật chỉ số hiện tại
@@ -43,6 +49,15 @@ function moveLeft(sliderId) {
     moveSlider(sliderId, 'prev');
 }
 
-// Khởi động slider ban đầu
+// Tự động chuyển slide
+function autoSlide(sliderId) {
+    setInterval(() => {
+        moveRight(sliderId);
+    }, 3000); // 3000ms = 3 giây
+}
+
+// Khởi động slider ban đầu và bắt đầu tự động chuyển động
 updateSlider('slider1');
 updateSlider('slider2');
+autoSlide('slider1');
+autoSlide('slider2');
