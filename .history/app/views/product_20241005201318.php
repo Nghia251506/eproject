@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm</title>
+    <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/product.css">
+</head>
+<body>
+    <div class="product-container">
+        <aside class="sidebar">
+            <h2>Tìm Kiếm Sản Phẩm</h2>
+            <input type="text" placeholder="Tìm kiếm...">
+        </aside>
+
+        <main class="main-content">
+            <section class="featured-products">
+                <h2>Sản Phẩm Nổi Bật</h2>
+                <div class="product-row">
+                    <!-- Sử dụng thẻ article cho mỗi sản phẩm để cải thiện khả năng truy cập -->
+                    <article class="product">
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den1.png" alt="Sản phẩm 1" loading="lazy" /></div>
+                        <h3>Sản Phẩm 1</h3>
+                        <p>Đây là mô tả sản phẩm 1.</p>
+                        <p>Giá: <strong>500.000 VNĐ</strong></p>
+                    </article>
+                    <article class="product">
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den2.png" alt="Sản phẩm 2" loading="lazy" /></div>
+                        <h3>Sản Phẩm 2</h3>
+                        <p>Đây là mô tả sản phẩm 2.</p>
+                        <p>Giá: <strong>500.000 VNĐ</strong></p>
+                    </article>
+                    <article class="product">
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den3.png" alt="Sản phẩm 3" loading="lazy" /></div>
+                        <h3>Sản Phẩm 3</h3>
+                        <p>Đây là mô tả sản phẩm 3.</p>
+                        <p>Giá: <strong>500.000 VNĐ</strong></p>
+                    </article>
+                    <article class="product">
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den4.png" alt="Sản phẩm 4" loading="lazy" /></div>
+                        <h3>Sản Phẩm 4</h3>
+                        <p>Đây là mô tả sản phẩm 4.</p>
+                        <p>Giá: <strong>500.000 VNĐ</strong></p>
+                    </article>
+                </div>
+            </section>
+
+            i -->
+            </section>
+        </main>
+    </div>
+</body>
+</html>

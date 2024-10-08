@@ -9,8 +9,14 @@ class ProductController extends BaseController
         $this->__typeModel = $this->initModel("TypeModel", $conn);
     }
     public function index(){
-        $this->view("layouts/client", ["page"=>"products/product"]);
-    } 
+        $products = $this->__productModel->getAllProduct();
+         $this->view("layouts/client", ["page"=>"products/product", "products"=>$products]);
+    }
+
+    public function detail($id){
+        $product = $this->__productModel->getProductById($id);
+        $this->view("layouts/client", ["page"=>"products/ProductDetails", "product"=>$product]);
+    }
     public function list($page = 1, $id_brand){
         $limit = 10; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
