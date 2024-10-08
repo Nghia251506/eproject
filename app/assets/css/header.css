@@ -3,7 +3,7 @@
   padding: 10px 0;
 }
 
-.container {
+.container-header {
   max-width: 1400px;
   margin: 0 auto; /* Căn giữa container */
   display: flex;
@@ -13,27 +13,27 @@
 }
 
 /* Logo */
-.logo {
+.logo-header {
   display: flex;
   align-items: center;
 }
 
-.logo-image img {
+.logo-image-header img {
   height: 85px;
 }
 
-.logo-name a {
+.logo-name-header a {
   color: #f2d265;
   font-size: 20px;
   text-decoration: none;
 }
-.search-form {
+.search-form-header {
   flex-grow: 2; /* Cho phép thanh tìm kiếm mở rộng */
   display: flex;
   justify-content: center;
 }
 
-.search-form input {
+.search-form-header input {
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #ffffff;
@@ -48,68 +48,68 @@
   gap: 60px;
 }
 
-.login {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .login a {
-    color: #f2d265;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .login a:hover {
-    color: #ffffff;
-  }
-  
-  /* Shop button */
-  .shopping button {
-    background-color: #f2d265;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-  
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-  }
-  
-  .shopping button i {
-    margin-left: 10px;
-  }
-  
-  .shopping button:hover {
-    background-color: white;
-  }
-  
-  /* Navigation */
-  .nav {
-    background-color: #f2d265;
-  }
-  
-  .nav-container {
-    max-width: 0 auto;
-    margin: 0 auto; /* Căn giữa navigation */
-    text-align: center;
-    padding: 0 20px; /* Thêm khoảng cách hai bên */
-  }
-  
-  .nav-item {
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Điều chỉnh khoảng cách giữa các mục */
-  }
-  
-  .nav-item a {
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .nav-item a:hover {
-    color: #ffffff;
-  }
+.login-header {
+  display: flex;
+  gap: 20px;
+}
+
+.login-header a {
+  color: #f2d265;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.login-header a:hover {
+  color: #ffffff;
+}
+
+/* Shop button */
+.shopping-header button {
+  background-color: #f2d265;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.shopping-header button i {
+  margin-left: 10px;
+}
+
+.shopping-header button:hover {
+  background-color: white;
+}
+
+/* Navigation */
+.nav-header {
+  background-color: #f2d265;
+}
+
+.nav-container-header {
+  max-width: 0 auto;
+  margin: 0 auto; /* Căn giữa navigation */
+  text-align: center;
+  padding: 0 20px; /* Thêm khoảng cách hai bên */
+}
+
+.nav-item-header {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Điều chỉnh khoảng cách giữa các mục */
+}
+
+.nav-item-header a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-item-header a:hover {
+  color: #ffffff;
+}

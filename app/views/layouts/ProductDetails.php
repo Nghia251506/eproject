@@ -123,9 +123,7 @@
 
             <!-- Nút Thêm vào giỏ hàng -->
             <div class="btshop">
-                <button>ADD TO CART</button>
-                <!-- Nút Xóa sản phẩm -->
-                <button class="delete-btn">DELETE PRODUCT</button>
+                <button>ADD TO CART</button>     
             </div>
         </div>
     </div>
@@ -141,175 +139,13 @@
             quantityInput.value = currentValue + 1;
         });
 
-        // Khi bấm nút -
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
+       
         });
     </script>
 
 
 
-<div></div>
-<div class="container-fluid">
-        <div class="slider-box">
-            <div class="swiper-slide">
-                <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Yellow Summer Travel Bag">
-            </div>
-        </div>
-        <div class="pro-detail">
-            <h2>Amadeus</h2>
-            <p>ABS LUGGAGE</p>
-            <div class="price">
-                <h5>$ 199.00</h5>
-                <span>30% off</span>
-            </div>
 
-            <!-- Nút tăng giảm số lượng -->
-            <div class="quantity-box">
-                <button id="decrease">-</button>
-                <input type="text" id="quantity" value="1">
-                <button id="increase">+</button>
-            </div>
-
-            <!-- Nút Thêm vào giỏ hàng -->
-            <div class="btshop">
-                <button>ADD TO CART</button>
-                <!-- Nút Xóa sản phẩm -->
-                <button class="delete-btn">DELETE PRODUCT</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const quantityInput = document.getElementById('quantity');
-        const increaseBtn = document.getElementById('increase');
-        const decreaseBtn = document.getElementById('decrease');
-
-        // Khi bấm nút +
-        increaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-
-        // Khi bấm nút -
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-    </script>
-    </div>
-
-
-
-
-<div>
-<div class="container-fluid">
-        <div class="slider-box">
-            <div class="swiper-slide">
-                <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Yellow Summer Travel Bag">
-            </div>
-        </div>
-        <div class="pro-detail">
-            <h2>Amadeus</h2>
-            <p>ABS LUGGAGE</p>
-            <div class="price">
-                <h5>$ 199.00</h5>
-                <span>30% off</span>
-            </div>
-
-            <!-- Nút tăng giảm số lượng -->
-            <div class="quantity-box">
-                <button id="decrease">-</button>
-                <input type="text" id="quantity" value="1">
-                <button id="increase">+</button>
-            </div>
-
-            <!-- Nút Thêm vào giỏ hàng -->
-            <div class="btshop">
-                <button>ADD TO CART</button>
-                <!-- Nút Xóa sản phẩm -->
-                <button class="delete-btn">DELETE PRODUCT</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const quantityInput = document.getElementById('quantity');
-        const increaseBtn = document.getElementById('increase');
-        const decreaseBtn = document.getElementById('decrease');
-
-        // Khi bấm nút +
-        increaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-
-        // Khi bấm nút -
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-    </script>
-
-
-
-<div class="container-fluid">
-        <div class="slider-box">
-            <div class="swiper-slide">
-                <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Yellow Summer Travel Bag">
-            </div>
-        </div>
-        <div class="pro-detail">
-            <h2>Amadeus</h2>
-            <p>ABS LUGGAGE</p>
-            <div class="price">
-                <h5>$ 199.00</h5>
-                <span>30% off</span>
-            </div>
-
-            <!-- Nút tăng giảm số lượng -->
-            <div class="quantity-box">
-                <button id="decrease">-</button>
-                <input type="text" id="quantity" value="1">
-                <button id="increase">+</button>
-            </div>
-
-            <!-- Nút Thêm vào giỏ hàng -->
-            <div class="btshop">
-                <button>ADD TO CART</button>
-                <!-- Nút Xóa sản phẩm -->
-                <button class="delete-btn">DELETE PRODUCT</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const quantityInput = document.getElementById('quantity');
-        const increaseBtn = document.getElementById('increase');
-        const decreaseBtn = document.getElementById('decrease');
-
-        // Khi bấm nút +
-        increaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-
-        // Khi bấm nút -
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-    </script>
-    </div>
 
 </body>
 </html>

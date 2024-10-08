@@ -9,36 +9,32 @@
 </head>
 <body>
 <div class="header">
-    <div class="container">
-      <div class="logo">
-        <div class="logo-image">
-          <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
-        </div>
-        <div class="logo-name">
-          <a href="">Luminous <br> Garden</a>
-        </div>
-      </div>
-
-      <div class="search-form">
-        <input type="text" placeholder="Search"  >
-        
-      </div>
-
-      <div class="header-right">
-        <div class="login">
-          <a href="">MY ACCOUNT</a>
-          <a href="">LOGIN</a>
-        </div>
-          <div class="shopping">
+    <div class="container-header">
+      <div class="logo-header">
+            <div class="logo-image-header">
+              <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
+            </div>
+              <div class="logo-name-header">
+                <a href="">Luminous <br> Garden</a>
+              </div>
+              </div>
+                <div class="search-form-header">
+                  <input type="text" placeholder="Search"  >
+                </div>
+                  <div class="header-right">
+                    <div class="login-header">
+                      <a href="">MY ACCOUNT</a>
+                      <a href="">LOGIN</a>
+                    </div>
+      <div class="shopping-header">
             <button type="submit">SHOP <i class="fa-solid fa-shop"></i></button>
-          </div>
+      </div>
         </div>
       </div>
     </div>
-
-    <div class="nav">
-      <div class="nav-container">
-        <div class="nav-item">
+    <div class="nav-header">
+      <div class="nav-container-header">
+        <div class="nav-item-header">
           <a href="">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
           <a href=''>ACCESSORIES</a>
