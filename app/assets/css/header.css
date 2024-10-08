@@ -1,9 +1,23 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: black;
-  padding: 10px 0;
+  padding: 10px 0; /* Màu nền */
 }
 
-.container-header {
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px; /* Kích thước logo */
+  height: auto;
+  margin-right: 10px;
+}
+
+.container {
   max-width: 1400px;
   margin: 0 auto; /* Căn giữa container */
   display: flex;
@@ -48,24 +62,24 @@
   gap: 60px;
 }
 
-.login-header {
+.login {
   display: flex;
   gap: 20px;
 }
 
-.login-header a {
+.login a {
   color: #f2d265;
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
 }
 
-.login-header a:hover {
+.login a:hover {
   color: #ffffff;
 }
 
 /* Shop button */
-.shopping-header button {
+.shopping button {
   background-color: #f2d265;
   border: none;
   padding: 10px 20px;
@@ -77,39 +91,39 @@
   font-weight: bold;
 }
 
-.shopping-header button i {
+.shopping button i {
   margin-left: 10px;
 }
 
-.shopping-header button:hover {
+.shopping button:hover {
   background-color: white;
 }
 
 /* Navigation */
-.nav-header {
+.nav {
   background-color: #f2d265;
 }
 
-.nav-container-header {
+.nav-container {
   max-width: 0 auto;
   margin: 0 auto; /* Căn giữa navigation */
   text-align: center;
   padding: 0 20px; /* Thêm khoảng cách hai bên */
 }
 
-.nav-item-header {
+.nav-item {
   display: flex;
   justify-content: center;
   gap: 40px; /* Điều chỉnh khoảng cách giữa các mục */
 }
 
-.nav-item-header a {
+.nav-item a {
   color: black;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
 }
 
-.nav-item-header a:hover {
+.nav-item a:hover {
   color: #ffffff;
 }

@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+    $data = $input["data"];
+    $products = $data["products"] ?? "";
+    ?>
     <div class="home-page">
         <div class="home-container">
             <div class="background-container">
@@ -15,22 +19,26 @@
             <div class="featured">
                 <h3>NEW PRODUCTS</h3>
             </div>
-            <div class="featured-container">
-            <img src="https://localhost/eproject/app/assets/data/featured-img-16.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-6.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-18.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-5.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-9.jpg" >
+            <div class="slider-wrapper">
+                <button class="prev-btn" onclick="moveLeft('slider1')">❮</button>
+                <div class="featured-container" id="slider1">
+                    <?php foreach ($products as $product) : ?>
+                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="slider-img">
+                    <?php endforeach; ?>
+                </div>
+                <button class="next-btn" onclick="moveRight('slider1')">❯</button>
             </div>
             <div class="featured">
                 <h3>FEATURED PRODUCTS</h3>
             </div>
-            <div class="featured-container">
-            <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-2.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-4.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-20.jpg" >
-            <img src="https://localhost/eproject/app/assets/data/featured-img-13.jpg" >
+            <div class="slider-wrapper">
+                <button class="prev-btn" onclick="moveLeft('slider2')">❮</button>
+                <div class="featured-container" id="slider2">
+                    <?php foreach ($products as $product) : ?>
+                        <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="slider-img">
+                    <?php endforeach; ?>
+                </div>
+                <button class="next-btn" onclick="moveRight('slider2')">❯</button>
             </div>
         </div>
     </div>

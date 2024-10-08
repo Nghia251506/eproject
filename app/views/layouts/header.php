@@ -37,7 +37,7 @@
         <div class="nav-item-header">
           <a href="">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href=''>ACCESSORIES</a>
+          <a href='http://localhost/eproject/product'>ACCESSORIES</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>

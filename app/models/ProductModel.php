@@ -38,31 +38,54 @@ class ProductModel
         }
     }
 
+    public function getImg()
+    {
+        try {
+            if ($this->__conn) {
+                $sql = "select image_url from products";
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_OBJ);
+            }
+            return null;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
     public function getProductById($id)
-{
-    try {
-        if ($this->__conn) {
-            // Join bảng products với bảng type_lights và brand_lights
-            $sql = "SELECT p.*, 
-                           t.type_name , 
-                           b.brand_name 
+    {
+        try {
+            if ($this->__conn) {
+                // Join bảng products với bảng type_lights và brand_lights
+                $sql = "SELECT p.name,
+                                p.code,
+                                p.watt,
+                                p.socket,
+                                p.color,
+                                p.purchase_price,
+                                p.sale_price,
+                                p.quantity,
+                                p.image_url, 
+                                t.type_name , 
+                                b.brand_name 
                     FROM products p
                     INNER JOIN type_lights t ON p.type_id = t.id
                     INNER JOIN brand_lights b ON p.brand_id = b.id
                     WHERE p.id = :id";
-            
-            $stmt = $this->__conn->prepare($sql);
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);  // Gán giá trị cho tham số :id
-            $stmt->execute();
-            
-            // Trả về dữ liệu sản phẩm cùng với tên loại và tên nhãn hiệu
-            return $stmt->fetch(PDO::FETCH_OBJ);
+
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->bindValue(':id', $id, PDO::PARAM_INT);  // Gán giá trị cho tham số :id
+                $stmt->execute();
+
+                // Trả về dữ liệu sản phẩm cùng với tên loại và tên nhãn hiệu
+                return $stmt->fetch(PDO::FETCH_OBJ);
+            }
+            return null;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
         }
-        return null;
-    } catch (PDOException $ex) {
-        echo $ex->getMessage();
     }
-}
 
     // The saveProduct function is commonly used for editing and adding new products
     public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
@@ -79,7 +102,7 @@ class ProductModel
                 // This line is used to assign values ​​to parameters
                 $stmt->bindParam("name", $name, PDO::PARAM_STR);
                 $stmt->bindParam("code", $code, PDO::PARAM_STR);
-                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT); 
+                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT);
                 $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
                 $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
                 $stmt->bindParam("color", $color, PDO::PARAM_STR);
@@ -98,7 +121,7 @@ class ProductModel
             echo $ex->getMessage();
         }
     }
-    public function editProduct($id,$name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
+    public function editProduct($id, $name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
     {
         try {
             if (isset($his->__conn)) {
@@ -110,7 +133,7 @@ class ProductModel
                 // This line is used to assign values ​​to parameters
                 $stmt->bindParam("name", $name, PDO::PARAM_STR);
                 $stmt->bindParam("code", $code, PDO::PARAM_STR);
-                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT); 
+                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT);
                 $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
                 $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
                 $stmt->bindParam("color", $color, PDO::PARAM_STR);
@@ -129,16 +152,17 @@ class ProductModel
         }
     }
     // Function to delete products
-    public function deleteProductById($id){
-        try{
-            if(isset($this->__conn)){
+    public function deleteProductById($id)
+    {
+        try {
+            if (isset($this->__conn)) {
                 $sql = "delete from products where id = :id";
                 $stmt = $this->__conn->prepare($sql);
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 return $stmt->execute();
             }
             return null;
-        }catch(PDOException $ex){
+        } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
     }
