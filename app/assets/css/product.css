@@ -1,6 +1,7 @@
 /* Container chính */
-.product-container {
+#product-container {
     display: flex;
+    height: 100%;
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -57,17 +58,18 @@ h2 {
     text-align: center;
     width: calc(25% - 20px); /* 4 sản phẩm trên mỗi hàng */
     transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
 }
 .product-frame{
     width: 100%;
     height: 300px;
 }
 
-.product-frame img {
+.product img {
     max-width: 100%;
     height: 100%;
     border-radius: 5px;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 .product h3 {

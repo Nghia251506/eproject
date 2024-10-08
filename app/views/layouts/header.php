@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="header">
-    <div class="container">
+    <div class="header-container">
       <div class="logo">
         <div class="logo-image">
           <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
@@ -39,9 +39,9 @@
     <div class="nav">
       <div class="nav-container">
         <div class="nav-item">
-          <a href="#">HOME</a>
+          <a href="http://localhost/eproject/home">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href="#">ACCESSORIES</a>
+          <a href='http://localhost/eproject/product'>ACCESSORIES</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>

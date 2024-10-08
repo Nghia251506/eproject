@@ -1,10 +1,9 @@
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #F2D265; /* Màu nền */
+  background-color: black;
+  padding: 10px 0; /* Màu nền */
 }
 
 .header-left {
@@ -22,8 +21,6 @@
   font-size: 24px;
   color: rgb(65, 117, 5); /* Màu chữ của tên công ty */
 }
-
-
 /* Tổng quan cấu trúc */
 body {
   font-family: Arial, sans-serif;
@@ -31,13 +28,8 @@ body {
   padding: 0;
 }
 
-.header {
-  background-color: black;
-  padding: 10px 0;
-}
-
-.container {
-  max-width: 1400px;
+.header-container {
+  width: 100%;
   margin: 0 auto; /* Căn giữa container */
   display: flex;
   justify-content: space-between; /* Phân bố đều các thành phần */
@@ -82,7 +74,6 @@ body {
 }
 
 .login {
-
   display: flex;
   gap: 20px;
 }
