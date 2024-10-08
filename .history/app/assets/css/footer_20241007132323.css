@@ -1,12 +1,15 @@
 
 /* Footer Styles */
 footer {
-    margin-top: 10px;
+    /* margin-top: 10px;
     background-color: #F2D265;
     color: #000;
     padding: 20px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); */
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
 /* Footer Container */
@@ -14,8 +17,6 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; /* Allow wrapping for small screens */
-    max-width: 1400px;
-
 
 }
 

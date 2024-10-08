@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/footer.css">
 </head>
 <body>
-<footer>
+<div ="footer>
         <div class="footer-container">
             <div class="footer-contact-info">
                 <h3>Contact</h3>
@@ -34,6 +34,7 @@
         </div>
 
     </footer>
+
     <div style="background-color: black;color:white ;  padding: 10px; text-align: center;">
         <p>© Project was made by Luminous Garden Team - T2404E .</p>
     </div>

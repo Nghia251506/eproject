@@ -37,7 +37,7 @@
                         <p>Giá: <strong>500.000 VNĐ</strong></p>
                     </article>
                     <article class="product">
-                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-4.jpg" alt="Sản phẩm 4" loading="lazy" /></div>
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 4" loading="lazy" /></div>
                         <h3>Sản Phẩm 4</h3>
                         <p>Đây là mô tả sản phẩm 4.</p>
                         <p>Giá: <strong>500.000 VNĐ</strong></p>

@@ -19,25 +19,25 @@
                 <div class="product-row">
                     <!-- Sử dụng thẻ article cho mỗi sản phẩm để cải thiện khả năng truy cập -->
                     <article class="product">
-                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-1.jpg" alt="Sản phẩm 1" loading="lazy" /></div>
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den1.png" alt="Sản phẩm 1" loading="lazy" /></div>
                         <h3>Sản Phẩm 1</h3>
                         <p>Đây là mô tả sản phẩm 1.</p>
                         <p>Giá: <strong>500.000 VNĐ</strong></p>
                     </article>
                     <article class="product">
-                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-2.jpg" alt="Sản phẩm 2" loading="lazy" /></div>
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den2.png" alt="Sản phẩm 2" loading="lazy" /></div>
                         <h3>Sản Phẩm 2</h3>
                         <p>Đây là mô tả sản phẩm 2.</p>
                         <p>Giá: <strong>500.000 VNĐ</strong></p>
                     </article>
                     <article class="product">
-                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-3.jpg" alt="Sản phẩm 3" loading="lazy" /></div>
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den3.png" alt="Sản phẩm 3" loading="lazy" /></div>
                         <h3>Sản Phẩm 3</h3>
                         <p>Đây là mô tả sản phẩm 3.</p>
                         <p>Giá: <strong>500.000 VNĐ</strong></p>
                     </article>
                     <article class="product">
-                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/featured-img-4.jpg" alt="Sản phẩm 4" loading="lazy" /></div>
+                        <div class="product-frame"><img src="http://localhost/eproject/app/assets/data/den4.png" alt="Sản phẩm 4" loading="lazy" /></div>
                         <h3>Sản Phẩm 4</h3>
                         <p>Đây là mô tả sản phẩm 4.</p>
                         <p>Giá: <strong>500.000 VNĐ</strong></p>

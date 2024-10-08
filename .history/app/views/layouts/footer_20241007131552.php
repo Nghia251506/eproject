@@ -26,7 +26,7 @@
 
             <div class="payment-info">
                 <h3>Payment</h3>
-                <img src="http://localhost/eproject/app/assets/data/QR.jpg" alt="pay Logo" class="logo">
+                <img src="http://localhost/eproject/app/assets/data/QR" alt="pay Logo" class="logo">
             </div>
 
             <div class="map">
