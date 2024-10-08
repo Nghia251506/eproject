@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
 </head>
 <body>

@@ -11,7 +11,8 @@ class ProductModel
     {
         try {
             if (isset($this->__conn)) {
-                $sql = "select p.name,
+                $sql = "select p.id,
+                                p.name,
                                 p.code,
                                 p.watt,
                                 p.socket,
@@ -58,7 +59,8 @@ class ProductModel
         try {
             if ($this->__conn) {
                 // Join bảng products với bảng type_lights và brand_lights
-                $sql = "SELECT p.name,
+                $sql = "SELECT p.id,
+                                p.name,
                                 p.code,
                                 p.watt,
                                 p.socket,
@@ -66,7 +68,9 @@ class ProductModel
                                 p.purchase_price,
                                 p.sale_price,
                                 p.quantity,
-                                p.image_url, 
+                                p.image_url,
+                                p.type_id,
+                                p.brand_id,
                                 t.type_name , 
                                 b.brand_name 
                     FROM products p
@@ -92,28 +96,26 @@ class ProductModel
     {
         try {
             if (isset($this->__conn)) {
-                // This query uses on DUPLICATE to both add new product values ​​and edit product values.
-                $sql = "INSERT INTO products (`name`, `code`, `type_id`,`watt`, 
-                `socket`,`color`,`purchase_price`,`sale_price`,`quantity`,`brand_id`,`image_url`) 
-                VALUES (:name, :code, :type_id, :watt, :socket, :color, :purchase_price, :sale_price,:quantity, :brand_id, :image_url)
-                ";
-                // This line is used to Prepare statement
+                // Câu lệnh gọi stored procedure
+                $sql = "CALL insert_product(:prod_name, :prod_type_id, :prod_watt, :prod_socket, :prod_color, :prod_purchase_price, :prod_sale_price, :prod_quantity, :prod_brand_id, :prod_image_url)";
+
+                // Chuẩn bị câu lệnh
                 $stmt = $this->__conn->prepare($sql);
-                // This line is used to assign values ​​to parameters
-                $stmt->bindParam("name", $name, PDO::PARAM_STR);
-                $stmt->bindParam("code", $code, PDO::PARAM_STR);
-                $stmt->bindParam("type_id", $type_id, PDO::PARAM_INT);
-                $stmt->bindParam("watt", $watt, PDO::PARAM_INT);
-                $stmt->bindParam("socket", $socket, PDO::PARAM_STR);
-                $stmt->bindParam("color", $color, PDO::PARAM_STR);
-                $stmt->bindParam("purchase_price", $purchase_price);
-                $stmt->bindParam("sale_price", $sale_price);
-                $stmt->bindParam("quantity", $quantity, PDO::PARAM_INT);
-                $stmt->bindParam("brand_id", $brand_id, PDO::PARAM_INT);
-                $stmt->bindParam("image_url", $image_url, PDO::PARAM_STR);
-                // echo "đến đây rồi";
-                // die();
-                // Execute the query
+
+                // Gán giá trị cho các tham số
+                $stmt->bindParam(":prod_name", $name, PDO::PARAM_STR);
+                // $stmt->bindParam(":code", $code, PDO::PARAM_STR); // Nếu bạn cần sử dụng mã sản phẩm thì bỏ comment dòng này
+                $stmt->bindParam(":prod_type_id", $type_id, PDO::PARAM_INT);
+                $stmt->bindParam(":prod_watt", $watt, PDO::PARAM_INT);
+                $stmt->bindParam(":prod_socket", $socket, PDO::PARAM_STR);
+                $stmt->bindParam(":prod_color", $color, PDO::PARAM_STR);
+                $stmt->bindParam(":prod_purchase_price", $purchase_price, PDO::PARAM_STR);
+                $stmt->bindParam(":prod_sale_price", $sale_price, PDO::PARAM_STR);
+                $stmt->bindParam(":prod_quantity", $quantity, PDO::PARAM_INT);
+                $stmt->bindParam(":prod_brand_id", $brand_id, PDO::PARAM_INT);
+                $stmt->bindParam(":prod_image_url", $image_url, PDO::PARAM_STR);
+
+                // Thực thi câu lệnh
                 return $stmt->execute();
             }
             return null;
@@ -121,12 +123,13 @@ class ProductModel
             echo $ex->getMessage();
         }
     }
+
     public function editProduct($id, $name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
     {
         try {
-            if (isset($his->__conn)) {
+            if (isset($this->__conn)) {
                 // This query uses on DUPLICATE to both add new product values ​​and edit product values.
-                $sql = "update products set name= :name, code =:code, type_id=:type_id, watt=:watt, socket=:socket, color=:color, purchase_price=:purchase_price, sale_price =:sale_price,quantity=:quantity, brand_id=:brand_id, image_url=:image_url
+                $sql = "update products set name= :name, code = :code, type_id=:type_id, watt=:watt, socket=:socket, color=:color, purchase_price=:purchase_price, sale_price =:sale_price,quantity=:quantity, brand_id=:brand_id, image_url=:image_url
                 where id=:id";
                 // This line is used to Prepare statement
                 $stmt = $this->__conn->prepare($sql);
