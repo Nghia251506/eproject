@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Donegal+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/base.css">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/product.css">
+  <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/header.css">
     <script src="https://localhost/eproject/app/assets/js/eventClient.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     

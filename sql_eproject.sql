@@ -107,9 +107,6 @@ BEGIN
     WHERE id = @last_id;
 END //
 DELIMITER ;
-DROP PROCEDURE IF EXISTS insert_product;
-
-DROP TRIGGER IF EXISTS after_insert_product;
 
 -- DML
 -- insert brand_lights
@@ -130,8 +127,7 @@ CALL insert_product('product2', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 
 CALL insert_product('product3', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg');
 CALL insert_product('product4', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://salt.tikicdn.com/cache/280x280/ts/product/52/f2/1d/468ef93ef92a34e678c05fa5b62d7c70.jpg');
 CALL insert_product('product5', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocsofa.com/images/2021/06/10/1-vi-sao-can-trang-tri-den-phong-khach-1.jpg');
-delete from products where id = 11;
--- , "product2","product3","product4","product5"
+
 
 
 

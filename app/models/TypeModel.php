@@ -22,4 +22,19 @@ class TypeModel{
             echo $ex->getMessage();
         }
     }
+
+    public function getTypeById($id){
+        try{
+            if($this->__conn){
+                $sql = "select * from type_lights where id = :id";
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->bindParam("id", $id);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_OBJ);
+            }
+            return null;
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+        }
+    }
 }
