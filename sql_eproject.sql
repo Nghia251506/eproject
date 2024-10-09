@@ -108,6 +108,8 @@ BEGIN
 END //
 DELIMITER ;
 
+alter table users add role varchar(255);
+
 -- DML
 -- insert brand_lights
 insert into brand_lights (`id`, `brand_name`) values (2, "abc");

@@ -85,7 +85,7 @@
                 <label for="product_brand_id">Brand:</label>
                 <select id="product_brand_id" name="brand_id" required>
                     <?php foreach ($brands as $brand) : ?>
-                        <option value="<?= $brand->id ?>" <?= !empty($product) || $product->brand_id == $brand->id ? 'selected' : '' ?>>
+                        <option value="<?= $product->brand_id ?? ''?>">
                             <?= htmlspecialchars($brand->brand_name) ?>
                         </option>
                     <?php endforeach ?>
