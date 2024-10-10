@@ -146,11 +146,11 @@ h2 {
                     <div class="product-row">
                         <?php foreach ($products as $product) : ?>
                             <div class="product">
-                                <img src="<?php echo htmlspecialchars($product->image_url); ?>" alt="Sản phẩm A" />
+                                <div style="width:100%;height:200px;"><img style="width: 100%; height:100%;object-fit:cover;" src="<?php echo htmlspecialchars($product->image_url); ?>" alt="Sản phẩm A" /></div>
                                 <h3><?php echo htmlspecialchars($product->name); ?></h3>
                                 <p><?php echo htmlspecialchars($product->code); ?></p>
                                 <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</p>
-                                <a href='http://localhost/eproject/product/detail?id=<?php echo $product->id; ?>'>See All Details</a>
+                                <a href='http://localhost/eproject/product/detail?id=<?= $product->id; ?>'>See All Details</a>
                             </div>
                         <?php endforeach; ?>
                     </div>

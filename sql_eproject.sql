@@ -107,9 +107,8 @@ BEGIN
     WHERE id = @last_id;
 END //
 DELIMITER ;
-DROP PROCEDURE IF EXISTS insert_product;
 
-DROP TRIGGER IF EXISTS after_insert_product;
+alter table users add role ENUM('admin', 'employee', 'customer') NOT NULL;
 
 -- DML
 -- insert brand_lights
@@ -130,8 +129,15 @@ CALL insert_product('product2', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 
 CALL insert_product('product3', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg');
 CALL insert_product('product4', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://salt.tikicdn.com/cache/280x280/ts/product/52/f2/1d/468ef93ef92a34e678c05fa5b62d7c70.jpg');
 CALL insert_product('product5', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocsofa.com/images/2021/06/10/1-vi-sao-can-trang-tri-den-phong-khach-1.jpg');
-delete from products where id = 11;
--- , "product2","product3","product4","product5"
+-- insert permisions test
+insert into permisions (`name`) values ('abc');
+insert into permisions (`name`) values ('acb');
+insert into permisions (`name`) values ('asd');
+insert into permisions (`name`) values ('bcd');
+insert into permisions (`name`) values ('tnv');
+-- insert users test
+insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`department_id`,`role`) values ('Nguyễn Trọng Nghĩa','ntn8530@gmail.com','0862273012','Hà Nội','2002-06-15','tnc2002','Ntn1506@','1','admin');
+insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`department_id`,`role`) values ('Phan Anh Tiến Quý','ad1@gmail.com','0123456789','Hà Nội','1995-06-15','ad1','123456','2','admin');
 
 
 
