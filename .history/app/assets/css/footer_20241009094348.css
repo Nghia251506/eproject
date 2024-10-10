@@ -103,6 +103,7 @@ footer {
   align-items: center; /* Center the iframe */
   border: 1px solid #ddd; /* Light border for separation */
   border-radius: 8px; /* Rounded corners */
+  background: rgba(255, 255, 255, 0.8);
   transition: transform 0.3s; /* Smooth hover effect */
   max-width: 393px; /* Set max width */
   max-height: 282px; /* Set max height */
@@ -233,7 +234,6 @@ footer {
 
 /* Common Styles */
 .footer-container h3 {
-  
     margin-top: 0;
 }
 

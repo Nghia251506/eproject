@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product</title>
     <!-- <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/product.css"> -->
-        <style>
+     <style>
         /* Container chính */
 #product-container {
     display: flex;
@@ -122,8 +122,7 @@ h2 {
     .product {
         width: 100%; /* 1 sản phẩm trên mỗi hàng */
     }
-}
-    </style>
+}   </style>
 
 </head>
 
