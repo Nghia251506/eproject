@@ -35,7 +35,7 @@
     <div class="nav-header">
       <div class="nav-container-header">
         <div class="nav-item-header">
-          <a href="">HOME</a>
+          <a href="http://localhost/eproject/home">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
           <a href='http://localhost/eproject/product'>ACCESSORIES</a>
           <a href="#">ART COLLECTION</a>
@@ -47,5 +47,10 @@
       </div>
     </div>
   </div>
+</div>
 </body>
 </html>
+
+<div class="header-responsive">
+  <h1>this is header responsive</h1>
+</div>

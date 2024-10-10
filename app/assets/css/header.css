@@ -4,7 +4,7 @@
 }
 
 .container-header {
-  max-width: 1400px;
+  width: 2000px;
   margin: 0 auto; /* Căn giữa container */
   display: flex;
   justify-content: space-between; /* Phân bố đều các thành phần */
@@ -278,4 +278,17 @@ body {
 
 .nav-item a:hover {
   color: #ffffff;
+}
+
+.header-responsive {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-responsive {
+    display: block;
+  }
+  .header {
+    display: none;
+  }
 }

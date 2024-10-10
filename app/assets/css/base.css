@@ -12,12 +12,12 @@
   --color-header: linear-gradient(0, #f2d265, #040000);
   /* --color-header: ae dùng background-image rồi thêm biến này vào nhé */
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
 
 * {

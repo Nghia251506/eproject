@@ -35,12 +35,10 @@
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </div>
-    <div class="footer-1">
-        <div class="container-footer-1">
+            </div>
+        <div style="background-color: black;color:white ;  padding: 10px; text-align: center;">
             <p>© Project was made by Luminous Garden Team - T2404E.</p>
         </div>
-    </div>
 </div>
 </body>
 </html>
