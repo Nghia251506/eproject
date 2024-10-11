@@ -115,24 +115,24 @@ body {
 }
 
 /* Shop button */
-.shopping button {
-  background-color: #f2d265;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+.shopping a {
+  background-color: #f2d265 !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
 
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-weight: bold !important;
 }
 
-.shopping button i {
-  margin-left: 10px;
+.shopping a i {
+  margin-left: 10px !important;
 }
 
-.shopping button:hover {
-  background-color: white;
+.shopping a:hover {
+  background-color: white !important;
 }
 
 /* Navigation */

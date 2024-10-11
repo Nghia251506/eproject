@@ -30,7 +30,7 @@
           <a href="">LOGIN</a>
         </div>
           <div class="shopping">
-            <button type="submit">SHOP <i class="fa-solid fa-shop"></i></button>
+            <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
           </div>
         </div>
       </div>
@@ -39,14 +39,14 @@
     <div class="nav">
       <div class="nav-container">
         <div class="nav-item">
-          <a href="http://localhost/eproject/home">HOME</a>
+          <a href="http://localhost/eproject/home/index">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href='http://localhost/eproject/product'>ACCESSORIES</a>
+          <a href='http://localhost/eproject/product/index'>SHOP</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>
           <a href="#">GOOD DEALS</a>
-          <a href="#">CONTACT US</a>
+          <a href="http://localhost/eproject/contact/index">CONTACT US</a>
         </div>
       </div>
     </div>
