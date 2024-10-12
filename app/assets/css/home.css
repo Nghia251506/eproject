@@ -1,0 +1,68 @@
+.home-page {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.background-container {
+  width: 100%;
+  height: 850px;
+  margin-top: 50px;
+}
+
+.background-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.featured {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%; /* Thay đổi kích thước theo ý muốn */
+  overflow: hidden; /* Ẩn hình ảnh ngoài vùng nhìn thấy */
+}
+
+.featured-container {
+  display: flex;
+  transition: transform 0.5s ease; /* Thay đổi vị trí mượt mà */
+  align-items: center; /* Canh giữa dọc */
+}
+
+.slider-img {
+  width: 200px; /* Thay đổi kích thước theo ý muốn */
+  margin: 0 10px; /* Khoảng cách giữa các hình ảnh */
+  opacity: 0.5; /* Mờ các hình ảnh mặc định */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.slider-img.active {
+  opacity: 1; /* Hình ảnh ở giữa sẽ rõ nét */
+  transform: scale(1.1); /* Tăng kích thước cho hình ảnh hiện tại */
+}
+
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10; /* Đảm bảo nút luôn hiển thị trên hình ảnh */
+}
+
+.prev-btn {
+  left: 10px; /* Vị trí nút trước */
+}
+
+.next-btn {
+  right: 10px; /* Vị trí nút tiếp theo */
+}
+
