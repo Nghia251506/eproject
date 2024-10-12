@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/header.css">
+  <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
 </head>
 <body>
@@ -35,9 +35,9 @@
     <div class="nav-header">
       <div class="nav-container-header">
         <div class="nav-item-header">
-          <a href="http://localhost/eproject/home">HOME</a>
+          <a href="http://localhost/eproject/home/index">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href='http://localhost/eproject/product'>ACCESSORIES</a>
+          <a href='http://localhost/eproject/product/index'>ACCESSORIES</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>

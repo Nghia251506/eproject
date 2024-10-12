@@ -278,6 +278,7 @@ body {
 
 .nav-item a:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 
 .header-responsive {
