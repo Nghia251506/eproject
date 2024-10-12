@@ -41,7 +41,8 @@
         <div class="nav-item">
           <a href="http://localhost/eproject/home">HOME</a>
           <a href='http://localhost/eproject/product'>ACCESSORIES</a>
-          <a href="http://localhost/eproject/contact">CONTACT US</a>
+          <a href="#">ART COLLECTION</a>
+          <a href="#">CONTACT US</a>
         </div>
       </div>
     </div>
