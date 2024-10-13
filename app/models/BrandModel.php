@@ -36,4 +36,19 @@ class BrandModel{
             echo $ex->getMessage();
         }
     }
+
+    public function saveBrand($brand_name){
+        try{
+            if($this->__conn){
+                $sql = "INSERT INTO type_lights (`brand_name`) VALUES (:brand_name)";
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->bindParam("brand_name", $brand_name, PDO::PARAM_STR);
+                $stmt->execute();
+                return $this->__conn->lastInsertId();
+            }
+            return null;
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+        }
+    }
 }

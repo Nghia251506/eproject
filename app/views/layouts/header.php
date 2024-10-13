@@ -12,7 +12,7 @@
     <div class="header-container">
       <div class="logo">
         <div class="logo-image">
-          <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
+          <img src="http://localhost/eproject/app/assets/data/LG.png" alt="Logo">
         </div>
         <div class="logo-name">
           <a href="">Luminous <br> Garden</a>
@@ -27,7 +27,7 @@
       <div class="header-right">
         <div class="login">
           <a href="">MY ACCOUNT</a>
-          <a href="">LOGIN</a>
+          <a href="http://localhost/eproject/user/login">LOGIN</a>
         </div>
           <div class="shopping">
             <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>

@@ -22,6 +22,7 @@ class ProductModel
                                 p.sale_price,
                                 p.quantity,
                                 p.image_url,
+                                p.description,
                                 t.type_name,
                                 b.brand_name
                 from products as p
@@ -74,6 +75,7 @@ class ProductModel
                                 p.image_url,
                                 p.type_id,
                                 p.brand_id,
+                                p.description,
                                 t.type_name , 
                                 b.brand_name 
                     FROM products p
@@ -94,20 +96,44 @@ class ProductModel
         }
     }
 
+    public function getProductsByTypeId($type_id)
+    {
+        try {
+            if (isset($this->__conn)) {
+                // Chuẩn bị câu lệnh SQL để lấy sản phẩm theo type_id
+                $sql = "SELECT * FROM products WHERE type_id = :type_id";
+
+                // Chuẩn bị câu lệnh
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->bindParam(":type_id", $type_id, PDO::PARAM_INT);
+
+                // Thực thi câu lệnh
+                $stmt->execute();
+
+                // Lấy tất cả các sản phẩm cùng loại
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+
+        return []; // Trả về mảng rỗng nếu không có sản phẩm nào
+    }
+
+
     // The saveProduct function is commonly used for editing and adding new products
-    public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
+    public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url, $description)
     {
         try {
             if (isset($this->__conn)) {
                 // Câu lệnh gọi stored procedure
-                $sql = "CALL insert_product(:prod_name, :prod_type_id, :prod_watt, :prod_socket, :prod_color, :prod_purchase_price, :prod_sale_price, :prod_quantity, :prod_brand_id, :prod_image_url)";
+                $sql = "CALL insert_product(:prod_name, :prod_type_id, :prod_watt, :prod_socket, :prod_color, :prod_purchase_price, :prod_sale_price, :prod_quantity, :prod_brand_id, :prod_image_url, :prod_description)";
 
                 // Chuẩn bị câu lệnh
                 $stmt = $this->__conn->prepare($sql);
 
                 // Gán giá trị cho các tham số
                 $stmt->bindParam(":prod_name", $name, PDO::PARAM_STR);
-                // $stmt->bindParam(":code", $code, PDO::PARAM_STR); // Nếu bạn cần sử dụng mã sản phẩm thì bỏ comment dòng này
                 $stmt->bindParam(":prod_type_id", $type_id, PDO::PARAM_INT);
                 $stmt->bindParam(":prod_watt", $watt, PDO::PARAM_INT);
                 $stmt->bindParam(":prod_socket", $socket, PDO::PARAM_STR);
@@ -117,6 +143,7 @@ class ProductModel
                 $stmt->bindParam(":prod_quantity", $quantity, PDO::PARAM_INT);
                 $stmt->bindParam(":prod_brand_id", $brand_id, PDO::PARAM_INT);
                 $stmt->bindParam(":prod_image_url", $image_url, PDO::PARAM_STR);
+                $stmt->bindParam(":prod_description", $description, PDO::PARAM_STR);
 
                 // Thực thi câu lệnh
                 return $stmt->execute();
@@ -127,12 +154,11 @@ class ProductModel
         }
     }
 
-    public function editProduct($id, $name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url)
+    public function editProduct($id, $name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url, $description)
     {
         try {
             if (isset($this->__conn)) {
-                // This query uses on DUPLICATE to both add new product values ​​and edit product values.
-                $sql = "update products set name= :name, code = :code, type_id=:type_id, watt=:watt, socket=:socket, color=:color, purchase_price=:purchase_price, sale_price =:sale_price,quantity=:quantity, brand_id=:brand_id, image_url=:image_url
+                $sql = "update products set name= :name, code = :code, type_id=:type_id, watt=:watt, socket=:socket, color=:color, purchase_price=:purchase_price, sale_price =:sale_price,quantity=:quantity, brand_id=:brand_id, image_url=:image_url, description=:description
                 where id=:id";
                 // This line is used to Prepare statement
                 $stmt = $this->__conn->prepare($sql);
@@ -148,6 +174,7 @@ class ProductModel
                 $stmt->bindParam("quantity", $quantity, PDO::PARAM_INT);
                 $stmt->bindParam("brand_id", $brand_id, PDO::PARAM_INT);
                 $stmt->bindParam("image_url", $image_url, PDO::PARAM_STR);
+                $stmt->bindParam("description", $description, PDO::PARAM_STR);
                 $stmt->bindParam("id", $id, PDO::PARAM_INT);
                 // Execute the query
                 return $stmt->execute();
@@ -188,7 +215,8 @@ class ProductModel
         }
     }
 
-    public function searchProduct($name, $type_id, $limit = 10, $offset = 0){   
+    public function searchProduct($name, $type_id, $limit = 10, $offset = 0)
+    {
         // var_dump($name);
         // var_dump($type_id);
         try {
@@ -223,5 +251,4 @@ class ProductModel
             return 0;
         }
     }
-    
 }
