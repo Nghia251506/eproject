@@ -13,3 +13,20 @@ decreaseBtn.addEventListener('click', function () {
         quantityInput.value = currentValue - 1;
     }
 });
+
+
+function toggleDescription() {
+    var shortDesc = document.getElementById("short-description");
+    var fullDesc = document.getElementById("full-description");
+    var toggleButton = document.getElementById("toggle-description");
+    
+    if (fullDesc.style.display === "none") {
+        fullDesc.style.display = "block";
+        toggleButton.innerText = "Thu gọn";
+        shortDesc.style.display = "none";
+    } else {
+        fullDesc.style.display = "none";
+        toggleButton.innerText = "Xem thêm";
+        shortDesc.style.display = "block";
+    }
+}
