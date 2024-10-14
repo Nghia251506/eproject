@@ -46,6 +46,7 @@
             <div class="search-bar">
                 <form action="http://localhost/eproject/product/search" method="POST">
                     <input name="name" type="text" placeholder="Input name...">
+                    <input name="code" type="hidden" placeholder="Input name...">
                     <label>One
                         <span class="checkmark"></span>
                         <input type="checkbox" value=1 name="type_id">

@@ -215,21 +215,39 @@ class ProductModel
         }
     }
 
-    public function searchProduct($name, $type_id, $limit = 10, $offset = 0)
+    public function searchProduct($name, $type_id, $limit, $offset, $code)
     {
         // var_dump($name);
         // var_dump($type_id);
         try {
-            $sql = "SELECT * FROM products 
-                    -- WHERE (name LIKE :name OR :name = '')
-                    WHERE case when :name != '' then name LIKE :name else 1=1 end 
-                           and case when :type_id != 0 then type_id = :type_id else 1=1 end
+            $sql = "SELECT p.id,
+                                p.name,
+                                p.code,
+                                p.watt,
+                                p.socket,
+                                p.color,
+                                p.purchase_price,
+                                p.sale_price,
+                                p.quantity,
+                                p.image_url,
+                                p.description,
+                                t.type_name,
+                                b.brand_name
+                    from products as p
+                    inner join type_lights as t on p.type_id = t.id
+                    inner join brand_lights as b on p.brand_id = b.id
+                    WHERE case when :name != '' then p.name LIKE :name else 1=1 end 
+                           and case when :type_id != 0 then p.type_id = :type_id else 1=1 end
+                           and case when :code != '' then p.code LIKE :code else 1=1 end
+                           LIMIT :limit 
+                           OFFSET :offset
                     ";
             $stmt = $this->__conn->prepare($sql);
             $stmt->bindValue(":name", '%' . $name . '%');
             $stmt->bindValue(":type_id", $type_id, PDO::PARAM_INT);
-            // $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
-            // $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $stmt->bindValue(":code",'%' . $code . '%', PDO::PARAM_STR);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $ex) {
