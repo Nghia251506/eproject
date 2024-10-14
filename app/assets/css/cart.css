@@ -84,3 +84,15 @@
         width: 100%;
     }
 }
+
+
+.fly-to-cart {
+    position: absolute;
+    z-index: 1000;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#cart-icon {
+    position: relative;
+}
+

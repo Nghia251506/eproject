@@ -28,47 +28,36 @@ class CartModel {
 
     // Thêm sản phẩm vào giỏ hàng
     public function addToCart($orderId, $productId, $price, $quantity) {
-        // Tính tổng tiền (price_subtotal)
         $priceSubtotal = $price * $quantity;
-
-        // Kiểm tra nếu sản phẩm đã có trong giỏ hàng
-        $sql = "SELECT * FROM sale_order_line WHERE order_id = ? AND product_id = ?";
-        $stmt = $this->__conn->prepare($sql);
-        $stmt->execute([$orderId, $productId]);
-        $existingItem = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($existingItem) {
-            // Nếu sản phẩm đã tồn tại, cập nhật số lượng và tổng tiền
-            $newQuantity = $existingItem['quantity'] + $quantity;
-            $newSubtotal = $existingItem['price_subtotal'] + $priceSubtotal;
-
-            $sql = "UPDATE sale_order_line 
-                    SET quantity = ?, price_subtotal = ? 
-                    WHERE order_id = ? AND product_id = ?";
-            $stmt = $this->__conn->prepare($sql);
-            $stmt->execute([$newQuantity, $newSubtotal, $orderId, $productId]);
-        } else {
-            // Nếu sản phẩm chưa tồn tại, thêm sản phẩm vào giỏ hàng
-            $sql = "INSERT INTO sale_order_line (order_id, product_id, price, quantity, price_subtotal) 
-                    VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->__conn->prepare($sql);
-            $stmt->execute([$orderId, $productId, $price, $quantity, $priceSubtotal]);
-        }
+        $query = "INSERT INTO sale_order_line (order_id, product_id, price, quantity, price_subtotal) 
+                  VALUES (:order_id, :product_id, :price, :quantity, :price_subtotal)";
+        $stmt = $this->__conn->prepare($query);
+        $stmt->bindParam(":order_id", $orderId);
+        $stmt->bindParam(":product_id", $productId);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":quantity", $quantity);
+        $stmt->bindParam(":price_subtotal", $priceSubtotal);
+        return $stmt->execute();
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
     public function removeFromCart($orderId, $productId) {
-        $sql = "DELETE FROM sale_order_line WHERE order_id = ? AND product_id = ?";
-        $stmt = $this->__conn->prepare($sql);
-        $stmt->execute([$orderId, $productId]);
+        $query = "DELETE FROM sale_order_line WHERE order_id = :order_id AND product_id = :product_id";
+        $stmt = $this->__conn->prepare($query);
+        $stmt->bindParam(":order_id", $orderId);
+        $stmt->bindParam(":product_id", $productId);
+        return $stmt->execute();
     }
 
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     public function updateCartItem($orderId, $productId, $quantity) {
-        $sql = "UPDATE sale_order_line 
-                SET quantity = ?, price_subtotal = price * ?
-                WHERE order_id = ? AND product_id = ?";
-        $stmt = $this->__conn->prepare($sql);
-        $stmt->execute([$quantity, $quantity, $orderId, $productId]);
+        $query = "UPDATE sale_order_line 
+                  SET quantity = :quantity, price_subtotal = price * :quantity 
+                  WHERE order_id = :order_id AND product_id = :product_id";
+        $stmt = $this->__conn->prepare($query);
+        $stmt->bindParam(":order_id", $orderId);
+        $stmt->bindParam(":product_id", $productId);
+        $stmt->bindParam(":quantity", $quantity);
+        return $stmt->execute();
     }
 }

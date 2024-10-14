@@ -1,43 +1,9 @@
-const quantityInput = document.getElementById('quantity');
-const increaseBtn = document.getElementById('increase');
-const decreaseBtn = document.getElementById('decrease');
-
-increaseBtn.addEventListener('click', function () {
-    let currentValue = parseInt(quantityInput.value);
-    quantityInput.value = currentValue + 1;
-});
-
-decreaseBtn.addEventListener('click', function () {
-    let currentValue = parseInt(quantityInput.value);
-    if (currentValue > 1) {
-        quantityInput.value = currentValue - 1;
-    }
-});
-
-// desciption
-function toggleDescription() {
-    var shortDesc = document.getElementById("short-description");
-    var fullDesc = document.getElementById("full-description");
-    var toggleButton = document.getElementById("toggle-description");
-    
-    if (fullDesc.style.display === "none") {
-        fullDesc.style.display = "block";
-        toggleButton.innerText = "Thu gọn";
-        shortDesc.style.display = "none";
-    } else {
-        fullDesc.style.display = "none";
-        toggleButton.innerText = "Xem thêm";
-        shortDesc.style.display = "block";
-    }
-}
-
-// add to cart
 document.getElementById("add-to-cart").addEventListener("click", function () {
-    var productId = "<?php echo htmlspecialchars($product->id); ?>";
+    var productId = this.getAttribute("data-product-id");
     var quantity = document.getElementById("quantity").value;
+    var imgElement = document.querySelector(".image_product img");
 
     // Clone sản phẩm hình ảnh để tạo hiệu ứng bay
-    var imgElement = document.querySelector(".image_product img");
     var clonedImage = imgElement.cloneNode(true);
     clonedImage.classList.add("fly-to-cart");
     document.body.appendChild(clonedImage);
@@ -75,8 +41,9 @@ document.getElementById("add-to-cart").addEventListener("click", function () {
     xhr.send("product_id=" + productId + "&quantity=" + quantity);
 });
 
-// Cập nhật số lượng sản phẩm trong giỏ hàng
 function updateCart() {
+    // Cập nhật số lượng trong giỏ hàng hoặc bất kỳ thông tin nào liên quan
+    // Có thể dùng AJAX để lấy số lượng mới từ server và cập nhật lại hiển thị giỏ hàng
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost/eproject/cart/getCount", true);
     xhr.onreadystatechange = function () {
