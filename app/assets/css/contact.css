@@ -1,77 +1,98 @@
-
-.container-contact {
-    max-width: 1200px;
-    margin: 50px auto;
-    background: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+.contact-container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  transition: box-shadow 0.3s ease;
+  margin-top: 30px;
 }
 
-.container-contact h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5em; /* Kích thước tiêu đề lớn hơn */
+.contact-container:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 
-.container-contact p {
-    color: #555;
-    line-height: 1.6;
+.contact-description {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 16px;
 }
 
-.container-contact form {
-    display: flex;
-    flex-direction: column;
+.contact-form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.container-contact label {
-    margin: 10px 0 5px;
-    color: #333;
-    font-weight: bold; /* In đậm chữ label */
+.contact-form-label {
+  flex: 0 0 150px; /* Fixed width for label */
+  margin-right: 15px; /* Space between label and input */
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
 }
 
-.container-contact input, textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho border */
+.contact-form-input,
+.contact-form-textarea {
+  flex: 1; /* Occupy remaining space */
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.container-contact input:focus, textarea:focus {
-    border-color: #007BFF; /* Đổi màu border khi focus */
-    outline: none;
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  border-color: #4caf50; /* Change border color on focus */
+  outline: none;
 }
 
-.container-contact button {
-    padding: 15px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp cho nút */
+.contact-submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  display: block; /* Make button block to center */
+  width: 100px; /* Fixed width for button */
+  margin-left: auto; /* Center align */
+  margin-right: auto; /* Center align */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-.container-contact button:hover {
-    background-color: #0056b3; /* Đổi màu khi hover */
+.contact-submit-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
 .contact-info {
-    margin-top: 30px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    border: 1px solid #ddd;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
 }
 
-.contact-info h2 {
-    margin-bottom: 10px;
-    color: #333;
+.contact-info-title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
 }
 
-.contact-info p {
-    margin: 5px 0;
+.contact-bold {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.contact-info-details {
+  color: #666;
+  font-size: 14px;
+}
+
+.required {
+  color: red; /* Red color for required asterisk */
 }

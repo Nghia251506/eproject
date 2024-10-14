@@ -8,46 +8,49 @@
   <title>Header Example</title>
 </head>
 <body>
-<div class="header">
-    <div class="container-header">
-      <div class="logo-header">
-            <div class="logo-image-header">
-              <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
-            </div>
-              <div class="logo-name-header">
-                <a href="">Luminous <br> Garden</a>
-              </div>
-              </div>
-                <div class="search-form-header">
-                  <input type="text" placeholder="Search"  >
-                </div>
-                  <div class="header-right">
-                    <div class="login-header">
-                      <a href="">MY ACCOUNT</a>
-                      <a href="">LOGIN</a>
-                    </div>
-      <div class="shopping-header">
-            <button type="submit">SHOP <i class="fa-solid fa-shop"></i></button>
+<div class="header row">
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-image">
+          <img src="https://localhost/eproject/app/assets/data/LG.png" alt="Logo">
+        </div>
+        <div class="logo-name">
+          <a href="">Luminous <br> Garden</a>
+        </div>
       </div>
+
+      <div class="search-form">
+        <input type="text" placeholder="Search"  >
+        
+      </div>
+
+      <div class="header-right">
+        <div class="login">
+          <a href="">MY ACCOUNT</a>
+          <a href="">LOGIN</a>
+        </div>
+          <div class="shopping">
+            <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="nav-header">
-      <div class="nav-container-header">
-        <div class="nav-item-header">
+
+    <div class="nav">
+      <div class="nav-container">
+        <div class="nav-item">
           <a href="http://localhost/eproject/home/index">HOME</a>
           <a href="#">CUSTOM FURNITURE</a>
-          <a href='http://localhost/eproject/product/index'>ACCESSORIES</a>
+          <a href='http://localhost/eproject/product/index'>SHOP</a>
           <a href="#">ART COLLECTION</a>
           <a href="#">PILLOWS</a>
           <a href="#">CANDLES</a>
           <a href="#">GOOD DEALS</a>
-          <a href="#">CONTACT US</a>
+          <a href="http://localhost/eproject/contact/index">CONTACT US</a>
         </div>
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>
 

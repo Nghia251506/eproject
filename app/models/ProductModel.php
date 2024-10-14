@@ -184,4 +184,33 @@ class ProductModel
             echo $ex->getMessage();
         }
     }
+
+    public function searchProduct($name, $limit = 10, $offset = 0){
+        try {
+            $sql = "SELECT * FROM shows WHERE (name LIKE :name OR :name = '') AND LIMIT :limit OFFSET :offset";
+            $stmt = $this->__conn->prepare($sql);
+            $stmt->bindValue(":name", '%' . $name . '%');
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return [];
+        }
+    }
+
+    public function countProducts($name)
+    {
+        try {
+            $sql = "SELECT COUNT(*) as total FROM shows WHERE (name LIKE :name OR :name = '') ";
+            $stmt = $this->__conn->prepare($sql);
+            $stmt->bindValue(":name", '%' . $name . '%');
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ)->total;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return 0;
+        }
+    }
 }

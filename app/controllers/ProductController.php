@@ -100,10 +100,31 @@ class ProductController extends BaseController
 
     public function delete($id)
     {
-        // $id = $_REQUEST["id"];
-        // echo "đã vào đây rồi";
-        // die();
         $this->__productModel->deleteProductById($id);
         header("Location: http://localhost/eproject/product/list");
+    }
+
+    public function cart(){
+        $this->view("layouts/client", ["page"=>"products/cart"]);
+    }
+
+    public function search($page = 1){
+        $name = $_POST['name'] ?? '';
+    
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+    
+        $products = $this->__productModel->searchShows($name, $limit, $offset);
+        
+        // Lấy tổng số record để phân trang
+        $totalShows = $this->__productModel->countProducts($name);
+        $totalPages = ceil($totalShows / $limit);
+    
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+        ]);
     }
 }
