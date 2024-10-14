@@ -200,15 +200,16 @@ class ProductController extends BaseController
         //     $name = $_POST['name'] ?? '';
         // }
         $name = trim($_POST["name"]) ?? '';
-        $type_id = $_POST['type_id'] ?? 0;
-        $limit = 10;
+        $code = trim($_POST["code"]) ?? '';
+        $type_id = $_POST["type_id"] ?? 0;
+        $limit = 8;
         $offset = ($page - 1) * $limit;
 
         // var_dump($name);
         // var_dump($type_id);
         // die();
 
-        $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset);
+        $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset, $code);
         // var_dump($products);
         // Lấy tổng số record để phân trang
         $totalShows = $this->__productModel->countProducts($name);
@@ -216,6 +217,27 @@ class ProductController extends BaseController
 
         $this->view("layouts/client", [
             "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+        ]);
+    }
+
+    public function searchList($page = 1)
+    {
+        $name = trim($_POST["name"]) ?? '';
+        $code = trim($_POST["code"]) ?? '';
+        $type_id = $_POST["type_id"] ?? 0;
+        $limit = 8;
+        $offset = ($page - 1) * $limit;
+        $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset, $code);
+        
+        // Lấy tổng số record để phân trang
+        $totalShows = $this->__productModel->countProducts($name);
+        $totalPages = ceil($totalShows / $limit);
+
+        $this->view("layouts/admin", [
+            "page" => "products/listProduct",
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
