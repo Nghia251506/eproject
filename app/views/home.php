@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://localhost/eproject/app/assets/css/home.css">
+    <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/home.css">
     <title>Document</title>
 </head>
 
@@ -16,7 +16,7 @@
     <div class="home-page">
         <div class="home-container">
             <div class="background-container">
-                <img src="https://localhost/eproject/app/assets/data/background.jpg" alt="img">
+                <img src="http://localhost/eproject/app/assets/data/background.jpg" alt="img">
             </div>
             <div class="featured">
                 <h3>NEW PRODUCTS</h3>

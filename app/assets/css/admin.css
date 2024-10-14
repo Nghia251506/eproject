@@ -1,7 +1,7 @@
 .sidebar{
     width: 100%;
     /* height: var(--header-height); */
-    background-image:var(--color-header);
+    background-color: black;
 }
 .header-sidebar{
     display: flex;
@@ -22,6 +22,7 @@
 }
 
 .sidebar-list li a{
-    color: var(--color-black);
+    color: #F2D265;
     font-size: 1.3rem;
 }
+
