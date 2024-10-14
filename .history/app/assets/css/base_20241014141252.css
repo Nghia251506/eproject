@@ -21,8 +21,13 @@ ul{
 }
 
 * {
+<<<<<<< HEAD
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 550;
+=======
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+>>>>>>> 4986ca239b22956325940ebe8afdebc3026c0e05
   font-style: normal;
 }
 
