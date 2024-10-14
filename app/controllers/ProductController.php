@@ -34,12 +34,13 @@ class ProductController extends BaseController
         if ($product) {
             // Lấy sản phẩm cùng loại
             $similarProducts = $this->__productModel->getProductsByTypeId($product->type_id);
-
+            $similarProduct = $this->__productModel->getProductById($id);
             // Gửi dữ liệu đến view
             $this->view("layouts/client", [
                 "page" => "products/ProductDetails",
                 "product" => $product,
-                "similarProducts" => $similarProducts, // truyền sản phẩm cùng loại
+                "similarProducts" => $similarProducts,
+                "similarProduct" =>  $similarProduct // truyền sản phẩm cùng loại
             ]);
         } else {
             // Xử lý khi sản phẩm không tồn tại
@@ -49,7 +50,7 @@ class ProductController extends BaseController
 
     public function list($page = 1)
     {
-        $limit = 10; // Number of products per page
+        $limit = 8; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
         $products = $this->__productModel->getAllProduct($limit, $offset);
         $totalProducts = $this->__productModel->countAllProducts();
@@ -166,6 +167,10 @@ class ProductController extends BaseController
             // Nếu không có đơn hàng, giỏ hàng trống
             $this->view("layouts/client", ["page" => "products/cart", "orderItems" => [], "order" => null]);
         }
+    }
+
+    public function addCart(){
+        
     }
 
     public function removeFromCart($productId)

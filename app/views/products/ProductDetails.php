@@ -13,6 +13,7 @@
     $data = $input["data"];
     $product = $data["product"] ?? "";
     $similarProducts = $data["similarProducts"] ?? "";
+    $similarProduct = $data["similarProduct"] ?? "";
     ?>
     <?php if ($product): ?>
         <div class="container-fluid">
@@ -64,7 +65,7 @@
                             <img src="<?php echo htmlspecialchars($similarProduct->image_url); ?>" alt="<?php echo htmlspecialchars($similarProduct->name); ?>">
                             <h4><?php echo htmlspecialchars($similarProduct->name); ?></h4>
                             <p><?php echo htmlspecialchars(number_format($similarProduct->sale_price, 0, ',', '.')); ?> VND</p>
-                            <button onclick="location.href='http://localhost/eproject/product/detail/<?php echo htmlspecialchars($similarProduct->id); ?>'">Xem chi tiết</button>
+                            <button onclick="location.href='http://localhost/eproject/product/detail?id=<?= $similarProduct->id ?>'">Xem chi tiết</button>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
