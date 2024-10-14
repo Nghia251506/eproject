@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($cartItems)): ?>
+            <?php if (isset($_SESSION['productList']) && !empty($_SESSION['productList'])): ?>
                 <?php foreach ($_SESSION['productList'] as $item): ?>
                     <tr>
                     <td><img src="<?php $item['image_url']; ?>" alt="<?php $item['name']; ?>"></td>
