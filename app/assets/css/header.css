@@ -58,7 +58,7 @@ body {
   justify-content: center;
 }
 
-.search-form input {
+.search-form form input {
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #ffffff;

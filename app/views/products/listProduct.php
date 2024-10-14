@@ -25,6 +25,7 @@
         h2 {
             text-align: center;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -49,6 +50,31 @@
             background-color: #0056b3;
             color: white;
         }
+
+        .form-search {
+            display: flex;
+            gap: 10px;
+            /* Khoảng cách giữa các input */
+        }
+
+        .input-search {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit-search {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-search:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -59,23 +85,29 @@
     $totalPages = $data["totalPages"];
     $currentPage = $data["currentPage"];
     ?>
+    <h2 style="text-align: center;">Search Product</h2>
+    <form method="POST" action="http://localhost/eproject/product/searchList" class="form-search">
+        <input type="text" name="code" placeholder="Input product code" class="input-search">
+        <input type="text" name="name" placeholder="Input product name" class="input-search">
+        <input type="submit" value="Tìm kiếm" class="submit-search">
+    </form>
     <h2>List Products</h2>
     <table>
         <tr>
             <th>STT</th>
-            <th>Tên Sản Phẩm</th>
-            <th>Mã Sản Phẩm</th>
-            <th>Loại</th>
-            <th>Công Suất</th>
+            <th>Product Name</th>
+            <th>Code</th>
+            <th>Type</th>
+            <th>Watt</th>
             <th>Socket</th>
-            <th>Màu Sắc</th>
-            <th>Giá Mua</th>
-            <th>Giá Bán</th>
-            <th>Số Lượng</th>
-            <th>Thương Hiệu</th>
-            <th>Mô tả</th>
-            <th>Hình Ảnh</th>
-            <th>Hành Động</th>
+            <th>Color</th>
+            <th>Purchase Price</th>
+            <th>Sale Price</th>
+            <th>Quantity</th>
+            <th>Brand</th>
+            <th>Desciption</th>
+            <th>Image</th>
+            <th>Action</th>
         </tr>
         <?php
         $index = 1;
@@ -121,13 +153,13 @@
         <?php endif; ?>
     </div>
 
-    <!-- <?php
+    <?php
 
             if (isset($_SESSION['success_message'])) {
                 echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
                 unset($_SESSION['success_message']);
             }
-            ?> -->
+            ?>
 
     <!-- <script src="http://localhost/eproject/app/assets/js/alert.js"></script> -->
 </body>
