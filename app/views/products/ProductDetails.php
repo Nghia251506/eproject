@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/ProductDetails.css">
     <title>Product Detail Page</title>
 </head>
+
 <body>
     <?php
-        $data = $input["data"];
-        $product = $data["product"] ?? "";
+    $data = $input["data"];
+    $product = $data["product"] ?? "";
+    $similarProducts = $data["similarProducts"] ?? "";
+    $similarProduct = $data["similarProduct"] ?? "";
     ?>
     <?php if ($product): ?>
         <div class="container-fluid">
@@ -22,12 +26,11 @@
                 <div class="pro-detail">
                     <h2 style="margin-top: 30px"><?php echo htmlspecialchars($product->name); ?></h2>
                     <p>Code: <?php echo htmlspecialchars($product->code); ?></p>
-                    <p>Type: Chandelier</p>
-                    <p>Watt: 30W</p>
-                    <p>Socket: TA1</p>
-                    <p>Color: Black</p>
-                    <p>Brand: LUIS VUITON</p>
-                    <p>Category: Living room lights</p>
+                    <p>Type: <?php echo htmlspecialchars($product->type_name); ?></p>
+                    <p>Watt: <?php echo htmlspecialchars($product->watt); ?></p>
+                    <p>Socket: <?php echo htmlspecialchars($product->socket); ?></p>
+                    <p>Color: <?php echo htmlspecialchars($product->color); ?></p>
+                    <p>Brand: <?php echo htmlspecialchars($product->brand_name); ?></p>
 
                     <div class="price">
                         <h5><b><?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</b></h5>
@@ -39,29 +42,35 @@
                             <button id="increase">+</button>
                         </div>
                         <div class="add-cart-button">
-                            <button id="add-to-cart">Add to Cart</button>   
+                            <button id="add-to-cart">Add to Cart</button>
                         </div>
                     </div>
-                    
+
                     <div class="btshop">
                         <p>Hotline: 0523652003</p>
                     </div>
                 </div>
             </div>
+            <div class="product-description">
+                <h3>Mô tả sản phẩm</h3>
+                <p id="short-description"><?php echo htmlspecialchars(substr($product->description, 0, 100)); ?>...</p>
+                <p id="full-description" style="display: none;"><?php echo htmlspecialchars($product->description); ?></p>
+                <button id="toggle-description" onclick="toggleDescription()">Xem thêm</button>
+            </div>
             <h2>The same product</h2>
             <div class="details">
-                <div class="content-details">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" >
-                </div>
-                <div class="content-details">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" >
-                </div>
-                <div class="content-details">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" >
-                </div>
-                <div class="content-details">
-                    <img src="https://localhost/eproject/app/assets/data/featured-img-1.jpg" >
-                </div>
+                <?php if (!empty($similarProducts)): ?>
+                    <?php foreach ($similarProducts as $similarProduct): ?>
+                        <div class="content-details">
+                            <img src="<?php echo htmlspecialchars($similarProduct->image_url); ?>" alt="<?php echo htmlspecialchars($similarProduct->name); ?>">
+                            <h4><?php echo htmlspecialchars($similarProduct->name); ?></h4>
+                            <p><?php echo htmlspecialchars(number_format($similarProduct->sale_price, 0, ',', '.')); ?> VND</p>
+                            <button onclick="location.href='http://localhost/eproject/product/detail?id=<?= $similarProduct->id ?>'">Xem chi tiết</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Không có sản phẩm nào cùng loại.</p>
+                <?php endif; ?>
             </div>
         </div>
     <?php else: ?>
@@ -70,4 +79,5 @@
 
     <script src="http://localhost/eproject/app/assets/js/ProductDetail.js"></script>
 </body>
+
 </html>
