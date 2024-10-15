@@ -1,3 +1,4 @@
+-- DDL
 create database eproject;
 use eproject;
 
@@ -16,6 +17,7 @@ create table users (
     username varchar(255),
     password varchar(255),
     department_id int not null,
+    role ENUM('admin', 'customer'),
     foreign key(department_id) references permisions(id)
 );
 
@@ -35,11 +37,10 @@ create table brand_lights(
 
 create table type_lights(
 	id int auto_increment not null primary key,
-    type_name varchar(255),
-    type varchar(255),
-    color varchar(255),
-	material varchar(255)
+    type_name varchar(255)
 );
+
+
 
 create table products(
 	id int auto_increment not null primary key,
@@ -54,9 +55,10 @@ create table products(
     quantity int,
     brand_id int,
     image_url varchar(500),
+    description LONGTEXT,
     foreign key(type_id) references type_lights(id),
     foreign key(brand_id) references brand_lights(id)
-);
+); 
 
 create table sale_order(
 	id int auto_increment not null primary key,
@@ -74,12 +76,12 @@ create table sale_order_line(
     product_id int,
     price float,
     quantity int,
-    price_subtotal float,
+    price_subtotal decimal(10,2),
     foreign key(order_id) references sale_order(id),
     foreign key(product_id) references products(id)
 );
 
--- trigger
+-- PROCEDURE insert
 DELIMITER //
 CREATE PROCEDURE insert_product(
     IN prod_name VARCHAR(255),
@@ -91,12 +93,13 @@ CREATE PROCEDURE insert_product(
     IN prod_sale_price DECIMAL(10,2), 
     IN prod_quantity INT, 
     IN prod_brand_id INT, 
-    IN prod_image_url VARCHAR(500)
+    IN prod_image_url VARCHAR(500),
+    IN prod_description LONGTEXT
 )
 BEGIN
     -- Chèn sản phẩm mới
-    INSERT INTO products (name, type_id, watt, socket, color, purchase_price, sale_price, quantity, brand_id, image_url) 
-    VALUES (prod_name, prod_type_id, prod_watt, prod_socket, prod_color, prod_purchase_price, prod_sale_price, prod_quantity, prod_brand_id, prod_image_url);
+    INSERT INTO products (name, type_id, watt, socket, color, purchase_price, sale_price, quantity, brand_id, image_url, description) 
+    VALUES (prod_name, prod_type_id, prod_watt, prod_socket, prod_color, prod_purchase_price, prod_sale_price, prod_quantity, prod_brand_id, prod_image_url, prod_description);
   
     -- Lấy id vừa chèn
     SET @last_id = LAST_INSERT_ID();
@@ -107,8 +110,6 @@ BEGIN
     WHERE id = @last_id;
 END //
 DELIMITER ;
-
-alter table users add role ENUM('admin', 'employee', 'customer') NOT NULL;
 
 -- DML
 -- insert brand_lights
@@ -124,11 +125,18 @@ insert into type_lights (`id`, `type_name`) values (3, "b");
 insert into type_lights (`id`, `type_name`) values (4, "c");
 insert into type_lights (`id`, `type_name`) values (5, "d");
 -- insert products test
-CALL insert_product('product1', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://denanhsang.vn/uploaded/images/kho-hinh-anh-dep-chum-dep-tai-den-anh-sang-17.jpg');
-CALL insert_product('product2', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocden.vn/images/2018/06/12/den-chum-pha-le-nen-sang-trong_20LDH1010.jpg');
-CALL insert_product('product3', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg');
-CALL insert_product('product4', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://salt.tikicdn.com/cache/280x280/ts/product/52/f2/1d/468ef93ef92a34e678c05fa5b62d7c70.jpg');
-CALL insert_product('product5', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocsofa.com/images/2021/06/10/1-vi-sao-can-trang-tri-den-phong-khach-1.jpg');
+CALL insert_product('product1', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://denanhsang.vn/uploaded/images/kho-hinh-anh-dep-chum-dep-tai-den-anh-sang-17.jpg', 'test');
+CALL insert_product('product2', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocden.vn/images/2018/06/12/den-chum-pha-le-nen-sang-trong_20LDH1010.jpg', 'test');
+CALL insert_product('product3', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg', 'test');
+CALL insert_product('product4', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://salt.tikicdn.com/cache/280x280/ts/product/52/f2/1d/468ef93ef92a34e678c05fa5b62d7c70.jpg', 'test');
+CALL insert_product('product5', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://vuongquocsofa.com/images/2021/06/10/1-vi-sao-can-trang-tri-den-phong-khach-1.jpg', 'test');
+CALL insert_product('product6', 3, 30, 'E27', 'red', 32000000, 47000000, 23, 1, 'https://down-vn.img.susercontent.com/file/vn-11134201-23030-b8vbtdu65fov46', 'test');
+CALL insert_product('product7', 4, 30, 'E27', 'red', 32000000, 47000000, 23, 1, 'https://khodengiare.com/wp-content/uploads/2021/06/Den-chum-pha-le-DC414-5.jpg', 'test');
+CALL insert_product('product8', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(7).jpg', 'test');
+CALL insert_product('product9', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://khodengiare.com/wp-content/uploads/2022/08/Den-chum-pha-le-tha-phong-khach-DC515D-4.jpg', 'test');
+CALL insert_product('product10', 3, 30, 'E27', 'red', 32000000, 47000000, 23, 4, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(1).jpg', 'test');
+CALL insert_product('product11', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://fuhouse.vn/uploads/images/tin-tuc/den-chum-1_result.jpg','test');
+CALL insert_product('product12', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/den-tha-pha-le-chum-la-vang-dong/den-tha-pha-le-chum-la-vang-dong%20(6).jpg', 'test');
 -- insert permisions test
 insert into permisions (`name`) values ('abc');
 insert into permisions (`name`) values ('acb');
@@ -138,6 +146,7 @@ insert into permisions (`name`) values ('tnv');
 -- insert users test
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`department_id`,`role`) values ('Nguyễn Trọng Nghĩa','ntn8530@gmail.com','0862273012','Hà Nội','2002-06-15','tnc2002','Ntn1506@','1','admin');
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`department_id`,`role`) values ('Phan Anh Tiến Quý','ad1@gmail.com','0123456789','Hà Nội','1995-06-15','ad1','123456','2','admin');
+insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`department_id`,`role`) values ('Nguyễn Văn A','cs1@gmail.com','0123456789','Hà Nội','1995-06-15','cs1','123456','1','customer');
 
 
 

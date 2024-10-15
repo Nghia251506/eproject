@@ -37,4 +37,19 @@ class TypeModel{
             echo $ex->getMessage();
         }
     }
+
+    public function saveType($type_name){
+        try{
+            if($this->__conn){
+                $sql = "INSERT INTO type_lights (`type_name`) VALUES (:type_name)";
+                $stmt = $this->__conn->prepare($sql);
+                $stmt->bindParam("type_name", $type_name, PDO::PARAM_STR);
+                $stmt->execute();
+                return $this->__conn->lastInsertId();
+            }
+            return null;
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+        }
+    }
 }
