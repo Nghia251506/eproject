@@ -70,7 +70,7 @@
                                 </div>
                                 <h3><?php echo htmlspecialchars($product->name); ?></h3>
                                 <p><?php echo htmlspecialchars($product->code); ?></p>
-                                <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> USD</p>
+                                <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 2)); ?> USD</p>
                                 <a href='http://localhost/eproject/product/detail?id=<?= $product->id; ?>'>See all details</a>
                             </div>
                         <?php endforeach; ?>

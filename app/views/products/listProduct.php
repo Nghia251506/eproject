@@ -121,8 +121,8 @@
                 <td><?= htmlspecialchars($product->watt) ?></td>
                 <td><?= htmlspecialchars($product->socket) ?></td>
                 <td><?= htmlspecialchars($product->color) ?></td>
-                <td><?= number_format($product->purchase_price, 2) ?> VNĐ</td>
-                <td><?= number_format($product->sale_price, 2) ?> VNĐ</td>
+                <td><?= number_format($product->purchase_price, 2) ?> USD</td>
+                <td><?= number_format($product->sale_price, 2) ?> USD</td>
                 <td><?= htmlspecialchars($product->quantity) ?></td>
                 <td><?= htmlspecialchars($product->brand_name) ?></td>
                 <td><p id="short-description"><?php echo htmlspecialchars(substr($product->description, 0, 100)); ?>...</p></td>
