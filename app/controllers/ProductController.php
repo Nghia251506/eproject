@@ -14,6 +14,7 @@ class ProductController extends BaseController
         $limit = 8; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
         $products = $this->__productModel->getAllProduct($limit, $offset);
+        $types = $this->__typeModel->getAllType();
         $totalProducts = $this->__productModel->countAllProducts();
         $totalPages = ceil($totalProducts / $limit); // Total number of page
         $this->view("layouts/client", [
@@ -21,6 +22,7 @@ class ProductController extends BaseController
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
+            "types"=> $types
         ]);
     }
 
@@ -196,21 +198,13 @@ class ProductController extends BaseController
 
     public function search($page = 1)
     {
-        // if ($_SERVER["REQUEST_METHOD"] == "POST"){}
-        //     $name = $_POST['name'] ?? '';
-        // }
+        
         $name = trim($_POST["name"]) ?? '';
         $code = trim($_POST["code"]) ?? '';
-        $type_id = $_POST["type_id"] ?? 0;
+        $type_id = $_POST["id"] ?? 0;
         $limit = 8;
         $offset = ($page - 1) * $limit;
-
-        // var_dump($name);
-        // var_dump($type_id);
-        // die();
-
         $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset, $code);
-        // var_dump($products);
         // Lấy tổng số record để phân trang
         $totalShows = $this->__productModel->countProducts($name);
         $totalPages = ceil($totalShows / $limit);

@@ -10,7 +10,7 @@ class TypeModel{
     public function getAllType($limit = 10, $offset = 0){
         try{
             if(isset($this->__conn)){
-                $sql = "select * from type_lights order by id desc LIMIT :limit OFFSET :offset";
+                $sql = "select * from type_lights LIMIT :limit OFFSET :offset";
                 $stmt = $this->__conn->prepare($sql);
                 $stmt->bindParam("limit", $limit, PDO::PARAM_INT);
                 $stmt->bindParam("offset", $offset, PDO::PARAM_INT);
