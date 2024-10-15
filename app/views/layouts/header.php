@@ -7,6 +7,7 @@
   <script src="https://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
+  
 </head>
 
 <body>
@@ -17,7 +18,7 @@
           <img src="http://localhost/eproject/app/assets/data/LG.png" alt="Logo">
         </div>
         <div class="logo-name">
-          <a href="">Luminous <br> Garden</a>
+          <a href="http://localhost/eproject/home/index">Luminous <br> Garden</a>
         </div>
       </div>
 
@@ -25,7 +26,6 @@
         <form action="http://localhost/eproject/product/search" method="POST">
           <input name="name" type="text" placeholder="Input name...">
         </form>
-
       </div>
 
       <div class="header-right">
@@ -36,6 +36,9 @@
         <div class="shopping">
           <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
         </div>
+        <!-- <div class="mobile-navbar-icon" onclick="toggleNavbar()">
+          <i class="fa-solid fa-bars"></i> 
+        </div> -->
       </div>
     </div>
   </div>
@@ -54,7 +57,45 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="mobile-navbar" id="mobileNavbar">
+    <a href="http://localhost/eproject/home/index">HOME</a>
+    <a href="#">CUSTOM FURNITURE</a>
+    <a href='http://localhost/eproject/product/index'>SHOP</a>
+    <a href="#">ART COLLECTION</a>
+    <a href="#">PILLOWS</a>
+    <a href="#">CANDLES</a>
+    <a href="#">GOOD DEALS</a>
+    <a href="http://localhost/eproject/contact/index">CONTACT US</a>
+  </div> -->
+
+  <div class="mobile-navbar">
+    <div class="mobile-navbar_home">
+      <a href="">
+        <i class="fa-solid fa-house"></i>
+        <p>HOME</p>
+      </a>
+      <a href="">
+        <i class="fa-solid fa-house"></i>
+        <p>HOME</p>
+      </a>
+      <a href="">
+        <i class="fa-solid fa-house"></i>
+        <p>HOME</p>
+      </a>
+      <a href="">
+        <i class="fa-solid fa-house"></i>
+        <p>HOME</p>
+      </a>
+    </div>
   </div>
+
+  <script>
+    function toggleNavbar() {
+      const navbar = document.getElementById('mobileNavbar');
+      navbar.classList.toggle('show'); // Thêm hoặc xóa lớp show
+    }
+  </script>
 </body>
 
 </html>
