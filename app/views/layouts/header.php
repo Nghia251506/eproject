@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
   <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
 </head>
+
 <body>
-<div class="header">
+  <div class="header">
     <div class="header-container">
       <div class="logo">
         <div class="logo-image">
@@ -20,8 +22,10 @@
       </div>
 
       <div class="search-form">
-        <input type="text" placeholder="Search"  >
-        
+        <form action="http://localhost/eproject/product/search" method="POST">
+          <input name="name" type="text" placeholder="Input name...">
+        </form>
+
       </div>
 
       <div class="header-right">
@@ -29,27 +33,28 @@
           <a href="">MY ACCOUNT</a>
           <a href="http://localhost/eproject/user/login">LOGIN</a>
         </div>
-          <div class="shopping">
-            <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="nav">
-      <div class="nav-container">
-        <div class="nav-item">
-          <a href="http://localhost/eproject/home/index">HOME</a>
-          <a href="#">CUSTOM FURNITURE</a>
-          <a href='http://localhost/eproject/product/index'>SHOP</a>
-          <a href="#">ART COLLECTION</a>
-          <a href="#">PILLOWS</a>
-          <a href="#">CANDLES</a>
-          <a href="#">GOOD DEALS</a>
-          <a href="http://localhost/eproject/contact/index">CONTACT US</a>
+        <div class="shopping">
+          <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="nav">
+    <div class="nav-container">
+      <div class="nav-item">
+        <a href="http://localhost/eproject/home/index">HOME</a>
+        <a href="#">CUSTOM FURNITURE</a>
+        <a href='http://localhost/eproject/product/index'>SHOP</a>
+        <a href="#">ART COLLECTION</a>
+        <a href="#">PILLOWS</a>
+        <a href="#">CANDLES</a>
+        <a href="#">GOOD DEALS</a>
+        <a href="http://localhost/eproject/contact/index">CONTACT US</a>
+      </div>
+    </div>
+  </div>
+  </div>
 </body>
+
 </html>

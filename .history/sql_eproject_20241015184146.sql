@@ -143,7 +143,7 @@ CALL insert_product('product7', 4, 30, 'E27', 'red', 32000000, 47000000, 23, 1, 
 CALL insert_product('product8', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(7).jpg', 'test');
 CALL insert_product('product9', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://khodengiare.com/wp-content/uploads/2022/08/Den-chum-pha-le-tha-phong-khach-DC515D-4.jpg', 'test');
 CALL insert_product('product10', 3, 30, 'E27', 'red', 32000000, 47000000, 23, 4, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(1).jpg', 'test');
-
+<<<<<<< HEAD
 CALL insert_product('product11', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://fuhouse.vn/uploads/images/tin-tuc/den-chum-1_result.jpg','test');
 CALL insert_product('product12', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/den-tha-pha-le-chum-la-vang-dong/den-tha-pha-le-chum-la-vang-dong%20(6).jpg', 'test');
 -- insert permisions test
@@ -152,6 +152,10 @@ insert into permisions (`name`) values ('acb');
 insert into permisions (`name`) values ('asd');
 insert into permisions (`name`) values ('bcd');
 insert into permisions (`name`) values ('tnv');
+=======
+CALL insert_product('product11', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://fuhouse.vn/uploads/images/tin-tuc/den-chum-1_result.jpg', 'test');
+CALL insert_product('product12', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/den-tha-pha-le-chum-la-vang-dong/den-tha-pha-le-chum-la-vang-dong%20(6).jpg', 'test');
+>>>>>>> 027807ab4d54d976b0f7c880588d431137d14ef1
 -- insert users test
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Nguyễn Trọng Nghĩa','ntn8530@gmail.com','0862273012','Hà Nội','2002-06-15','tnc2002','Ntn1506@','admin');
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Phan Anh Tiến Quý','ad1@gmail.com','0123456789','Hà Nội','1995-06-15','ad1','123456','admin');

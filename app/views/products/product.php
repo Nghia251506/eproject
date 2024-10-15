@@ -39,6 +39,7 @@
     $products = $data["products"] ?? [];
     $totalPages = $data["totalPages"] ?? "";
     $currentPage = $data["currentPage"] ?? "";
+    $types = $data["types"] ?? "";
     ?>
     <div id="product-container">
         <aside class="sidebar">
@@ -46,14 +47,13 @@
             <div class="search-bar">
                 <form action="http://localhost/eproject/product/search" method="POST">
                     <input name="name" type="text" placeholder="Input name...">
-                    <label>One
-                        <span class="checkmark"></span>
-                        <input type="checkbox" value=1 name="type_id">
-                    </label>
-                    <label>Two
-                        <span class="checkmark"></span>
-                        <input type="checkbox" value=2 name="type_id">
-                    </label>
+                    <input name="code" type="hidden" placeholder="Input name...">
+                    <?php foreach ($types as $type) : ?>
+                        <div style="display: flex; flex-wrap:wrap; gap: 5px; align-items: center;">
+                            <div><input type="checkbox" value=<?= $type->id ?> name="id"></div>
+                            <div><label> <?= $type->type_name ?></label></div>
+                        </div>
+                    <?php endforeach; ?>
                 </form>
             </div>
         </aside>

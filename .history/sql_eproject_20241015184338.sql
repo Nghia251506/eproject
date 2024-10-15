@@ -143,7 +143,7 @@ CALL insert_product('product7', 4, 30, 'E27', 'red', 32000000, 47000000, 23, 1, 
 CALL insert_product('product8', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(7).jpg', 'test');
 CALL insert_product('product9', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://khodengiare.com/wp-content/uploads/2022/08/Den-chum-pha-le-tha-phong-khach-DC515D-4.jpg', 'test');
 CALL insert_product('product10', 3, 30, 'E27', 'red', 32000000, 47000000, 23, 4, 'https://virgolighting.vn/uploaded/san-pham/Den-chum-bong-led-zone-pha-le/Den-chum-bong-led-zone-pha-le%20(1).jpg', 'test');
-
+<<<<<<< HEAD
 CALL insert_product('product11', 5, 30, 'E27', 'red', 32000000, 47000000, 23, 5, 'https://fuhouse.vn/uploads/images/tin-tuc/den-chum-1_result.jpg','test');
 CALL insert_product('product12', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 3, 'https://virgolighting.vn/uploaded/san-pham/den-tha-pha-le-chum-la-vang-dong/den-tha-pha-le-chum-la-vang-dong%20(6).jpg', 'test');
 -- insert permisions test

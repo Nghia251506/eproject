@@ -241,6 +241,7 @@ class ProductModel
                            and case when :code != '' then p.code LIKE :code else 1=1 end
                            LIMIT :limit 
                            OFFSET :offset
+>>>>>>> 027807ab4d54d976b0f7c880588d431137d14ef1
                     ";
             $stmt = $this->__conn->prepare($sql);
             $stmt->bindValue(":name", '%' . $name . '%');
