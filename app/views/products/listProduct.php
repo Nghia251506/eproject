@@ -125,7 +125,7 @@
                 <td><?= number_format($product->sale_price, 2) ?> VNĐ</td>
                 <td><?= htmlspecialchars($product->quantity) ?></td>
                 <td><?= htmlspecialchars($product->brand_name) ?></td>
-                <td><?= htmlspecialchars($product->description) ?></td>
+                <td><p id="short-description"><?php echo htmlspecialchars(substr($product->description, 0, 100)); ?>...</p></td>
                 <td>
                     <?php if (!empty($product->image_url)): ?>
                         <img src="<?= htmlspecialchars($product->image_url) ?>" alt="Hình Ảnh Sản Phẩm" width="100">
