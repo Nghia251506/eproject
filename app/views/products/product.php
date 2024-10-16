@@ -39,6 +39,7 @@
     $products = $data["products"] ?? [];
     $totalPages = $data["totalPages"] ?? "";
     $currentPage = $data["currentPage"] ?? "";
+    $types = $data["types"] ?? "";
     ?>
     <div id="product-container">
         <aside class="sidebar">
@@ -47,14 +48,14 @@
                 <form action="http://localhost/eproject/product/search" method="POST">
                     <input name="name" type="text" placeholder="Input name...">
                     <input name="code" type="hidden" placeholder="Input name...">
-                    <label>One
-                        <span class="checkmark"></span>
-                        <input type="checkbox" value=1 name="type_id">
-                    </label>
-                    <label>Two
-                        <span class="checkmark"></span>
-                        <input type="checkbox" value=2 name="type_id">
-                    </label>
+                    <div class="checkbox-reponsive">
+                        <?php foreach ($types as $type) : ?>
+                            <div id="checkbox">
+                                <div><input type="checkbox" value=<?= $type->id ?> name="id"></div>
+                                <div><label> <?= $type->type_name ?></label></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </form>
             </div>
         </aside>
@@ -71,7 +72,7 @@
                                 </div>
                                 <h3><?php echo htmlspecialchars($product->name); ?></h3>
                                 <p><?php echo htmlspecialchars($product->code); ?></p>
-                                <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> USD</p>
+                                <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 2)); ?> USD</p>
                                 <a href='http://localhost/eproject/product/detail?id=<?= $product->id; ?>'>See all details</a>
                             </div>
                         <?php endforeach; ?>

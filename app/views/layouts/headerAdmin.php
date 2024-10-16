@@ -23,5 +23,6 @@
     <ul class="sidebar-list">
         <li><a href="http://localhost/eproject/product/add">ADD PRODUCT</a></li>
         <li><a href="http://localhost/eproject/product/list">LIST PRODUCT</a></li>
+        <li><a href="http://localhost/eproject/contact/list">LIST CONTACT</a></li>
     </ul>
 </div>

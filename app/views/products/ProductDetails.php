@@ -70,7 +70,7 @@
                 <h3>Mô tả sản phẩm</h3>
                 <p id="short-description"><?php echo htmlspecialchars(substr($product->description, 0, 100)); ?>...</p>
                 <p id="full-description" style="display: none;"><?php echo htmlspecialchars($product->description); ?></p>
-                <button id="toggle-description" onclick="toggleDescription()">Xem thêm</button>
+                <div style="display: flex; justify-content: center;"> <button id="toggle-description" onclick="toggleDescription()">See more</button></div>
             </div>
             <h2>The same product</h2>
             <div class="details">
