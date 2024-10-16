@@ -126,11 +126,12 @@
 .product-action {
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
 .add-cart-button {
   width: 100%;
-  display: flex;
   justify-content: center;
+  margin-left: 10px;
 }
 .add-cart-button button {
   background-color: #dc5c00;
@@ -154,7 +155,7 @@
 #toggle-description {
   margin-top: 10px;
   padding: 8px 12px;
-  /* background-color: #007bff; Màu nền của nút */
+  background-color: white; 
   color: rgb(255, 5, 5); /* Màu chữ của nút */
   border: none;
   border-radius: 5px; /* Bo tròn góc */
@@ -162,16 +163,14 @@
   transition: background-color 0.3s;
 }
 
-#toggle-description:hover {
-  background-color: #0056b3; /* Màu nền khi hover */
-}
-
 /* ========== Responsive cho Tablet ========== */
 @media (max-width: 1024px) {
   .container-fluid {
     width: 80%;
   }
-
+  .add-cart-button {
+    margin-left: 0;
+  }
   .product-details-wrapper {
     flex-direction: column;
     align-items: center;
@@ -194,6 +193,10 @@
   }
 
   .add-cart-button {
+    width: 100%;
+  }
+
+  .add-cart-button form button{
     width: 100%;
   }
 

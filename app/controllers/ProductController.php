@@ -22,7 +22,7 @@ class ProductController extends BaseController
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
-            "types"=> $types
+            "types" => $types
         ]);
     }
 
@@ -111,7 +111,7 @@ class ProductController extends BaseController
             // Kiểm tra đầu vào (Ví dụ: kiểm tra rỗng, hợp lệ, ...)
             if (empty($name) || empty($type_id) || empty($watt) || empty($purchase_price) || empty($sale_price) || empty($quantity) || empty($brand_id) || empty($image_url)) {
                 // Quản lý lỗi: thông báo cho người dùng
-                echo "Vui lòng điền đầy đủ thông tin sản phẩm.";
+                echo "Please fill in complete product information.";
                 return;
             }
             // Kiểm tra và thêm thương hiệu mới
@@ -136,7 +136,7 @@ class ProductController extends BaseController
                 exit();
             } else {
                 // Thông báo lỗi nếu lưu không thành công
-                echo "Có lỗi xảy ra khi thêm sản phẩm. Vui lòng thử lại.";
+                echo "An error occurred while adding a product. Please try again.";
             }
         }
     }
@@ -171,15 +171,13 @@ class ProductController extends BaseController
         }
     }
 
-    public function addCart(){
-        
-    }
+    public function addCart() {}
 
     public function removeFromCart($productId)
     {
         $userId = $_SESSION['user_id'] ?? null;
         if (!$userId) {
-            echo "Bạn cần đăng nhập để thực hiện thao tác này.";
+            echo "You need to be logged in to perform this action.";
             return;
         }
 
@@ -198,7 +196,7 @@ class ProductController extends BaseController
 
     public function search($page = 1)
     {
-        
+
         $name = trim($_POST["name"]) ?? '';
         $code = trim($_POST["code"]) ?? '';
         $type_id = $_POST["id"] ?? 0;
@@ -225,7 +223,7 @@ class ProductController extends BaseController
         $limit = 8;
         $offset = ($page - 1) * $limit;
         $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset, $code);
-        
+
         // Lấy tổng số record để phân trang
         $totalShows = $this->__productModel->countProducts($name);
         $totalPages = ceil($totalShows / $limit);

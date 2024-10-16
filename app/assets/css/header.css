@@ -115,7 +115,7 @@
   position: sticky;
   top: 100px;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .nav-container {
@@ -141,10 +141,14 @@
   display: none;
 }
 
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .logo-name a {
     display: none;
+  }
+  .logo-image img{
+    height: 60px;
   }
 
   .search-bar{
