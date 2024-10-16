@@ -139,16 +139,3 @@
   color: #ffffff;
   text-decoration: none;
 }
-
-.header-responsive {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .header-responsive {
-    display: block;
-  }
-  .header {
-    display: none;
-  }
-}

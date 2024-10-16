@@ -25,10 +25,6 @@ footer {
   margin: 10px; /* Uniform margin */
 }
 
-.footer-contact-info:hover {
-  /* transform: scale(1.02); Slightly enlarge on hover */
-}
-
 .footer-contact-info h3 {
   margin-bottom: 20px; /* Space below heading */
   color: #333; /* Darker color for contrast */
@@ -108,15 +104,18 @@ footer {
   max-width: 393px; /* Set max width */
   max-height: 282px; /* Set max height */
   overflow: hidden; /* Hide overflow */
-  overflow: hidden; /* Hide overflow */
   flex: 1; /* Flex property for responsive layout */
-  margin: 0 100px 0 50px; /* Uniform margin */
+  margin: 0 100px 0 50px;
 }
 
 .map iframe {
-  width: 393px; /* Fixed width */
-  height: 282px; /* Fixed height */
-  border: 0; /* No border for the iframe */
+  border: none !important; /* Bắt buộc xóa khung viền */
+  box-shadow: none !important; /* Xóa bóng nếu có */
+  outline: none !important; /* Xóa outline nếu có */
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Đảm bảo chiều rộng khớp với container */
+  height: auto;
 }
 
 .map:hover {
