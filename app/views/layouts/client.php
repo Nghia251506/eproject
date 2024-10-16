@@ -20,7 +20,7 @@
         <?php
         $this->view("layouts/header");
         $this->view($input["page"], ["data" => $input]);
-        // $this->view("layouts/footer");
+        $this->view("layouts/footer");
         ?>
     </div>
 </body>

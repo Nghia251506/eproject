@@ -34,7 +34,7 @@
         </div>
 
     </footer>
-    <div style="background-color: black;color:white ;  padding: 10px; text-align: center;">
+    <div style="background-color: black;color:white ;  padding: 10px; text-align: center;" id="footer2">
         <p>© Project was made by Luminous Garden Team - T2404E .</p>
     </div>
 </body>

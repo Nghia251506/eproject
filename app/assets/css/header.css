@@ -143,6 +143,26 @@
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
+  .logo-name a {
+    display: none;
+  }
+
+  .search-bar{
+    width: 100%;
+  }
+
+  .login{
+    display: none;
+  }
+
+  .search-form form input {
+    padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        width: 80%;
+        /* max-width: 400px; */
+        margin-left: 10px;
+  }
   .nav-item {
     display: none;
     /* Ẩn navbar */
@@ -168,12 +188,11 @@
     z-index: 1000;
     /* Ẩn khi không có icon */
   }
-
   .mobile-navbar a {
     padding-left: 15px;
     color: black;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     display: block;
     /* Hiện thị theo cột */
   }
