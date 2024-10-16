@@ -135,3 +135,12 @@ footer {
 .footer-container a:hover {
   text-decoration: underline; /* Underline on hover */
 }
+
+@media(max-width:1024px){
+  footer{
+    display: none;
+  }
+  #footer2{
+    display: none;
+  }
+}

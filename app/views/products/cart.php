@@ -13,6 +13,10 @@
     if (isset($_GET['added']) && $_GET['added'] == 'true') {
         echo "<p style='color: green;'>Sản phẩm đã được thêm vào giỏ hàng!</p>";
     }
+    $cartItems = $_SESSION["productList"];
+    // print_r($cartItems);
+    // die();
+
     ?>
 
     <h1>Your shopping cart</h1>
@@ -33,19 +37,19 @@
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($cartItems)): ?>
-                <?php foreach ($cartItems as $productId => $item): ?>
+            <?php if (isset($_SESSION['productList']) && !empty($_SESSION['productList'])): ?>
+                <?php foreach ($_SESSION['productList'] as $item): ?>
                     <tr>
-                    <td><img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>"></td>
-                        <td><?php echo htmlspecialchars($item['name']); ?></td>
-                        <td><?php echo htmlspecialchars($item['code']); ?></td>
-                        <td><?php echo htmlspecialchars($item['type_name']); ?></td>
-                        <td><?php echo htmlspecialchars($item['watt']); ?></td>
-                        <td><?php echo htmlspecialchars($item['socket']); ?></td>
-                        <td><?php echo htmlspecialchars($item['color']); ?></td>
-                        <td><?php echo number_format($item['sale_price'], 0, ',', '.'); ?> VND</td>
-                        <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                        <td><?php echo number_format($item['price_subtotal'], 0, ',', '.'); ?> VND</td>
+                    <td><img src="<?php $item['image_url']; ?>" alt="<?php $item['name']; ?>"></td>
+                        <td><?php $item['name']; ?></td>
+                        <td><?php $item['code']; ?></td>
+                        <td><?php $item['type_name']; ?></td>
+                        <td><?php $item['watt']; ?></td>
+                        <td><?php $item['socket']; ?></td>
+                        <td><?php $item['color']; ?></td>
+                        <td><?php number_format($item['sale_price'], 0, ',', '.'); ?> VND</td>
+                        <td><?php $item['quantity']; ?></td>
+                        <td><?php number_format($item['price_subtotal'], 0, ',', '.'); ?> VND</td>
                         <td>
                             <a href="/cart/remove/<?php echo $item['product_id']; ?>">Xóa</a>
                         </td>

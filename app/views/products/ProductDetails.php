@@ -15,6 +15,16 @@
     $similarProducts = $data["similarProducts"] ?? "";
     $similarProduct = $data["similarProduct"] ?? "";
     ?>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION['productList'])) {
+            $_SESSION['productList'] = array();
+        }
+        $_SESSION['productList'][] = $data["product"];
+        // print_r($_SESSION['productList']);
+        // die();
+    }
+    ?>
     <?php if ($product): ?>
         <div class="container-fluid">
             <div class="product-details-wrapper">
@@ -38,11 +48,13 @@
                     <div class="product-action">
                         <div class="quantity-box">
                             <button id="decrease">-</button>
-                            <input type="text" id="quantity" value="1">
+                            <input type="text" id="quantity" value="1" name="quantityProduct">
                             <button id="increase">+</button>
                         </div>
                         <div class="add-cart-button">
-                            <button id="add-to-cart">Add to Cart</button>
+                            <form action="" method="POST">
+                                <button type="submit" >Add to Cart</button>
+                            </form>
                         </div>
                     </div>
 

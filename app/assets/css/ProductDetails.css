@@ -143,8 +143,8 @@
 #toggle-description {
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #007bff; /* Màu nền của nút */
-  color: white; /* Màu chữ của nút */
+  /* background-color: #007bff; Màu nền của nút */
+  color: rgb(255, 5, 5); /* Màu chữ của nút */
   border: none;
   border-radius: 5px; /* Bo tròn góc */
   cursor: pointer;
@@ -154,3 +154,107 @@
 #toggle-description:hover {
   background-color: #0056b3; /* Màu nền khi hover */
 }
+
+/* ========== Responsive cho Tablet ========== */
+@media (max-width: 1024px) {
+  .container-fluid {
+    width: 80%;
+  }
+
+  .product-details-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slider-box,
+  .pro-detail {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .quantity-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .product-action {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .add-cart-button {
+    width: 100%;
+  }
+
+  .details {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .content-details {
+    margin-bottom: 20px;
+    width: 48%;
+  }
+}
+
+/* ========== Responsive cho Điện thoại ========== */
+@media (max-width: 768px) {
+  .container-fluid {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .product-details-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .slider-box,
+  .pro-detail {
+    width: 100%;
+  }
+
+  .image_product {
+    height: 300px;
+  }
+
+  .pro-detail h2 {
+    font-size: 20px;
+  }
+
+  .pro-detail p {
+    font-size: 16px;
+  }
+
+  .price h5 {
+    font-size: 20px;
+  }
+
+  .quantity-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .product-action {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .add-cart-button {
+    width: 100%;
+  }
+
+  .btshop {
+    font-size: 14px;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .content-details {
+    width: 100%;
+  }
+}
+

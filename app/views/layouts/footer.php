@@ -41,10 +41,8 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bottom Bar -->
-    <div style="background-color: black; color: white; padding: 10px; text-align: center;">
-        <p>© Project was made by Luminous Garden Team - T2404E.</p>
+    <div style="background-color: black;color:white ;  padding: 10px; text-align: center;" id="footer2">
+        <p>© Project was made by Luminous Garden Team - T2404E .</p>
     </div>
 
     <!-- Bootstrap JS -->

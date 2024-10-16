@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Donegal+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/base.css">
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/product.css">
-    <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/contact.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="http://localhost/eproject/app/assets/js/eventClient.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
 
