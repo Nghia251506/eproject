@@ -19,10 +19,11 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(!isset($_SESSION['productList'])) {
             $_SESSION['productList'] = array();
+            $_SESSION['quantityList'] = array();
         }
         $_SESSION['productList'][] = $data["product"];
-        // print_r($_SESSION['productList']);
-        // die();
+        $_SESSION['quantityList'][] = $_POST['quantityProduct'];
+        
     }
     ?>
     <?php if ($product): ?>
@@ -45,18 +46,20 @@
                     <div class="price">
                         <h5><b><?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</b></h5>
                     </div>
-                    <div class="product-action">
-                        <div class="quantity-box">
-                            <button id="decrease">-</button>
-                            <input type="text" id="quantity" value="1" name="quantityProduct">
-                            <button id="increase">+</button>
+                    <form action="" method="POST">
+                        <div class="product-action">
+                            <div class="quantity-box">
+                                <button id="decrease">-</button>
+                                <input type="number" id="quantity" value="1" name="quantityProduct">
+                                <button id="increase">+</button>
+                            </div>
+                            <div class="add-cart-button">
+                                
+                                    <button type="submit" >Add to Cart</button>
+                            
+                            </div>
                         </div>
-                        <div class="add-cart-button">
-                            <form action="" method="POST">
-                                <button type="submit" >Add to Cart</button>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
 
                     <div class="btshop">
                         <p>Hotline: 0523652003</p>
