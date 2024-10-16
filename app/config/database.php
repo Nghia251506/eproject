@@ -1,7 +1,7 @@
 <?php 
-$host = "mysql:host=localhost:3306;dbname=light-store";
+$host = "mysql:host=localhost:3306;dbname=eproject";
 $username = "root";
-$pass = "doicodoc1995";
+$pass = "Tnc2024@";
 try {
     $conn = new PDO($host, $username, $pass);
     $conn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION );
