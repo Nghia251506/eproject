@@ -48,12 +48,14 @@
                 <form action="http://localhost/eproject/product/search" method="POST">
                     <input name="name" type="text" placeholder="Input name...">
                     <input name="code" type="hidden" placeholder="Input name...">
-                    <?php foreach ($types as $type) : ?>
-                        <div style="display: flex; flex-wrap:wrap; gap: 5px; align-items: center;">
-                            <div><input type="checkbox" value=<?= $type->id ?> name="id"></div>
-                            <div><label> <?= $type->type_name ?></label></div>
-                        </div>
-                    <?php endforeach; ?>
+                    <div class="checkbox-reponsive">
+                        <?php foreach ($types as $type) : ?>
+                            <div id="checkbox">
+                                <div><input type="checkbox" value=<?= $type->id ?> name="id"></div>
+                                <div><label> <?= $type->type_name ?></label></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </form>
             </div>
         </aside>
