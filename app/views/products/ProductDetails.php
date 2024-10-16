@@ -49,9 +49,9 @@
                     <form action="" method="POST">
                         <div class="product-action">
                             <div class="quantity-box">
-                                <button id="decrease">-</button>
+                                <!-- <button id="decrease">-</button> -->
                                 <input type="number" id="quantity" value="1" name="quantityProduct">
-                                <button id="increase">+</button>
+                                <!-- <button id="increase">+</button> -->
                             </div>
                             <div class="add-cart-button">
                                 
