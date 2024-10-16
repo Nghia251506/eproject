@@ -7,7 +7,41 @@
   <script src="https://kit.fontawesome.com/453b49545e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/header.css">
   <title>Header Example</title>
+  <style>
+    #user-menu {
+      position: relative;
+    }
 
+    #user-name {
+      cursor: pointer;
+    }
+
+    #dropdown {
+      width: 130px;
+      display: none;
+      position: absolute;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #user-menu:hover #dropdown {
+      display: block;
+    }
+
+    #dropdown li {
+      padding: 10px;
+    }
+
+    #dropdown li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #dropdown li:hover {
+      background: #f0f0f0;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,10 +62,19 @@
         </form>
       </div>
 
-      <div class="header-right">
+      <div class="header-right" id="user-menu">
         <div class="login">
-          <a href="">MY ACCOUNT</a>
-          <a href="http://localhost/eproject/user/login">LOGIN</a>
+          <?php if (isset($_SESSION['user'])): ?>
+            <a href="#" id="user-name">Welcome, <?php echo $_SESSION['user']->name; ?></a>
+            <ul id="dropdown">
+              <li><a href="http://localhost/eproject/user/settings">Setting</a></li>
+              <li><a href="http://localhost/eproject/user/logout">Logout</a></li>
+            </ul>
+          <?php else: ?>
+            <a href='http://localhost/mvcphp/user/login'>
+              <span>Đăng Nhập</span>
+            </a>
+          <?php endif; ?>
         </div>
         <div class="shopping">
           <a href="http://localhost/eproject/product/cart">CART <i class="fa-solid fa-shop"></i></a>
@@ -69,8 +112,18 @@
         <p>SHOP</p>
       </a>
       <a href="http://localhost/eproject/user/login">
-        <i class="fa-regular fa-circle-user"></i>
-        <p>Đăng nhập</p>
+        <!-- <i class="fa-regular fa-circle-user"></i> -->
+        <?php if (isset($_SESSION['user'])): ?>
+            <a href="#" id="user-name">Welcome, <?php echo $_SESSION['user']->name; ?></a>
+            <ul id="dropdown">
+              <li><a href="http://localhost/eproject/user/settings">Setting</a></li>
+              <li><a href="http://localhost/eproject/user/logout">Logout</a></li>
+            </ul>
+          <?php else: ?>
+            <a href='http://localhost/mvcphp/user/login'>
+              <span>Đăng Nhập</span>
+            </a>
+          <?php endif; ?>
       </a>
       <!-- <a href="">
         <i class="fa-solid fa-house"></i>

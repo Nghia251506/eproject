@@ -114,6 +114,7 @@ h2 {
     }
 
     .product {
+        background-color: #fdfbfb;
         width: calc(50% - 20px); /* 2 sản phẩm trên mỗi hàng */
     }
 
@@ -131,7 +132,9 @@ h2 {
 }
 
 @media (max-width: 480px) {
+    
     .product {
+        background-color: #fdfdfd;
         width: 100%; /* 1 sản phẩm trên mỗi hàng */
     }
 

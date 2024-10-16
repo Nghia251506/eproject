@@ -7,38 +7,41 @@
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/contact.css">
 </head>
 <body>
-
+    <?php
+    $data = $input["data"];
+    $contact = $data["contact"] ?? "";    
+    ?>
     <div class="container-contact">
-        <h1>LIÊN HỆ CHÚNG TÔI</h1>
-        <p>Hãy liên hệ với chúng tôi nếu bạn gặp bất cứ vấn đề nào liên quan đến công ty hoặc dịch vụ của chúng tôi. Chúng tôi sẽ cố gắng phản hồi trong thời gian sớm nhất.</p>
+        <h1>CONTACT US</h1>
+        <p>Please contact us if you have any problems related to our company or services. We will try to respond as soon as possible.</p>
 
-        <form>
-            <label for="name">Tên * :</label>
-            <input type="text" id="name" required placeholder="Nhập tên của bạn">
+        <form action="http://localhost/eproject/contact/add" method="POST">
+            <label for="name">NAME * :</label>
+            <input type="text" name="name" required placeholder="NAME">
 
-            <label for="phone">SĐT :</label>
-            <input type="tel" id="phone" placeholder="Nhập số điện thoại của bạn">
+            <label for="phone">PHONE :</label>
+            <input type="tel" name="phone_number" placeholder="PHONE">
 
-            <label for="email">Email * :</label>
-            <input type="email" id="email" required placeholder="Nhập email của bạn">
+            <label for="email">EMAIL * :</label>
+            <input type="email" name="email" required placeholder="EMAIL">
 
-            <label for="company">Công ty của bạn * :</label>
-            <input type="text" id="company" required placeholder="Nhập tên công ty">
+            <label for="company">COMPANY * :</label>
+            <input type="text" name="company" required placeholder="COMPANY">
 
-            <label for="title">Tiêu đề * :</label>
-            <input type="text" id="title" required placeholder="Nhập tiêu đề câu hỏi">
+            <label for="title">TITLE * :</label>
+            <input type="text" name="title" required placeholder="TITLE">
 
-            <label for="question">Câu hỏi của bạn * :</label>
-            <textarea id="question" rows="4" required placeholder="Nhập câu hỏi của bạn"></textarea>
+            <label for="question">YOUR QUESTION * :</label>
+            <textarea id="question" rows="4" required placeholder="YOUR QUESTION" name="question"></textarea>
 
-            <button type="submit">Gửi</button>
+            <button type="submit">SUBMIT</button>
         </form>
 
         <div class="contact-info">
-            <h2>LIÊN HỆ:</h2>
+            <h2>CONTAT:</h2>
             <p><strong>Luminous Garden</strong></p>
             <p>✔️  Showroom: 8A Tôn Thất Thuyết, Mỹ Đình, Nam Từ Liêm, Hà Nội.</p>
-            <p>✔️  Điện Thoại: 0523652003</p>
+            <p>✔️  Hotline: 0523652003</p>
         </div>
     </div>
 

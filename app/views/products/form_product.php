@@ -83,10 +83,10 @@
 
 <body class="addproduct_body-admin">
     <?php
-    $data = $input["data"];
-    $product = $data["product"] ?? "";
-    $brands = $data["brands"] ?? "";
-    $types = $data["types"] ?? "";
+        $data = $input["data"];
+        $product = $data["product"] ?? "";
+        $brands = $data["brands"] ?? "";
+        $types = $data["types"] ?? "";
     ?>
 
     <?php $isUpdate = !empty($product); ?>

@@ -22,11 +22,11 @@ function toggleDescription() {
     
     if (fullDesc.style.display === "none") {
         fullDesc.style.display = "block";
-        toggleButton.innerText = "Thu gọn";
+        toggleButton.innerText = "Collapse";
         shortDesc.style.display = "none";
     } else {
         fullDesc.style.display = "none";
-        toggleButton.innerText = "Xem thêm";
+        toggleButton.innerText = "See more";
         shortDesc.style.display = "block";
     }
 }
