@@ -1,0 +1,41 @@
+
+.container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    height: 100vh;           /* Chiều cao toàn màn hình */
+}
+
+.login-form {
+    background-color: #d4d3d3; /* Màu nền form */
+    padding: 20px;             /* Khoảng cách bên trong */
+    border-radius: 10px;        /* Bo tròn các góc */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.login-form h2 {
+    text-align: center;
+}
+
+.login-form input[type="username"],
+.login-form input[type="password"] {
+    width: 90%;              /* Chiều rộng 100% cho input */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: red; /* Màu nền của nút */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #d42c15; /* Hiệu ứng khi hover vào nút */
+}

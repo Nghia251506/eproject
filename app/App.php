@@ -1,13 +1,13 @@
 <?php 
 class App {
-    private $__controller, $__action, $__params, $__instanceController, $__conn;
-    function __construct($conn)
+    private $__controller, $__action, $__params, $__instanceController, $__conn, $__midleware;
+    function __construct($conn,$midleware)
     {
         $this->__controller = "home";
         $this->__action = "index";
         $this->__params = [];
         $this->__conn = $conn;
-        // $this->__midleware = $midleware;
+        $this->__midleware = $midleware;
         $this->handleUrl();
         
     }
@@ -24,7 +24,7 @@ class App {
         $path = $this->getPath();
         if (!empty($path)) {
             $info = array_values(array_filter(explode("/", $path)));
-            // $midleInfo = $info;
+            $midleInfo = $info;
             //1. handle controller
             if (!empty($info[0])) {
                 $this->__controller = ucfirst($info[0])."Controller";
@@ -62,7 +62,7 @@ class App {
             //4.1 check xem function co ton tai trong class hay khong
             if (method_exists($this->__instanceController, $this->__action )) {
                 // kiểm tra path sử dung middlewere
-                // $this->__midleware->execute($midleInfo);
+                $this->__midleware->execute($midleInfo);
                 call_user_func_array([$this->__instanceController, $this->__action], $this->__params);
             } else {
                 

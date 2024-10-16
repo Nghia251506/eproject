@@ -3,38 +3,24 @@
   justify-content: space-between;
   align-items: center;
   background-color: black;
-  padding: 10px 0; /* Màu nền */
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 50px; /* Kích thước logo */
-  height: auto;
-  margin-right: 10px;
-}
-
-.company-name {
-  font-size: 24px;
-  color: rgb(65, 117, 5); /* Màu chữ của tên công ty */
-}
-/* Tổng quan cấu trúc */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  padding: 10px 0;
+  /* Màu nền */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header-container {
   width: 100%;
-  margin: 0 auto; /* Căn giữa container */
+  margin: 0 auto;
+  /* Căn giữa container */
   display: flex;
-  justify-content: space-between; /* Phân bố đều các thành phần */
+  justify-content: space-between;
+  /* Phân bố đều các thành phần */
   align-items: center;
-  padding: 0 20px; /* Thêm khoảng cách giữa container và viền */
+  padding: 0 20px;
+  /* Thêm khoảng cách giữa container và viền */
 }
 
 /* Logo */
@@ -52,13 +38,16 @@ body {
   font-size: 20px;
   text-decoration: none;
 }
+
+/* Thanh tìm kiếm */
 .search-form {
-  flex-grow: 2; /* Cho phép thanh tìm kiếm mở rộng */
+  flex-grow: 2;
+  /* Cho phép thanh tìm kiếm mở rộng */
   display: flex;
   justify-content: center;
 }
 
-.search-form input {
+.search-form form input {
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #ffffff;
@@ -71,23 +60,6 @@ body {
   display: flex;
   align-items: center;
   gap: 60px;
-}
-
-.login {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #000; /* Màu của link */
-  font-size: 18px;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .search-bar {
@@ -103,6 +75,7 @@ body {
   color: #000;
   font-size: 18px;
 }
+
 .login a {
   color: #f2d265;
   text-decoration: none;
@@ -115,42 +88,47 @@ body {
 }
 
 /* Shop button */
-.shopping button {
-  background-color: #f2d265;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+.shopping a {
+  background-color: #f2d265 !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
 
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-weight: bold !important;
 }
 
-.shopping button i {
-  margin-left: 10px;
+.shopping a i {
+  margin-left: 10px !important;
 }
 
-.shopping button:hover {
-  background-color: white;
+.shopping a:hover {
+  background-color: white !important;
 }
 
-/* Navigation */
 .nav {
   background-color: #f2d265;
+  display: inline-block;
+  justify-content: center;
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  z-index: 100;
 }
 
 .nav-container {
-  max-width: 0 auto;
-  margin: 0 auto; /* Căn giữa navigation */
   text-align: center;
-  padding: 0 20px; /* Thêm khoảng cách hai bên */
+  padding: 0 20px;
+  /* Thêm khoảng cách hai bên */
 }
 
 .nav-item {
   display: flex;
   justify-content: center;
-  gap: 40px; /* Điều chỉnh khoảng cách giữa các mục */
+  gap: 40px;
+  /* Điều chỉnh khoảng cách giữa các mục */
 }
 
 .nav-item a {
@@ -159,8 +137,94 @@ body {
   font-size: 16px;
   font-weight: bold;
 }
+.mobile-navbar {
+  display: none;
+}
 
-.nav-item a:hover {
-  color: #ffffff;
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .logo-name a {
+    display: none;
+  }
+  .logo-image img{
+    height: 60px;
+  }
+
+  .search-bar{
+    width: 100%;
+  }
+
+  .login{
+    display: none;
+  }
+
+  .search-form form input {
+    padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        width: 80%;
+        /* max-width: 400px; */
+        margin-left: 10px;
+  }
+  .nav-item {
+    display: none;
+    /* Ẩn navbar */
+  }
+  .mobile-navbar_home {
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  .mobile-navbar {
+    display: block;
+    /* Hiện mobile navbar */
+    flex-direction: column;
+    /* Hiện thị theo cột */
+    background-color: #f2d265;
+    position: fixed;
+    /* Để nó nằm trên các thành phần khác */
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* Ẩn khi không có icon */
+  }
+  .mobile-navbar a {
+    padding-left: 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    /* Hiện thị theo cột */
+  }
+
+  .mobile-navbar-icon {
+    display: block;
+    /* Hiện icon navbar */
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-right {
+    gap: 30px;
+    /* Giảm khoảng cách cho nhỏ hơn */
+  }
+}
+
+/* Icon để mở navbar */
+.mobile-navbar-icon {
+  display: none;
+  /* Ẩn trên PC và laptop */
+}
+
+/* Khi nhấn vào icon */
+.show {
+  display: flex !important;
+  /* Hiện navbar */
 }

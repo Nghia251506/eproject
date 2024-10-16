@@ -1,0 +1,27 @@
+.sidebar{
+    width: 100%;
+    /* height: var(--header-height); */
+    background-image:var(--color-header);
+}
+.header-sidebar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-list{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dropdown{
+    color: #F2D265;
+}
+
+.link-dashboard{
+    color: #F2D265;
+}
+
+.sidebar-list li a{
+    color: var(--color-black);
+    font-size: 1.3rem;
+}
