@@ -89,6 +89,3 @@
 
 </html>
 
-<div class="header-responsive">
-  <h1>this is header responsive</h1>
-</div> 

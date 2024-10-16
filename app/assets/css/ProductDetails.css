@@ -88,6 +88,16 @@
   justify-content: center;
 }
 
+/* .btshop button {
+  background-color: #f2d265;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+} */
+
 .btshop p {
   margin-top: 10px;
   color: #333;
@@ -257,4 +267,3 @@
     width: 100%;
   }
 }
-
