@@ -41,12 +41,15 @@ class CartModel {
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
-    public function removeFromCart($orderId, $productId) {
-        $query = "DELETE FROM sale_order_line WHERE order_id = :order_id AND product_id = :product_id";
-        $stmt = $this->__conn->prepare($query);
-        $stmt->bindParam(":order_id", $orderId);
-        $stmt->bindParam(":product_id", $productId);
-        return $stmt->execute();
+    public function removeFromCart($index) {
+        // $query = "DELETE FROM sale_order_line WHERE order_id = :order_id AND product_id = :product_id";
+        // $stmt = $this->__conn->prepare($query);
+        // $stmt->bindParam(":order_id", $orderId);
+        // $stmt->bindParam(":product_id", $productId);
+        // return $stmt->execute();
+        echo($index);
+        // unset($_SESSION['quantityList'][$index]);
+        // unset($_SESSION['productList'][$index]);
     }
 
     // Cập nhật số lượng sản phẩm trong giỏ hàng
@@ -58,6 +61,17 @@ class CartModel {
         $stmt->bindParam(":order_id", $orderId);
         $stmt->bindParam(":product_id", $productId);
         $stmt->bindParam(":quantity", $quantity);
+        return $stmt->execute();
+    }
+
+    // create order
+    public function createOrder($customer_id, $product_id, $quantity, $price, $price_subtotal) {
+        $query_order = "
+        INSERT INTO sale_order (`customer_id`, `create_date`) VALUES (:customer_id, :date_now)
+        ";
+        $stmt_1 = $this->__conn->prepare($query_order);
+        $stmt_1->bindParam(":customer_id", $orderId);
+        $stmt_1->bindParam(":create_date", $productId);
         return $stmt->execute();
     }
 }
