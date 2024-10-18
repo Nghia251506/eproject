@@ -10,7 +10,6 @@ footer {
 
 /* Footer Container */
 .footer-container {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; /* Allow wrapping for small screens */
@@ -23,6 +22,10 @@ footer {
   /* transition: transform 0.3s; Smooth hover effect */
   flex: 1; /* Flex property for responsive layout */
   margin: 10px; /* Uniform margin */
+}
+
+.footer-contact-info:hover {
+  /* transform: scale(1.02); Slightly enlarge on hover */
 }
 
 .footer-contact-info h3 {
@@ -100,22 +103,129 @@ footer {
   align-items: center; /* Center the iframe */
   border: 1px solid #ddd; /* Light border for separation */
   border-radius: 8px; /* Rounded corners */
+  background: rgba(255, 255, 255, 0.8);
   transition: transform 0.3s; /* Smooth hover effect */
   max-width: 393px; /* Set max width */
   max-height: 282px; /* Set max height */
   overflow: hidden; /* Hide overflow */
   flex: 1; /* Flex property for responsive layout */
-  margin: 0 100px 0 50px;
+  margin: 0 100px 0 50px; /* Uniform margin */
 }
 
 .map iframe {
-  border: none !important; /* Bắt buộc xóa khung viền */
-  box-shadow: none !important; /* Xóa bóng nếu có */
-  outline: none !important; /* Xóa outline nếu có */
-  margin: 0;
-  padding: 0;
-  width: 100%; /* Đảm bảo chiều rộng khớp với container */
-  height: auto;
+  width: 393px; /* Fixed width */
+  height: 282px; /* Fixed height */
+  border: 0; /* No border for the iframe */
+}
+
+.map:hover {
+  transform: scale(1.05);
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping for small screens */
+}
+
+/* Contact Info Styles */
+.contact-info {
+  padding: 15px; /* Add padding for spacing */
+  border-radius: 8px; /* Rounded corners */
+  /* transition: transform 0.3s; Smooth hover effect */
+  flex: 1; /* Flex property for responsive layout */
+  margin: 10px; /* Uniform margin */
+}
+
+.contact-info:hover {
+  /* transform: scale(1.02); Slightly enlarge on hover */
+}
+
+.contact-info h3 {
+  margin-bottom: 10px; /* Space below heading */
+  color: #333; /* Darker color for contrast */
+}
+
+.contact-info a {
+  margin: 0 10px;
+}
+.contact-info img {
+  width: 30px; /* Đặt kích thước cho biểu tượng */
+  height: 30px; /* Đặt chiều cao cho biểu tượng */
+  transition: transform 0.3s; /* Hiệu ứng hover */
+}
+.contact-info img:hover {
+  transform: scale(1.1); /* Tăng kích thước khi hover */
+}
+
+.contact-info p {
+  margin: 20px 0; /* Space between paragraphs */
+  line-height: 1.6; /* Improve line height for readability */
+  transition: transform 0.3s; /* Smooth hover effect */
+}
+
+/* Social Info Styles*/
+.social-icons {
+  display: flex; /* Sử dụng flexbox để sắp xếp các biểu tượng theo hàng */
+  margin-top: 10px; /* Khoảng cách phía trên */
+}
+
+.social-icons a {
+  margin: 0 30px; /* Khoảng cách giữa các biểu tượng */
+}
+
+.social-icons img {
+  width: 30px; /* Đặt kích thước cho biểu tượng */
+  height: 30px; /* Đặt chiều cao cho biểu tượng */
+  transition: transform 0.3s; /* Hiệu ứng hover */
+}
+
+.social-icons img:hover {
+  transform: scale(1.1); /* Tăng kích thước khi hover */
+}
+
+/* Payment Info Styles */
+.payment-info {
+  flex: 1; /* Flex property for responsive layout */
+  margin: 10px; /* Uniform margin */
+  text-align: center; /* Center content */
+}
+
+.payment-info img {
+  width: 170px;
+  display: block;
+  margin: 0 auto; /* Center the image */
+  border-radius: 21px; /* Rounded corners for image */
+  transition: transform 0.3s;
+}
+
+.payment-info img:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.payment-info h3 {
+  margin-top: 0; /* Remove top margin */
+  padding-bottom: 5px; /* Spacing below the heading */
+}
+
+/* Map Styles */
+.map {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center the iframe */
+  border: 1px solid #ddd; /* Light border for separation */
+  border-radius: 8px; /* Rounded corners */
+  background: rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s; /* Smooth hover effect */
+  max-width: 393px; /* Set max width */
+  max-height: 282px; /* Set max height */
+  overflow: hidden; /* Hide overflow */
+  flex: 1; /* Flex property for responsive layout */
+  margin: 0 100px 0 50px; /* Uniform margin */
+}
+
+.map iframe {
+  width: 393px; /* Fixed width */
+  height: 282px; /* Fixed height */
+  border: 0; /* No border for the iframe */
 }
 
 .map:hover {
@@ -123,24 +233,24 @@ footer {
 }
 
 /* Common Styles */
-.footer-container h3 {
+h3 {
   margin-top: 0;
 }
 
-.footer-container a {
+a {
   color: #000; /* Default link color */
   text-decoration: none; /* No underline */
 }
 
-.footer-container a:hover {
+a:hover {
   text-decoration: underline; /* Underline on hover */
 }
 
-@media(max-width:1024px){
-  footer{
+@media (max-width: 1024px) {
+  footer {
     display: none;
   }
-  #footer2{
+  #footer2 {
     display: none;
   }
 }
