@@ -71,7 +71,7 @@
               <li><a href="http://localhost/eproject/user/logout">Logout</a></li>
             </ul>
           <?php else: ?>
-            <a href='http://localhost/mvcphp/user/login'>
+            <a href='http://localhost/eproject/user/login'>
               <span>Đăng Nhập</span>
             </a>
           <?php endif; ?>
@@ -90,12 +90,14 @@
     <div class="nav-container">
       <div class="nav-item">
         <a href="http://localhost/eproject/home/index">HOME</a>
-        <a href="#">CUSTOM FURNITURE</a>
-        <a href='http://localhost/eproject/product/index'>SHOP</a>
-        <a href="#">ART COLLECTION</a>
-        <a href="#">PILLOWS</a>
-        <a href="#">CANDLES</a>
-        <a href="#">GOOD DEALS</a>
+        <a href="http://localhost/eproject/product/ceiling_lights">CEILING LIGHTS</a>
+        <a href='http://localhost/eproject/product/index'>ALL PRODUCTS</a>
+        <a href="http://localhost/eproject/product/wall">WALL</a>
+        <a href="http://localhost/eproject/product/table">TABLE</a>
+        <a href="http://localhost/eproject/product/pendant">PENDANT</a>
+        <a href="http://localhost/eproject/product/outdoor">OUTDOOR LIGHTS</a>
+        <a href="http://localhost/eproject/product/spotlight">SPOT LIGHTS</a>
+        <a href="http://localhost/eproject/product/led">LED LIGHT</a>
         <a href="http://localhost/eproject/contact/index">CONTACT US</a>
       </div>
     </div>

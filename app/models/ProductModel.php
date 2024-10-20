@@ -96,30 +96,42 @@ class ProductModel
         }
     }
 
-    public function getProductsByTypeId($type_id)
-    {
-        try {
-            if (isset($this->__conn)) {
-                // Chuẩn bị câu lệnh SQL để lấy sản phẩm theo type_id
-                $sql = "SELECT * FROM products WHERE type_id = :type_id";
-
-                // Chuẩn bị câu lệnh
-                $stmt = $this->__conn->prepare($sql);
-                $stmt->bindParam(":type_id", $type_id, PDO::PARAM_INT);
-
-                // Thực thi câu lệnh
-                $stmt->execute();
-
-                // Lấy tất cả các sản phẩm cùng loại
-                return $stmt->fetchAll(PDO::FETCH_OBJ);
-            }
-        } catch (PDOException $ex) {
-            echo $ex->getMessage();
-        }
-
-        return []; // Trả về mảng rỗng nếu không có sản phẩm nào
+    public function getProductsByBrandId($brand_id, $limit, $offset) {
+        $query = "SELECT * FROM products WHERE brand_id = :brand_id LIMIT :limit OFFSET :offset";
+        $statement = $this->__conn->prepare($query);
+        $statement->bindParam(':brand_id', $brand_id, PDO::PARAM_INT);
+        $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function countProductsByBrand($brand_id) {
+        $query = "SELECT COUNT(*) as total FROM products WHERE brand_id = :brand_id";
+        $statement = $this->__conn->prepare($query);
+        $statement->bindParam(':brand_id', $brand_id, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_OBJ)->total;
     }
 
+    public function getProductsByCategory($category, $limit, $offset) {
+        $sql = "SELECT p.* , t.type_name FROM products p
+                  JOIN type_lights t ON p.type_id = t.id
+                  WHERE t.category = :category
+                  LIMIT :limit OFFSET :offset";
+        $stmt = $this->__conn->prepare($sql);
+        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function countProductsByCategory($type_id) {
+        $stmt = $this->__conn->prepare("SELECT COUNT(*) FROM products WHERE type_id = :type_id");
+        $stmt->bindParam(':type_id', $type_id);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 
     // The saveProduct function is commonly used for editing and adding new products
     public function saveProduct($name, $code, $type_id, $watt, $socket, $color, $purchase_price, $sale_price, $quantity, $brand_id, $image_url, $description)
@@ -215,7 +227,7 @@ class ProductModel
         }
     }
 
-    public function searchProduct($name, $type_id, $limit, $offset, $code)
+    public function searchProduct($name, $brand_id, $limit, $offset, $code)
     {
         // var_dump($name);
         // var_dump($type_id);
@@ -231,20 +243,21 @@ class ProductModel
                                 p.quantity,
                                 p.image_url,
                                 p.description,
+                                p.brand_id,
                                 t.type_name,
                                 b.brand_name
                     from products as p
                     inner join type_lights as t on p.type_id = t.id
                     inner join brand_lights as b on p.brand_id = b.id
                     WHERE case when :name != '' then p.name LIKE :name else 1=1 end 
-                           and case when :type_id != 0 then p.type_id = :type_id else 1=1 end
+                           and case when :brand_id != 0 then p.brand_id = :brand_id else 1=1 end
                            and case when :code != '' then p.code LIKE :code else 1=1 end
                            LIMIT :limit 
                            OFFSET :offset
                     ";
             $stmt = $this->__conn->prepare($sql);
             $stmt->bindValue(":name", '%' . $name . '%');
-            $stmt->bindValue(":type_id", $type_id, PDO::PARAM_INT);
+            $stmt->bindValue(":brand_id", $brand_id, PDO::PARAM_INT);
             $stmt->bindValue(":code",'%' . $code . '%', PDO::PARAM_STR);
             $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
             $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);

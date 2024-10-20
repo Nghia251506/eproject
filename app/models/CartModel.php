@@ -65,13 +65,13 @@ class CartModel {
     }
 
     // create order
-    public function createOrder($customer_id, $product_id, $quantity, $price, $price_subtotal) {
-        $query_order = "
-        INSERT INTO sale_order (`customer_id`, `create_date`) VALUES (:customer_id, :date_now)
-        ";
-        $stmt_1 = $this->__conn->prepare($query_order);
-        $stmt_1->bindParam(":customer_id", $orderId);
-        $stmt_1->bindParam(":create_date", $productId);
-        return $stmt->execute();
-    }
+    // public function createOrder($customer_id, $product_id, $quantity, $price, $price_subtotal) {
+    //     $query_order = "
+    //     INSERT INTO sale_order (`customer_id`, `create_date`) VALUES (:customer_id, :date_now)
+    //     ";
+    //     $stmt_1 = $this->__conn->prepare($query_order);
+    //     $stmt_1->bindParam(":customer_id", $orderId);
+    //     $stmt_1->bindParam(":create_date", $productId);
+    //     return $stmt->execute();
+    // }
 }

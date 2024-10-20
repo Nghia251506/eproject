@@ -31,9 +31,15 @@ create table brand_lights(
     brand_name varchar(255)
 );
 
+create table category(
+	id int auto_increment not null primary key,
+    category_name varchar(255)
+);
+
 create table type_lights(
 	id int auto_increment not null primary key,
-    type_name varchar(255)
+    type_name varchar(255),
+    category varchar(255)
 );
 
 
@@ -148,5 +154,13 @@ insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`p
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Phan Anh Tiến Quý','ad1@gmail.com','0123456789','Hà Nội','1995-06-15','ad1','123456','admin');
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Nguyễn Văn A','cs1@gmail.com','0123456789','Hà Nội','1995-06-15','cs1','123456','customer');
 
+ALTER TABLE type_lights ADD category VARCHAR(255);
+UPDATE type_lights SET category = 'ceiling' WHERE id IN (1, 3, 4, 5);
+UPDATE type_lights SET category = 'table' WHERE id = 2; -- Table Lamp
+UPDATE type_lights SET category = 'wall' WHERE id = 6; -- Wall Sconce
+UPDATE type_lights SET category = 'pendant' WHERE id = 7; -- Pendant Light
+UPDATE type_lights SET category = 'led' WHERE id = 8; -- LED Strip Light
+UPDATE type_lights SET category = 'outdoor' WHERE id = 9; -- Floodlight
+UPDATE type_lights SET category = 'spotlight' WHERE id = 10; -- Spotlight
 
 

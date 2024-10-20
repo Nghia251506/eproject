@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="http://localhost/eproject/app/assets/css/cart.css">
+    <style>
+        .title {
+            font-size: 15px !important;
+            font-weight: 700 !important;
+        }
+    </style>
 </head>
 
 <body class="cart-page">
@@ -35,7 +41,7 @@
             $_SESSION['payment_message'] = "Payment failed. Please try again.";
         }
     }
-    
+
     // Check for payment message and display it
     if (isset($_SESSION['payment_message'])) {
         echo "<script type='text/javascript'>alert('" . addslashes($_SESSION['payment_message']) . "');</script>";
@@ -46,52 +52,44 @@
     // unset($_SESSION['productList']);
     ?>
 
-    <h1>Your shopping cart</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Code</th>
-                <th>Type</th>
-                <th>Watt</th>
-                <th>Socket</th>
-                <th>Color</th>
-                <th>Sale_price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-            <?php foreach ($cartItems as $index => $item): ?>
-                <tr>
-                    <td>
-                        <div style="width: 80px; height: 80px;">
-                            <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo htmlspecialchars($item->image_url); ?>" alt="">
-                        </div>
-                    </td>
-                    <td><?php echo htmlspecialchars($item->name); ?></td>
-                    <td><?php echo htmlspecialchars($item->code); ?></td>
-                    <td><?php echo htmlspecialchars($item->type_name); ?></td>
-                    <td><?php echo htmlspecialchars($item->watt); ?></td>
-                    <td><?php echo htmlspecialchars($item->socket); ?></td>
-                    <td><?php echo htmlspecialchars($item->color); ?></td>
-                    <td><?php echo number_format($item->sale_price, 0, ',', '.'); ?> VND</td>
-                    <td><?php echo htmlspecialchars($_SESSION["quantityList"][$index]); ?></td>
-                    <td><?php echo number_format($item->sale_price * $_SESSION["quantityList"][$index], 0, ',', '.'); ?> VND</td>
-                    <td>
-                        <a href="http://localhost/eproject/cart/remove/<?= $index ?>">Delete</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div style="display:flex; width: 100%; justify-content: center">
-        <form method="post">
-            <button class="pay" type="submit">Make Payment</button>
-        </form>
+    <div class="content shoping py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pr-md-3 pr-lg-4">
+                    <div class="shoping-order">
+                        <p class="title">Delivery information</p>
+                        <form id="order-form" action="">
+                            <div class="row">
+                                <div class="form-group col-12 mb-0 field-orderform-fullname required">
+                                    <input type="text" id="orderform-fullname" class="form-control" name="OrderForm[fullname]" autofocus placeholder="FullName" aria-required="true">
+                                    <p class="help-block help-block-error"></p>
+                                </div>
+                                <div class="form-group col-6 mb-0 pr-1 field-orderform-email required">
+                                    <input type="text" id="orderform-email" class="form-control" name="OrderForm[email]" autofocus placeholder="Email" aria-required="true">
+                                </div>
+                                <div class="form-group col-6 mb-0 pl-1 field-orderform-phone required">
+                                    <input type="text" id="orderform-phone" class="form-control" name="OrderForm[phone]" autofocus placeholder="Phone" aria-required="true">
+                                </div>
+                                <div class="form-group col-12 mb-0 pl-1 field-orderform-phone required">
+                                    <input type="text" id="orderform-address" class="form-control" name="OrderForm[address]" autofocus placeholder="Address" aria-required="true">
+                                </div>
+                                <!-- <div class="form-group col-12 mb-0 pl-1 field-orderform-phone required">
+                                    <input type="text" id="orderform-phone" class="form-control" name="OrderForm[phone]" autofocus placeholder="Phone" aria-required="true">
+                                </div>
+                                <div class="form-group col-12 mb-0 pl-1 field-orderform-phone required">
+                                    <input type="text" id="orderform-phone" class="form-control" name="OrderForm[phone]" autofocus placeholder="Phone" aria-required="true">
+                                </div> -->
+                                <div class="form-group col-12 mb-0 pl-1 field-orderform-phone required">
+                                    <textarea type="text" id="orderform-messenger" class="form-control" name="OrderForm[messenger]" autofocus placeholder="Messenger" aria-required="true"></textarea>
+                                </div>
+                                <p class="col-12 title">Payment method</p>
+                                <div class="col-12 mb-3"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 pr-md-3 pr-lg-4"></div>
+            </div>
+        </div>
     </div>
 </body>
 
