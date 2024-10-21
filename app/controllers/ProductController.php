@@ -254,16 +254,16 @@ class ProductController extends BaseController
     }
 
 
-    public function ceiling_lights($page = 1)
+    public function ceiling($page = 1)
     {
         $limit = 8; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('ceiling', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('1', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('ceiling');
+        $totalProducts = $this->__productModel->countProductsByCategory('1');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -281,10 +281,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('table', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('2', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('table');
+        $totalProducts = $this->__productModel->countProductsByCategory('2');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -302,10 +302,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('wall', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('3', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('wall');
+        $totalProducts = $this->__productModel->countProductsByCategory('3');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -324,10 +324,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('pendant', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('4', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('pendant');
+        $totalProducts = $this->__productModel->countProductsByCategory('4');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -345,10 +345,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('led', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('5', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('led');
+        $totalProducts = $this->__productModel->countProductsByCategory('5');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -366,10 +366,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('outdoor', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('6', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('outdoor');
+        $totalProducts = $this->__productModel->countProductsByCategory('6');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [
@@ -387,10 +387,10 @@ class ProductController extends BaseController
         $offset = ($page - 1) * $limit; // Calculate offset
 
         // Lấy sản phẩm thuộc category 'ceiling'
-        $products = $this->__productModel->getProductsByCategory('spotlight', $limit, $offset);
+        $products = $this->__productModel->getProductsByCategory('7', $limit, $offset);
 
         $brands = $this->__brandModel->getAllBrand();
-        $totalProducts = $this->__productModel->countProductsByCategory('spotlight');
+        $totalProducts = $this->__productModel->countProductsByCategory('7');
         $totalPages = ceil($totalProducts / $limit); // Total number of page
 
         $this->view("layouts/client", [

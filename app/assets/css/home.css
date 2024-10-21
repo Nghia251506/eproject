@@ -1,68 +1,237 @@
-.home-page {
-  width: 75%;
-  margin: 0 auto;
+.img-adv {
+  width: 880px;
+  height: 400px;
 }
 
-.background-container {
-  width: 100%;
-  height: 850px;
-  margin-top: 50px;
+.img-adv_item {
+  width: 880px;
+  height: 400px;
 }
 
-.background-container img {
+.img-adv_item img {
+  width: 850px;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.owl-stages {
+  width: 367px;
+  height: 194px;
+}
+
+.owl-stages img {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   object-fit: cover;
-  border-radius: 5px;
 }
 
-.featured {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.slider-wrapper {
+.policy {
+  width: 390px;
+  padding: 0 12px;
   position: relative;
-  width: 100%; /* Thay đổi kích thước theo ý muốn */
-  overflow: hidden; /* Ẩn hình ảnh ngoài vùng nhìn thấy */
 }
 
-.featured-container {
-  display: flex;
-  transition: transform 0.5s ease; /* Thay đổi vị trí mượt mà */
-  align-items: center; /* Canh giữa dọc */
+.items {
+  background-color: black;
+  padding: 17.4px;
 }
 
-.slider-img {
-  width: 200px; /* Thay đổi kích thước theo ý muốn */
-  margin: 0 10px; /* Khoảng cách giữa các hình ảnh */
-  opacity: 0.5; /* Mờ các hình ảnh mặc định */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng chuyển đổi */
+
+.my-auto {
+  height: 20px;
 }
 
-.slider-img.active {
-  opacity: 1; /* Hình ảnh ở giữa sẽ rõ nét */
-  transform: scale(1.1); /* Tăng kích thước cho hình ảnh hiện tại */
+.info p,
+.category {
+  color: #F7BF35;
+  font-size: 10px;
 }
 
-.prev-btn, .next-btn {
+.items::after {
+  content: "";
   position: absolute;
+  /* Đặt border ở vị trí tuyệt đối */
+  top: 0;
+  left: 50%;
+  /* Đặt border ở giữa */
+  height: 100%;
+  /* Độ cao của border */
+  width: 1px;
+  /* Độ rộng của border */
+  background-color: #F7BF35;
+  /* Màu sắc của border */
+  transform: translateX(-50%);
+  /* Để border chính xác ở giữa */
+}
+
+.items::before {
+  content: "";
+  position: absolute;
+  /* Đặt border ở vị trí tuyệt đối */
   top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  cursor: pointer;
-  padding: 10px;
+  left: 50%;
+  /* Đặt border ở giữa */
+  height: 1px;
+  /* Độ cao của border */
+  width: 94%;
+  /* Độ rộng của border */
+  background-color: #F7BF35;
+  /* Màu sắc của border */
+  transform: translateX(-50%);
+  /* Để border chính xác ở giữa */
+}
+
+.bg {
+  background: url(https://denhoamy.vn/bundle/css/images/bg-container.png) repeat;
+}
+
+.best-product,
+.best-product-wrap,
+.title {
+  font-size: 20px;
+}
+
+.title {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  background-image: linear-gradient(to right, #ad8a41 0, #f7e38f 30%, #f7e38f 70%, #ad8a41 100%);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0 25px;
+  position: relative;
+}
+
+.title::after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-left-color: #ad8a41;
+  border-width: 20px;
+  margin-top: -20px;
+}
+
+.title::before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-right-color: #ad8a41;
+  border-width: 20px;
+  margin-top: -20px;
+}
+
+.best-product-wrap {
+  border: 1px, solid, #ad8a41;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.best-product-wrap p {
+  display: block;
+  margin-block-start: -1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+}
+
+.best-sell {
+  height: 100%;
+}
+
+.img-box {
+  width: 290px;
+  height: 200px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
-  z-index: 10; /* Đảm bảo nút luôn hiển thị trên hình ảnh */
+  object-fit: cover;
 }
 
-.prev-btn {
-  left: 10px; /* Vị trí nút trước */
+.item {
+  display: flex;
 }
 
-.next-btn {
-  right: 10px; /* Vị trí nút tiếp theo */
+.title-link{
+  width: 100%;
 }
 
+
+/* .title-product{
+  display: block;
+  margin-block-start: -1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+} */
+
+.title-product {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  background-image: linear-gradient(to right, #ad8a41 0, #f7e38f 30%, #f7e38f 70%, #ad8a41 100%);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0 25px;
+  position: relative;
+}
+
+.title-product::after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-left-color: #ad8a41;
+  border-width: 20px;
+  margin-top: -20px;
+}
+
+.title-product::before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-right-color: #ad8a41;
+  border-width: 20px;
+  margin-top: -20px;
+}
+
+
+
+.bg_white{
+  background-color: white;
+}
+
+/* .product-box{
+  padding: 12px;
+} */

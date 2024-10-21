@@ -42,6 +42,7 @@
                     <p>Socket: <?php echo htmlspecialchars($product->socket); ?></p>
                     <p>Color: <?php echo htmlspecialchars($product->color); ?></p>
                     <p>Brand: <?php echo htmlspecialchars($product->brand_name); ?></p>
+                    <p>Category: <?php echo htmlspecialchars($product->category_name); ?></p>
 
                     <div class="price">
                         <h5><b><?php echo htmlspecialchars(number_format($product->sale_price, 0, ',', '.')); ?> VND</b></h5>

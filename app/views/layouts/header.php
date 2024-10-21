@@ -72,7 +72,7 @@
             </ul>
           <?php else: ?>
             <a href='http://localhost/eproject/user/login'>
-              <span>Đăng Nhập</span>
+              <span>Login</span>
             </a>
           <?php endif; ?>
         </div>
@@ -90,7 +90,7 @@
     <div class="nav-container">
       <div class="nav-item">
         <a href="http://localhost/eproject/home/index">HOME</a>
-        <a href="http://localhost/eproject/product/ceiling_lights">CEILING LIGHTS</a>
+        <a href="http://localhost/eproject/product/ceiling">CEILING LIGHTS</a>
         <a href='http://localhost/eproject/product/index'>ALL PRODUCTS</a>
         <a href="http://localhost/eproject/product/wall">WALL</a>
         <a href="http://localhost/eproject/product/table">TABLE</a>
@@ -123,7 +123,7 @@
             </ul>
           <?php else: ?>
             <a href='http://localhost/mvcphp/user/login'>
-              <span>Đăng Nhập</span>
+              <span>Login</span>
             </a>
           <?php endif; ?>
       </a>

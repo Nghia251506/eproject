@@ -24,10 +24,14 @@ class ProductModel
                                 p.image_url,
                                 p.description,
                                 t.type_name,
+                                ce.id,
+                                t.category_id,
+                                ce.category_name,
                                 b.brand_name
                 from products as p
                 inner join type_lights as t on p.type_id = t.id
                 inner join brand_lights as b on p.brand_id = b.id
+                inner join categorys as ce on t.category_id = ce.id
                 order by p.id desc 
                 LIMIT :limit OFFSET :offset";
                 $stmt = $this->__conn->prepare($sql);
@@ -77,10 +81,12 @@ class ProductModel
                                 p.brand_id,
                                 p.description,
                                 t.type_name , 
-                                b.brand_name 
+                                b.brand_name,
+                                ce.category_name
                     FROM products p
                     INNER JOIN type_lights t ON p.type_id = t.id
                     INNER JOIN brand_lights b ON p.brand_id = b.id
+                    INNER JOIN categorys ce ON t.category_id = ce.id
                     WHERE p.id = :id";
 
                 $stmt = $this->__conn->prepare($sql);
@@ -114,13 +120,14 @@ class ProductModel
         return $statement->fetch(PDO::FETCH_OBJ)->total;
     }
 
-    public function getProductsByCategory($category, $limit, $offset) {
+    public function getProductsByCategory($category_id, $limit, $offset) {
         $sql = "SELECT p.* , t.type_name FROM products p
                   JOIN type_lights t ON p.type_id = t.id
-                  WHERE t.category = :category
+                  JOIN categorys ce ON t.category_id = ce.id
+                  WHERE t.category_id = :category_id
                   LIMIT :limit OFFSET :offset";
         $stmt = $this->__conn->prepare($sql);
-        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':category_id', $category_id);
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();

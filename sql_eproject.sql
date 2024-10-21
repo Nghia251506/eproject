@@ -11,10 +11,10 @@ create table users (
     date_of_birth date,
     username varchar(255),
     password varchar(255),
-    role ENUM('admin', 'employee', 'customer')
+    role ENUM('admin', 'customer')
 );
 
-create table customers(
+create table contacts(
 	id int auto_increment not null primary key,
 	name varchar(255),
     phone_number varchar(255),
@@ -31,7 +31,7 @@ create table brand_lights(
     brand_name varchar(255)
 );
 
-create table category(
+create table categorys(
 	id int auto_increment not null primary key,
     category_name varchar(255)
 );
@@ -39,7 +39,8 @@ create table category(
 create table type_lights(
 	id int auto_increment not null primary key,
     type_name varchar(255),
-    category varchar(255)
+    category_id int not null,
+    foreign key(category_id) references categorys(id)
 );
 
 
@@ -60,15 +61,23 @@ create table products(
     description LONGTEXT,
     foreign key(type_id) references type_lights(id),
     foreign key(brand_id) references brand_lights(id)
-); 
+);
+
+create table orders(
+	id int auto_increment not null primary key,
+    customer_name varchar(255),
+    phone_number varchar(255),
+    email varchar(255),
+    address varchar(255),
+    messenger longtext
+);
 
 create table sale_order(
 	id int auto_increment not null primary key,
-    name varchar(255),
-	customer_id int,
+    customer_name varchar(255),
+	order_id int,
     create_date date,
     user_id int,
-    foreign key(customer_id) references customers(id),
     foreign key(user_id) references users(id)
 );
 
@@ -79,11 +88,11 @@ create table sale_order_line(
     price float,
     quantity int,
     price_subtotal decimal(10,2),
-    foreign key(order_id) references sale_order(id),
+    foreign key(order_id) references orders(id),
     foreign key(product_id) references products(id)
 );
 
--- PROCEDURE insert
+-- PROCEDURE insert and auto build code product
 DELIMITER //
 CREATE PROCEDURE insert_product(
     IN prod_name VARCHAR(255),
@@ -125,19 +134,27 @@ insert into brand_lights (`id`, `brand_name`) values (7, "Zumtobel");
 insert into brand_lights (`id`, `brand_name`) values (8, "FLOS");
 insert into brand_lights (`id`, `brand_name`) values (9, "Artemide");
 insert into brand_lights (`id`, `brand_name`) values (10, "Louis Poulsen");
+-- insert categorys test
+insert into categorys (`id`, `category_name`) values (1, "ceiling");
+insert into categorys (`id`, `category_name`) values (2, "table");
+insert into categorys (`id`, `category_name`) values (3, "wall");
+insert into categorys (`id`, `category_name`) values (4, "pendant");
+insert into categorys (`id`, `category_name`) values (5, "led");
+insert into categorys (`id`, `category_name`) values (6, "outdoor");
+insert into categorys (`id`, `category_name`) values (7, "spotlight");
 -- insert type_lights
-insert into type_lights (`id`, `type_name`) values (1, "Chandelier");
-insert into type_lights (`id`, `type_name`) values (2, "Table Lamp");
-insert into type_lights (`id`, `type_name`) values (3, "Recessed Lighting");
-insert into type_lights (`id`, `type_name`) values (4, "Floor Lamp");
-insert into type_lights (`id`, `type_name`) values (5, "Flush Mount Light");
-insert into type_lights (`id`, `type_name`) values (6, "Wall Sconce");
-insert into type_lights (`id`, `type_name`) values (7, "FPendant Light");
-insert into type_lights (`id`, `type_name`) values (8, "LED Strip Light");
-insert into type_lights (`id`, `type_name`) values (9, "Floodlight");
-insert into type_lights (`id`, `type_name`) values (10, "Spotlight");
+insert into type_lights (`id`, `type_name`,`category_id`) values (1, "Chandelier", "1");
+insert into type_lights (`id`, `type_name`,`category_id`) values (2, "Table Lamp","2");
+insert into type_lights (`id`, `type_name`,`category_id`) values (3, "Recessed Lighting", "1");
+insert into type_lights (`id`, `type_name`,`category_id`) values (4, "Floor Lamp","1");
+insert into type_lights (`id`, `type_name`,`category_id`) values (5, "Flush Mount Light","1");
+insert into type_lights (`id`, `type_name`,`category_id`) values (6, "Wall Sconce","3");
+insert into type_lights (`id`, `type_name`,`category_id`) values (7, "Pendant Light","4");
+insert into type_lights (`id`, `type_name`,`category_id`) values (8, "LED Strip Light","5");
+insert into type_lights (`id`, `type_name`,`category_id`) values (9, "Floodlight","6");
+insert into type_lights (`id`, `type_name`,`category_id`) values (10, "Spotlight","7");
 -- insert products test
-CALL insert_product('Crystal Chandelier', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg', 'Mô tả: Đèn chùm là biểu tượng của sự sang trọng và phong cách, thường xuất hiện trong các không gian nội thất cao cấp như phòng khách, phòng ăn hoặc sảnh lớn. Với thiết kế đa dạng, từ cổ điển đến hiện đại, đèn chùm có thể đi kèm nhiều bóng đèn và pha lê, tạo nên vẻ đẹp lung linh và ấn tượng. Đèn chùm không chỉ cung cấp ánh sáng chính mà còn đóng vai trò như một tác phẩm nghệ thuật, nâng cao giá trị thẩm mỹ của ngôi nhà.');
+CALL insert_product('Crystal Chandelier', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg', 'Chandeliers are a symbol of luxury and style, often appearing in high-end interior spaces such as living rooms, dining rooms or large halls. With diverse designs, from classic to modern, chandeliers can come with many bulbs and crystals, creating a sparkling and impressive beauty. Chandeliers not only provide the main light but also act as a work of art, enhancing the aesthetic value of the house.');
 CALL insert_product('Elegant Table Lamp', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://fuhouse.vn/uploads/images/tin-tuc/den-ban-1_result.jpg', 'Mô tả: Đèn bàn là sự kết hợp hoàn hảo giữa chức năng và thẩm mỹ. Với thiết kế nhỏ gọn và đa dạng về kiểu dáng, đèn bàn không chỉ giúp chiếu sáng một khu vực cụ thể như bàn làm việc, bàn học hay bàn trang điểm mà còn là một vật trang trí đầy phong cách. Các loại đèn bàn hiện đại thường có chế độ điều chỉnh ánh sáng để phù hợp với nhu cầu đọc sách, làm việc hay thư giãn.');
 CALL insert_product('Luxury Chandelier', 1, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://tuyetlights.com/Uploads/793/images/H%C3%ACnh%20D%E1%BB%B1%20%C3%81n%20Th%E1%BB%B1c%20T%E1%BA%BF/%C4%90%C3%A8n%20Trang%20Tr%C3%AD/den-chum-pha-le-du-an-so-8.jpg', 'Mô tả: Đèn chùm là biểu tượng của sự sang trọng và phong cách, thường xuất hiện trong các không gian nội thất cao cấp như phòng khách, phòng ăn hoặc sảnh lớn. Với thiết kế đa dạng, từ cổ điển đến hiện đại, đèn chùm có thể đi kèm nhiều bóng đèn và pha lê, tạo nên vẻ đẹp lung linh và ấn tượng. Đèn chùm không chỉ cung cấp ánh sáng chính mà còn đóng vai trò như một tác phẩm nghệ thuật, nâng cao giá trị thẩm mỹ của ngôi nhà.');
 CALL insert_product('Modern Table Lamp', 2, 30, 'E27', 'red', 32000000, 47000000, 23, 2, 'https://catihome.com/wp-content/uploads/2023/03/NX57.jpeg', 'Mô tả: Đèn bàn là sự kết hợp hoàn hảo giữa chức năng và thẩm mỹ. Với thiết kế nhỏ gọn và đa dạng về kiểu dáng, đèn bàn không chỉ giúp chiếu sáng một khu vực cụ thể như bàn làm việc, bàn học hay bàn trang điểm mà còn là một vật trang trí đầy phong cách. Các loại đèn bàn hiện đại thường có chế độ điều chỉnh ánh sáng để phù hợp với nhu cầu đọc sách, làm việc hay thư giãn.');
@@ -154,13 +171,13 @@ insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`p
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Phan Anh Tiến Quý','ad1@gmail.com','0123456789','Hà Nội','1995-06-15','ad1','123456','admin');
 insert into users(`name`,`email`,`phone`,`address`,`date_of_birth`,`username`,`password`,`role`) values ('Nguyễn Văn A','cs1@gmail.com','0123456789','Hà Nội','1995-06-15','cs1','123456','customer');
 
-ALTER TABLE type_lights ADD category VARCHAR(255);
-UPDATE type_lights SET category = 'ceiling' WHERE id IN (1, 3, 4, 5);
-UPDATE type_lights SET category = 'table' WHERE id = 2; -- Table Lamp
-UPDATE type_lights SET category = 'wall' WHERE id = 6; -- Wall Sconce
-UPDATE type_lights SET category = 'pendant' WHERE id = 7; -- Pendant Light
-UPDATE type_lights SET category = 'led' WHERE id = 8; -- LED Strip Light
-UPDATE type_lights SET category = 'outdoor' WHERE id = 9; -- Floodlight
-UPDATE type_lights SET category = 'spotlight' WHERE id = 10; -- Spotlight
+-- ALTER TABLE type_lights ADD category VARCHAR(255);
+-- UPDATE type_lights SET category = 'ceiling' WHERE id IN (1, 3, 4, 5);
+-- UPDATE type_lights SET category = 'table' WHERE id = 2; 
+-- UPDATE type_lights SET category = 'wall' WHERE id = 6; 
+-- UPDATE type_lights SET category = 'pendant' WHERE id = 7; 
+-- UPDATE type_lights SET category = 'led' WHERE id = 8; 
+-- UPDATE type_lights SET category = 'outdoor' WHERE id = 9; 
+-- UPDATE type_lights SET category = 'spotlight' WHERE id = 10; 
 
 
