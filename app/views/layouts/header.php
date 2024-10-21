@@ -71,8 +71,8 @@
               <li><a href="http://localhost/eproject/user/logout">Logout</a></li>
             </ul>
           <?php else: ?>
-            <a href='http://localhost/mvcphp/user/login'>
-              <span>Đăng Nhập</span>
+            <a href='http://localhost/eproject/user/login'>
+              <span>Login</span>
             </a>
           <?php endif; ?>
         </div>
@@ -90,12 +90,14 @@
     <div class="nav-container">
       <div class="nav-item">
         <a href="http://localhost/eproject/home/index">HOME</a>
-        <a href="#">CUSTOM FURNITURE</a>
-        <a href='http://localhost/eproject/product/index'>SHOP</a>
-        <a href="#">ART COLLECTION</a>
-        <a href="#">PILLOWS</a>
-        <a href="#">CANDLES</a>
-        <a href="#">GOOD DEALS</a>
+        <a href="http://localhost/eproject/product/ceiling">CEILING LIGHTS</a>
+        <a href='http://localhost/eproject/product/index'>ALL PRODUCTS</a>
+        <a href="http://localhost/eproject/product/wall">WALL</a>
+        <a href="http://localhost/eproject/product/table">TABLE</a>
+        <a href="http://localhost/eproject/product/pendant">PENDANT</a>
+        <a href="http://localhost/eproject/product/outdoor">OUTDOOR LIGHTS</a>
+        <a href="http://localhost/eproject/product/spotlight">SPOT LIGHTS</a>
+        <a href="http://localhost/eproject/product/led">LED LIGHT</a>
         <a href="http://localhost/eproject/contact/index">CONTACT US</a>
       </div>
     </div>
@@ -114,14 +116,14 @@
       <a href="http://localhost/eproject/user/login">
         <!-- <i class="fa-regular fa-circle-user"></i> -->
         <?php if (isset($_SESSION['user'])): ?>
-            <a href="#" id="user-name">Welcome, <?php echo $_SESSION['user']->name; ?></a>
+            <a href="#" id="user-name"><?php echo $_SESSION['user']->name; ?></a>
             <ul id="dropdown">
               <li><a href="http://localhost/eproject/user/settings">Setting</a></li>
               <li><a href="http://localhost/eproject/user/logout">Logout</a></li>
             </ul>
           <?php else: ?>
             <a href='http://localhost/mvcphp/user/login'>
-              <span>Đăng Nhập</span>
+              <span>Login</span>
             </a>
           <?php endif; ?>
       </a>

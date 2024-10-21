@@ -8,7 +8,7 @@
         public function getAllContact($limit, $offset){
             try{
                 if(isset($this->__conn)){
-                    $sql = "SELECT * FROM customers ORDER BY id DESC LIMIT :limit OFFSET :offset";
+                    $sql = "SELECT * FROM contacts ORDER BY id DESC LIMIT :limit OFFSET :offset";
                     $stmt = $this->__conn->prepare($sql);
                     $stmt->bindParam("limit", $limit, PDO::PARAM_INT);
                     $stmt->bindParam("offset", $offset, PDO::PARAM_INT);
@@ -25,7 +25,7 @@
             try {
                 if (isset($this->__conn)) {
                     // The statement inserts data into the customer table
-                    $sql = "INSERT INTO customers (`name`, `phone_number`, `email`, `company`, `title`, `question`) VALUES (:name, :phone_number, :email, :company, :title, :question)";
+                    $sql = "INSERT INTO contacts (`name`, `phone_number`, `email`, `company`, `title`, `question`) VALUES (:name, :phone_number, :email, :company, :title, :question)";
     
                     // Prepare the command
                     $stmt = $this->__conn->prepare($sql);

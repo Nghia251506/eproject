@@ -14,7 +14,7 @@ class ProductController extends BaseController
         $limit = 8; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
         $products = $this->__productModel->getAllProduct($limit, $offset);
-        $types = $this->__typeModel->getAllType();
+        $brands = $this->__brandModel->getAllBrand();
         $totalProducts = $this->__productModel->countAllProducts();
         $totalPages = ceil($totalProducts / $limit); // Total number of page
         $this->view("layouts/client", [
@@ -22,33 +22,29 @@ class ProductController extends BaseController
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
-            "types" => $types
+            "brands" => $brands
         ]);
     }
 
     public function detail()
     {
+        $limit = 10;
+        $offset = 0;
         $id = $_REQUEST["id"];
-
-        // Lấy sản phẩm hiện tại
         $product = $this->__productModel->getProductById($id);
-
-        if ($product) {
-            // Lấy sản phẩm cùng loại
-            $similarProducts = $this->__productModel->getProductsByTypeId($product->type_id);
-            $similarProduct = $this->__productModel->getProductById($id);
-            // Gửi dữ liệu đến view
+        if (!empty($product)) {
+            $similarProducts = $this->__productModel->getProductByType($product->type_id, $limit, $offset);
             $this->view("layouts/client", [
                 "page" => "products/ProductDetails",
                 "product" => $product,
-                "similarProducts" => $similarProducts,
-                "similarProduct" =>  $similarProduct // truyền sản phẩm cùng loại
+                "similarProducts" => $similarProducts
             ]);
         } else {
-            // Xử lý khi sản phẩm không tồn tại
+            // Nếu sản phẩm không tồn tại
             echo "Sản phẩm không tồn tại.";
         }
     }
+
 
     public function list($page = 1)
     {
@@ -196,24 +192,39 @@ class ProductController extends BaseController
 
     public function search($page = 1)
     {
-
-        $name = trim($_POST["name"]) ?? '';
-        $code = trim($_POST["code"]) ?? '';
-        $type_id = $_POST["id"] ?? 0;
+        $name = trim($_POST["name"] ?? '');
+        $code = trim($_POST["code"] ?? '');
+        $brand_ids = $_POST["brand_id"] ?? 0; // Sử dụng mảng để chứa nhiều ID thương hiệu
         $limit = 8;
         $offset = ($page - 1) * $limit;
-        $products = $this->__productModel->searchProduct($name, $type_id, $limit, $offset, $code);
-        // Lấy tổng số record để phân trang
-        $totalShows = $this->__productModel->countProducts($name);
-        $totalPages = ceil($totalShows / $limit);
 
+        // Tìm sản phẩm
+        $products = $this->__productModel->searchProduct($name, $brand_ids, $limit, $offset, $code);
+        $brands = $this->__brandModel->getAllBrand();
+
+        // Kiểm tra nếu yêu cầu là AJAX
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+            // Nếu là AJAX, chỉ trả về phần sản phẩm
+            $this->view("products/productResults", [
+                "products" => $products
+            ]);
+            return; // Ngừng thực thi nếu đã xử lý AJAX
+        }
+
+        // Lấy tổng số record để phân trang
+        $totalProducts = $this->__productModel->countProducts($name);
+        $totalPages = ceil($totalProducts / $limit);
+
+        // Nếu không phải AJAX, hiển thị toàn bộ trang
         $this->view("layouts/client", [
             "page" => "products/product",
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
+            "brands" => $brands
         ]);
     }
+
 
     public function searchList($page = 1)
     {
@@ -233,6 +244,155 @@ class ProductController extends BaseController
             "products" => $products,
             "totalPages" => $totalPages,
             "currentPage" => $page,
+        ]);
+    }
+
+
+    public function ceiling($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('1', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('1');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+    public function table($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('2', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('2');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+    public function wall($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('3', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('3');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+
+    public function pendant($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('4', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('4');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+    public function led($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('5', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('5');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+    public function outdoor($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('6', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('6');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
+        ]);
+    }
+
+    public function spotlight($page = 1)
+    {
+        $limit = 8; // Number of products per page
+        $offset = ($page - 1) * $limit; // Calculate offset
+
+        // Lấy sản phẩm thuộc category 'ceiling'
+        $products = $this->__productModel->getProductsByCategory('7', $limit, $offset);
+
+        $brands = $this->__brandModel->getAllBrand();
+        $totalProducts = $this->__productModel->countProductsByCategory('7');
+        $totalPages = ceil($totalProducts / $limit); // Total number of page
+
+        $this->view("layouts/client", [
+            "page" => "products/product",
+            "products" => $products,
+            "totalPages" => $totalPages,
+            "currentPage" => $page,
+            "brands" => $brands
         ]);
     }
 }

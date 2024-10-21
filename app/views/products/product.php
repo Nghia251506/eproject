@@ -39,24 +39,26 @@
     $products = $data["products"] ?? [];
     $totalPages = $data["totalPages"] ?? "";
     $currentPage = $data["currentPage"] ?? "";
-    $types = $data["types"] ?? "";
+    $brands = $data["brands"] ?? 0;
     ?>
     <div id="product-container">
         <aside class="sidebar">
             <h2>Search Product</h2>
             <div class="search-bar">
-                <form action="http://localhost/eproject/product/search" method="POST">
+                <form id="searchForm" action="http://localhost/eproject/product/search" method="POST">
                     <input name="name" type="text" placeholder="Input name...">
-                    <input name="code" type="hidden" placeholder="Input name...">
+                    <input name="code" type="hidden">
                     <div class="checkbox-reponsive">
-                        <?php foreach ($types as $type) : ?>
+                        <?php foreach ($brands as $brand) : ?>
                             <div id="checkbox">
-                                <div><input type="checkbox" value=<?= $type->id ?> name="id"></div>
-                                <div><label> <?= $type->type_name ?></label></div>
+                            <!-- <input name="brand_id" type="hidden" value=<?php $brand->id?>> -->
+                                <div><input type="checkbox" value="<?= $brand->id ? 'checked' : ''; ?>" name="brand_id"></div>
+                                <div><label> <?= $brand->brand_name ?></label></div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 </form>
+
             </div>
         </aside>
 
@@ -64,8 +66,8 @@
             <div class="featured-products">
                 <div class="all-products">
                     <h2>Tất Cả Sản Phẩm</h2>
-                    <div class="product-row">
-                        <?php foreach ($products as $product): ?>
+                    <div id="productResults" class="product-row">
+                        <?php foreach ($products as $product):?>
                             <div class="product">
                                 <div style="width:100%;height:200px;">
                                     <img style="width: 100%; height:100%; object-fit:cover;" src="<?php echo htmlspecialchars($product->image_url); ?>" alt="<?php echo htmlspecialchars($product->name); ?>" />
@@ -73,7 +75,7 @@
                                 <h3><?php echo htmlspecialchars($product->name); ?></h3>
                                 <p><?php echo htmlspecialchars($product->code); ?></p>
                                 <p>Giá: <?php echo htmlspecialchars(number_format($product->sale_price, 2)); ?> USD</p>
-                                <a href='http://localhost/eproject/product/detail?id=<?= $product->id; ?>'>See all details</a>
+                                <a href="http://localhost/eproject/product/detail?id=<?= $product->id?>">See all details</a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -96,6 +98,29 @@
             </div>
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Lắng nghe sự kiện change trên checkbox
+            $('input[name="brand_id"]').change(function() {
+                // Gửi yêu cầu AJAX khi checkbox thay đổi
+                $.ajax({
+                    url: $('#searchForm').attr('action'),
+                    type: 'POST',
+                    data: $('#searchForm').serialize(), // Lấy dữ liệu từ biểu mẫu
+                    success: function(data) {
+                        // Xử lý dữ liệu trả về từ server
+                        $('#productResults').html(data); // Cập nhật nội dung sản phẩm
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX error:", status, error);
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
