@@ -10,7 +10,7 @@ class HomeController extends BaseController
     }
     public function index($page = 1)
     {
-        $limit = 10; // Number of products per page
+        $limit = 27; // Number of products per page
         $offset = ($page - 1) * $limit; // Calculate offset
         $products = $this->__productModel->getAllProduct($limit, $offset);
         $categorys = $this->__categoryModel->getAllCategory();

@@ -67,7 +67,7 @@
                 <div class="all-products">
                     <h2>Tất Cả Sản Phẩm</h2>
                     <div id="productResults" class="product-row">
-                        <?php foreach ($products as $product): ?>
+                        <?php foreach ($products as $product):?>
                             <div class="product">
                                 <div style="width:100%;height:200px;">
                                     <img style="width: 100%; height:100%; object-fit:cover;" src="<?php echo htmlspecialchars($product->image_url); ?>" alt="<?php echo htmlspecialchars($product->name); ?>" />

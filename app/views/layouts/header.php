@@ -116,7 +116,7 @@
       <a href="http://localhost/eproject/user/login">
         <!-- <i class="fa-regular fa-circle-user"></i> -->
         <?php if (isset($_SESSION['user'])): ?>
-            <a href="#" id="user-name">Welcome, <?php echo $_SESSION['user']->name; ?></a>
+            <a href="#" id="user-name"><?php echo $_SESSION['user']->name; ?></a>
             <ul id="dropdown">
               <li><a href="http://localhost/eproject/user/settings">Setting</a></li>
               <li><a href="http://localhost/eproject/user/logout">Logout</a></li>

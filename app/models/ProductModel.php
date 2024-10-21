@@ -24,14 +24,11 @@ class ProductModel
                                 p.image_url,
                                 p.description,
                                 t.type_name,
-                                ce.id,
-                                t.category_id,
-                                ce.category_name,
+                                t.category_id,  
                                 b.brand_name
                 from products as p
                 inner join type_lights as t on p.type_id = t.id
                 inner join brand_lights as b on p.brand_id = b.id
-                inner join categorys as ce on t.category_id = ce.id
                 order by p.id desc 
                 LIMIT :limit OFFSET :offset";
                 $stmt = $this->__conn->prepare($sql);
@@ -80,6 +77,7 @@ class ProductModel
                                 p.type_id,
                                 p.brand_id,
                                 p.description,
+                                t.id,
                                 t.type_name , 
                                 b.brand_name,
                                 ce.category_name
@@ -87,7 +85,7 @@ class ProductModel
                     INNER JOIN type_lights t ON p.type_id = t.id
                     INNER JOIN brand_lights b ON p.brand_id = b.id
                     INNER JOIN categorys ce ON t.category_id = ce.id
-                    WHERE p.id = :id";
+                    WHERE p.id = :id ";
 
                 $stmt = $this->__conn->prepare($sql);
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);  // Gán giá trị cho tham số :id
@@ -102,7 +100,8 @@ class ProductModel
         }
     }
 
-    public function getProductsByBrandId($brand_id, $limit, $offset) {
+    public function getProductsByBrandId($brand_id, $limit, $offset)
+    {
         $query = "SELECT * FROM products WHERE brand_id = :brand_id LIMIT :limit OFFSET :offset";
         $statement = $this->__conn->prepare($query);
         $statement->bindParam(':brand_id', $brand_id, PDO::PARAM_INT);
@@ -111,8 +110,9 @@ class ProductModel
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
-    
-    public function countProductsByBrand($brand_id) {
+
+    public function countProductsByBrand($brand_id)
+    {
         $query = "SELECT COUNT(*) as total FROM products WHERE brand_id = :brand_id";
         $statement = $this->__conn->prepare($query);
         $statement->bindParam(':brand_id', $brand_id, PDO::PARAM_INT);
@@ -120,8 +120,21 @@ class ProductModel
         return $statement->fetch(PDO::FETCH_OBJ)->total;
     }
 
-    public function getProductsByCategory($category_id, $limit, $offset) {
-        $sql = "SELECT p.* , t.type_name FROM products p
+    public function getProductsByCategory($category_id, $limit, $offset)
+    {
+        $sql = "SELECT p.id,
+                                p.name,
+                                p.code,
+                                p.watt,
+                                p.socket,
+                                p.color,
+                                p.purchase_price,
+                                p.sale_price,
+                                p.quantity,
+                                p.image_url,
+                                p.type_id,
+                                p.brand_id,
+                                p.description, t.type_name FROM products p
                   JOIN type_lights t ON p.type_id = t.id
                   JOIN categorys ce ON t.category_id = ce.id
                   WHERE t.category_id = :category_id
@@ -133,11 +146,28 @@ class ProductModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    public function countProductsByCategory($type_id) {
+    public function countProductsByCategory($type_id)
+    {
         $stmt = $this->__conn->prepare("SELECT COUNT(*) FROM products WHERE type_id = :type_id");
         $stmt->bindParam(':type_id', $type_id);
         $stmt->execute();
         return $stmt->fetchColumn();
+    }
+
+    public function getProductByType($type_id, $limit = 10, $offset = 0)
+    {
+        $sql = "SELECT p.* ,t.id, t.type_name FROM products p
+                  JOIN type_lights t ON p.type_id = t.id
+                  -- WHERE t.id = :type_id OR p.id = :id
+                  WHERE t.id = :type_id
+                  LIMIT :limit OFFSET :offset";
+        $stmt = $this->__conn->prepare($sql);
+        $stmt->bindParam(':type_id', $type_id);
+        // $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     // The saveProduct function is commonly used for editing and adding new products
@@ -265,7 +295,7 @@ class ProductModel
             $stmt = $this->__conn->prepare($sql);
             $stmt->bindValue(":name", '%' . $name . '%');
             $stmt->bindValue(":brand_id", $brand_id, PDO::PARAM_INT);
-            $stmt->bindValue(":code",'%' . $code . '%', PDO::PARAM_STR);
+            $stmt->bindValue(":code", '%' . $code . '%', PDO::PARAM_STR);
             $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
             $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
             $stmt->execute();

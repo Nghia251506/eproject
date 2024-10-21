@@ -91,7 +91,7 @@
                                             <div class="info-box p-2">
                                                 <h4 class="product-name mb-2"><a class="d-block" href="http://localhost/eproject/product/detail?id=<?= $product->id; ?>"><?= $product->name ?></a></h4>
                                                 <div class="price-more d-flex mb-0 justify-content-center align-items-center">
-                                                    <span class="price mr-3"><strong>Liên hệ</strong></span>
+                                                    <span class="price mr-3"><strong>Contact</strong></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,8 +122,9 @@
                         </div>
                     </div>
                     <div class="list-products row no-gutters pad20">
-                        <?php foreach ($products as $product):?>
-                            <?php if ($category->id == $product->category_id):?>
+
+                        <?php foreach ($products as $product): ?>
+                            <?php if ($product->category_id == $category->id): ?>
                                 <div class="item col-6 col-md-4 ">
                                     <div class="product-box text-center p-3">
                                         <a href="http://localhost/eproject/product/detail?id=<?= $product->id ?>" class="d-flex img-box">
@@ -132,17 +133,18 @@
                                         <div class="info-box p-2">
                                             <h4 class="product-name mb-2 fs-6">
                                                 <a class="d-block" href="http://localhost/eproject/product/detail?id=<?= $product->id ?>"> <?= $product->name ?>
-                                            </a>
-                                        </h4>
-                                            <h6><?= $product->code?></h6>
+                                                </a>
+                                            </h4>
+                                            <h6><?= $product->code ?></h6>
                                             <div class="price-more d-flex mb-0 justify-content-center align-items-center fs-6">
-                                                <span class="price mr-3"><strong>Liên hệ</strong></span>
+                                                <span class="price mr-3"><strong>Contact</strong></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+
                     </div>
                 </div>
             </div>

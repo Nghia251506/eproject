@@ -28,29 +28,23 @@ class ProductController extends BaseController
 
     public function detail()
     {
-        $limit = 4;
+        $limit = 10;
         $offset = 0;
         $id = $_REQUEST["id"];
-
-        // Lấy sản phẩm hiện tại
         $product = $this->__productModel->getProductById($id);
-
-        if ($product) {
-            // Lấy sản phẩm cùng loại
-            $similarProducts = $this->__productModel->getProductsByBrandId($product->brand_id, $limit, $offset);
-            $similarProduct = $this->__productModel->getProductById($id);
-            // Gửi dữ liệu đến view
+        if (!empty($product)) {
+            $similarProducts = $this->__productModel->getProductByType($product->type_id, $limit, $offset);
             $this->view("layouts/client", [
                 "page" => "products/ProductDetails",
                 "product" => $product,
-                "similarProducts" => $similarProducts,
-                "similarProduct" =>  $similarProduct // truyền sản phẩm cùng loại
+                "similarProducts" => $similarProducts
             ]);
         } else {
-            // Xử lý khi sản phẩm không tồn tại
+            // Nếu sản phẩm không tồn tại
             echo "Sản phẩm không tồn tại.";
         }
     }
+
 
     public function list($page = 1)
     {
